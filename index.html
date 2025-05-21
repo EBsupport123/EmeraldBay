@@ -1,0 +1,54 @@
+<!-- Emerald Bay Mobile Site | index.html-style entry -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emerald Bay Community</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+    body { font-family: 'Montserrat', sans-serif; background-color: #f1f5f9; }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
+  </style>
+</head>
+<body>
+  <header class="py-10 text-center bg-white bg-opacity-90 shadow">
+    <h1 class="text-4xl font-bold text-gray-800 tracking-tight">EMERALD BAY</h1>
+    <div class="w-24 h-1 bg-emerald-600 mx-auto mt-2"></div>
+    <p class="text-sm text-gray-500 uppercase mt-1">Community Information Portal</p>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <a href="rules-general.html" class="card-hover bg-white p-6 rounded-xl text-center shadow">
+      <i class="fas fa-building text-emerald-600 text-3xl mb-4"></i>
+      <h2 class="text-xl font-semibold text-gray-800">Building Rules</h2>
+      <p class="text-gray-500 mt-2">General community regulations</p>
+    </a>
+    <a href="rules-amenities.html" class="card-hover bg-white p-6 rounded-xl text-center shadow">
+      <i class="fas fa-swimming-pool text-emerald-600 text-3xl mb-4"></i>
+      <h2 class="text-xl font-semibold text-gray-800">Amenity Rules</h2>
+      <p class="text-gray-500 mt-2">Pool, BBQ, Gym & more</p>
+    </a>
+    <a href="parking.html" class="card-hover bg-white p-6 rounded-xl text-center shadow">
+      <i class="fas fa-parking text-emerald-600 text-3xl mb-4"></i>
+      <h2 class="text-xl font-semibold text-gray-800">Parking Info</h2>
+      <p class="text-gray-500 mt-2">Regulations and registration</p>
+    </a>
+    <a href="enforcement.html" class="card-hover bg-white p-6 rounded-xl text-center shadow">
+      <i class="fas fa-car-crash text-emerald-600 text-3xl mb-4"></i>
+      <h2 class="text-xl font-semibold text-gray-800">Enforcement</h2>
+      <p class="text-gray-500 mt-2">Towing company and rules</p>
+    </a>
+    <a href="documents.html" class="card-hover bg-white p-6 rounded-xl text-center shadow">
+      <i class="fas fa-folder-open text-emerald-600 text-3xl mb-4"></i>
+      <h2 class="text-xl font-semibold text-gray-800">Documents</h2>
+      <p class="text-gray-500 mt-2">View PDFs and Forms</p>
+    </a>
+  </main>
+
+  <footer class="text-center py-8 text-sm text-gray-400 border-t">© 2025 Emerald Bay. All Rights Reserved.</footer>
+</body>
+</html>
