@@ -1,0 +1,123 @@
+<!-- rules-amenities.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amenity Rules – Emerald Bay</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+    body { font-family: 'Montserrat', sans-serif; background-color: #f1f5f9; }
+    .hidden-section { display: none; }
+  </style>
+</head>
+<body>
+  <header class="py-10 text-center bg-white shadow">
+    <h1 class="text-4xl font-bold text-gray-800 tracking-widest uppercase" style="font-family: 'Georgia', serif;">EMERALD BAY</h1>
+    <p class="text-sm text-gray-500 mt-2 uppercase">Community Information</p>
+  </header>
+
+  <main class="max-w-2xl mx-auto px-6 py-10 space-y-6">
+    <div class="bg-yellow-100 text-yellow-800 p-4 rounded-md shadow">
+      <p><strong>Note:</strong> Rules and Regulations are posted at each amenity location and must be followed at all times.</p>
+      <p>Landlord reserves the right to modify amenity hours or restrict access for maintenance, repairs, or repeated violations.</p>
+      <p>Tenants who repeatedly disregard the Rules and Regulations may lose access privileges, be subject to monetary fines, or face lease termination.</p>
+    </div>
+
+    <!-- Toggle Boxes -->
+    <div class="space-y-4">
+      <button onclick="toggleSection('pool')" class="w-full bg-white p-4 rounded-xl shadow text-left flex items-center justify-between">
+        <span><i class="fas fa-swimming-pool text-emerald-600 mr-2"></i>Pool Rules</span><i class="fas fa-chevron-down"></i>
+      </button>
+      <div id="pool" class="hidden-section bg-white p-4 rounded-xl shadow">
+        <ul class="list-disc list-inside text-gray-700 space-y-1">
+          <li>No lifeguard on duty – swim at your own risk.</li>
+          <li>Children under 12 must be supervised by an adult.</li>
+          <li>No food, drinks, glass containers, or pets inside the pool.</li>
+          <li>Shower before entering. Maximum capacity: 50 persons.</li>
+          <li>No running, diving, or horseplay allowed.</li>
+          <li>Pool hours: Sunrise to sunset. Night swimming is not permitted.</li>
+          <li>No alcoholic beverages or smoking/vaping.</li>
+          <li>No music speakers allowed; keep volume moderate.</li>
+        </ul>
+      </div>
+
+      <button onclick="toggleSection('bbq')" class="w-full bg-white p-4 rounded-xl shadow text-left flex items-center justify-between">
+        <span><i class="fas fa-fire text-emerald-600 mr-2"></i>BBQ Grill Rules</span><i class="fas fa-chevron-down"></i>
+      </button>
+      <div id="bbq" class="hidden-section bg-white p-4 rounded-xl shadow">
+        <ul class="list-disc list-inside text-gray-700 space-y-1">
+          <li>For residents only. First come, first served: 10 AM – 9 PM.</li>
+          <li>Minors under 18 must be supervised when using grills.</li>
+          <li>Grills must be attended at all times while in use.</li>
+          <li>Fully extinguish charcoal and clean area after use.</li>
+          <li>Report damage to management. Use at your own risk.</li>
+        </ul>
+      </div>
+
+      <button onclick="toggleSection('club')" class="w-full bg-white p-4 rounded-xl shadow text-left flex items-center justify-between">
+        <span><i class="fas fa-users text-emerald-600 mr-2"></i>Clubhouse & Work Lounge</span><i class="fas fa-chevron-down"></i>
+      </button>
+      <div id="club" class="hidden-section bg-white p-4 rounded-xl shadow">
+        <ul class="list-disc list-inside text-gray-700 space-y-1">
+          <li>Shared spaces: first come, first served.</li>
+          <li>No monopolizing space or private events unless authorized.</li>
+          <li>No pets, glass, or open containers allowed.</li>
+          <li>Work Lounge must remain quiet, clean, and used individually.</li>
+          <li>No food in the Work Lounge. No group meetings permitted.</li>
+        </ul>
+      </div>
+
+      <button onclick="toggleSection('gym')" class="w-full bg-white p-4 rounded-xl shadow text-left flex items-center justify-between">
+        <span><i class="fas fa-dumbbell text-emerald-600 mr-2"></i>Gym Rules</span><i class="fas fa-chevron-down"></i>
+      </button>
+      <div id="gym" class="hidden-section bg-white p-4 rounded-xl shadow">
+        <ul class="list-disc list-inside text-gray-700 space-y-1">
+          <li>Adults only; minors 12+ allowed with adult supervision.</li>
+          <li>Proper use of equipment required. No slamming weights.</li>
+          <li>Dress code enforced: no topless use.</li>
+          <li>Report malfunctions through the tenant portal.</li>
+        </ul>
+      </div>
+
+      <button onclick="toggleSection('play')" class="w-full bg-white p-4 rounded-xl shadow text-left flex items-center justify-between">
+        <span><i class="fas fa-child text-emerald-600 mr-2"></i>Playground</span><i class="fas fa-chevron-down"></i>
+      </button>
+      <div id="play" class="hidden-section bg-white p-4 rounded-xl shadow">
+        <ul class="list-disc list-inside text-gray-700 space-y-1">
+          <li>For children under 12 with adult supervision only.</li>
+          <li>No pets. Use equipment responsibly.</li>
+        </ul>
+      </div>
+
+      <button onclick="toggleSection('dog')" class="w-full bg-white p-4 rounded-xl shadow text-left flex items-center justify-between">
+        <span><i class="fas fa-dog text-emerald-600 mr-2"></i>Dog Park (Paw-Park)</span><i class="fas fa-chevron-down"></i>
+      </button>
+      <div id="dog" class="hidden-section bg-white p-4 rounded-xl shadow">
+        <ul class="list-disc list-inside text-gray-700 space-y-1">
+          <li>Use at your own risk. Owners responsible for pet behavior.</li>
+          <li>Dogs must be leashed entering/exiting and always under control.</li>
+          <li>Clean up waste immediately. Pets must be registered.</li>
+          <li>No food/treats, glass containers, or dogs in heat/sick/aggressive.</li>
+          <li>Handlers must be 16+. Children under 13 must be supervised.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-10 text-center">
+      <a href="index.html" class="text-emerald-600 hover:underline"><i class="fas fa-arrow-left mr-2"></i>Back to Home</a>
+    </div>
+  </main>
+
+  <footer class="text-center py-8 text-sm text-gray-400 border-t">© 2025 Emerald Bay. All Rights Reserved.</footer>
+
+  <script>
+    function toggleSection(id) {
+      const el = document.getElementById(id);
+      el.classList.toggle('hidden-section');
+    }
+  </script>
+</body>
+</html>
