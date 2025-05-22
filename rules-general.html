@@ -4,35 +4,233 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Community Rules – Emerald Bay</title>
+  <title>General Building Rules - Emerald Bay</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      background-color: #f1f5f9;
-      font-family: 'Montserrat', sans-serif;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+    body { font-family: 'Montserrat', sans-serif; background-color: #f1f5f9; }
+    .lang-toggle { text-align: right; margin: 1rem 0; }
+    details { background: white; border-radius: 0.75rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-bottom: 1rem; }
+    summary { padding: 1rem; font-size: 1.125rem; font-weight: 600; color: #065f46; display: flex; align-items: center; cursor: pointer; }
+    summary i { margin-right: 0.75rem; color: #10b981; }
+    .content { padding: 0 1rem 1rem; color: #374151; }
+    .content p, .content ul { margin-top: 0.5rem; }
+    .content ul li { margin-left: 1rem; list-style-type: disc; }
   </style>
 </head>
 <body>
-  <main class="max-w-xl mx-auto px-4 py-10 text-center">
-    <h1 class="text-3xl font-bold text-gray-800 uppercase mb-4" style="font-family: 'Georgia', serif;">EMERALD BAY</h1>
-    <h2 class="text-lg font-semibold text-gray-600 mb-6">Community Rules and Regulations</h2>
+  <div class="max-w-md mx-auto px-4">
+    <!-- Header -->
+    <header class="py-6 text-center bg-white shadow rounded-b-xl">
+      <h1 class="text-3xl font-bold text-gray-800 tracking-widest uppercase" style="font-family: 'Georgia', serif;">EMERALD BAY</h1>
+      <p class="text-xs text-gray-500 mt-1 uppercase">Community Information</p>
+    </header>
 
-    <p class="text-gray-700 mb-4">
-      To review the full set of rules and regulations that apply to all residents and visitors, please view the document below:
-    </p>
+    <!-- Language Switcher -->
+    <div class="lang-toggle">
+      <button id="en-btn" class="px-2 py-1 text-sm font-medium text-gray-700">English</button>
+      <button id="es-btn" class="px-2 py-1 text-sm font-medium text-gray-700">Español</button>
+    </div>
 
-    <a href="https://ebsupport123.github.io/EmeraldBay/RULES.pdf" 
-       class="bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition" 
-       target="_blank">
-      View Fullscreen PDF
-    </a>
+    <!-- English Sections -->
+    <div class="lang lang-en">
+      <details open>
+        <summary><i class="fas fa-gavel"></i>Use & Conduct in Premises</summary>
+        <div class="content">
+          <p>1. Residential use only. No commercial activity or solicitation. Follow all applicable laws.</p>
+          <p>2. No shouting, loud music, strong odors, or harassment. Quiet hours: 11:00 PM–7:00 AM.</p>
+          <p>3. Tenants are responsible for their guests’ actions and any damages.</p>
+          <p>4. Children under 12 must be supervised. Guest stays: over 7 days register; over 14 days apply for tenancy; max 2 adults per bedroom + 1 child.</p>
+        </div>
+      </details>
 
-    <div class="text-center mt-8">
+      <details>
+        <summary><i class="fas fa-shield-alt"></i>Safety & Storage</summary>
+        <div class="content">
+          <p>5. No flammable storage (e.g., gas-powered items, grills) in units, balconies, or common areas.</p>
+          <p>6. No access to utility areas or equipment without permission.</p>
+          <p>7. No items stored in hallways, entrances, stairwells, or public areas.</p>
+          <p>8. No drilling, screwing, or adhesives without permission; only approved hanging tools allowed.</p>
+          <p>9. Pets on balconies must be supervised at all times.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><i class="fas fa-key"></i>Access & Property Standards</summary>
+        <div class="content">
+          <p>10. No altering locks. $50 fee for lost or damaged mailbox keys.</p>
+          <p>11. No furniture stored in public areas. Only landlord-approved window coverings allowed.</p>
+          <p>12. No lawn parking, blocking, or repairs on premises. Clean leaks and remove vehicles.</p>
+          <p>13. Report leaks; conserve energy; do not remove screens.</p>
+          <p>14. Antennas or satellite dishes prohibited without written consent.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><i class="fas fa-wrench"></i>Plumbing, Storage & Disposal</summary>
+        <div class="content">
+          <p>15. Only toilet paper allowed in toilets. Tenants liable for misuse.</p>
+          <p>16. No flammable storage; landlord not responsible for items after lease ends.</p>
+          <p>17. $500 fine for improper bulky waste disposal (furniture/appliances).</p>
+          <p>18. Maintain units clean and sanitary.</p>
+          <p>19. No exterior signage or decor without permission.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><i class="fas fa-ban"></i>Restricted Behaviors & Substances</summary>
+        <div class="content">
+          <p>20. Roof access strictly prohibited.</p>
+          <p>21. No waterbeds, aquariums, or unauthorized equipment.</p>
+          <p>22. Lofts not allowed.</p>
+          <p>23. No smoking indoors or within 15 feet of any building.</p>
+          <p>24. Do not tamper with, disable, or remove batteries from smoke detectors.</p>
+          <p>25. No possession, use, or sale of illegal drugs.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><i class="fas fa-tshirt"></i>Maintenance, Clothing & Parking</summary>
+        <div class="content">
+          <p>26. Light bulbs provided at move-in; tenant responsible thereafter.</p>
+          <p>27. Landlord changes HVAC filters monthly; additional changes are tenant’s responsibility.</p>
+          <p>28. No display or use of firearms, knives, or similar weapons on property.</p>
+          <p>29. Proper attire required in public areas. No shirtless or barefoot individuals (except pool); no public alcohol use.</p>
+          <p>30. No commercial vehicles, boats, or RVs; guest parking requires visible passes; speed limit: 5 MPH.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><i class="fas fa-toolbox"></i>Maintenance & Rentals</summary>
+        <div class="content">
+          <p>31. Submit maintenance requests via Tenant Portal. Tenant responsible for damages from violations.</p>
+          <p>32. Short-term rentals (e.g., Airbnb, Vrbo) strictly prohibited; violation leads to immediate termination and deposit forfeiture.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><i class="fas fa-recycle"></i>Trash & Recycling Rules</summary>
+        <div class="content">
+          <ul>
+            <li>All trash must be securely bagged before disposal.</li>
+            <li>Do not place boxes in the chute; flatten and place in the designated first-floor waste room.</li>
+            <li>Follow recycling regulations; no toxic or combustible materials.</li>
+            <li>No car batteries, oils, or petroleum-based products.</li>
+            <li>No furniture or appliances near trash areas.</li>
+            <li>Keep all trash areas clean and free of litter.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- Spanish Sections -->
+    <div class="lang lang-es" style="display:none;">
+      <details open>
+        <summary><i class="fas fa-gavel"></i>Uso y Conducta en las Instalaciones</summary>
+        <div class="content">
+          <p>1. Solo uso residencial. No actividades comerciales o solicitudes. Cumpla con las leyes aplicables.</p>
+          <p>2. No gritar, música alta, olores fuertes ni acoso. Horas de silencio: 11:00 PM–7:00 AM.</p>
+          <p>3. Los inquilinos son responsables de las acciones de sus invitados y de cualquier daño.</p>
+          <p>4. Niños menores de 12 años con supervisión. Estancias: >7 días registrarse; >14 días solicitar arrendamiento; máximo 2 adultos por habitación +1 niño.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><i class="fas fa-shield-alt"></i>Seguridad y Almacenaje</summary>
+        <div class="content">
+          <p>5. No almacenar materiales inflamables (gas, parrillas) en unidades, balcones o áreas comunes.</p>
+          <p>6. Sin acceso a áreas de servicios o equipos sin permiso.</p>
+          <p>7. No almacenar ítems en pasillos, entradas, escaleras ni áreas públicas.</p>
+          <p>8. No taladrar, atornillar ni usar adhesivos sin permiso; solo herramientas de colgado aprobadas.</p>
+          <p>9. Mascotas en balcones deben estar supervisadas en todo momento.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><i class="fas fa-key"></i>Acceso y Estándares de la Propiedad</summary>
+        <div class="content">
+          <p>10. No alterar cerraduras. $50 por llave de buzón perdida o dañada.</p>
+          <p>11. No almacenar muebles en áreas públicas. Solo cubreventanas aprobados por el arrendador.</p>
+          <p>12. No estacionar en césped, bloquear o reparar vehículos en la propiedad. Limpiar fugas y retirar vehículos.</p>
+          <p>13. Reportar fugas; ahorrar energía; no retirar mosquiteros.</p>
+          <p>14. Antenas o platos satelitales prohibidos sin consentimiento escrito.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><i class="fas fa-wrench"></i>Fontanería, Almacenaje y Eliminación</summary>
+        <div class="content">
+          <p>15. Solo papel higiénico en los inodoros; inquilinos responsables por mal uso.</p>
+          <p>16. No almacenar materiales inflamables; arrendador no responsable por ítems tras finalizar el contrato.</p>
+          <p>17. Multa de $500 por eliminación inadecuada de muebles o electrodomésticos.</p>
+          <p>18. Mantener las unidades limpias y sanitarias.</p>
+          <p>19. No colocar carteles o decoraciones exteriores sin permiso.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><i class="fas fa-ban"></i>Conductas y Sustancias Restringidas</summary>
+        <div class="content">
+          <p>20. Acceso al tejado estrictamente prohibido.</p>
+          <p>21. No camas de agua, acuarios ni equipos no autorizados.</p>
+          <p>22. Altillos no permitidos.</p>
+          <p>23. Prohibido fumar en interiores o a menos de 4.5 metros del edificio.</p>
+          <p>24. No manipular, desactivar ni quitar baterías de detectores de humo.</p>
+          <p>25. Prohibida la posesión, uso o venta de drogas ilegales.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><i class="fas fa-tshirt"></i>Mantenimiento, Vestimenta y Estacionamiento</summary>
+        <div class="content">
+          <p>26. Bombillas provistas al inicio; responsabilidad del inquilino luego.</p>
+          <p>27. El arrendador cambia filtros HVAC mensualmente; cambios adicionales responsabilidad del inquilino.</p>
+          <p>28. No exhibir ni usar armas de fuego, cuchillos u objetos similares.</p>
+          <p>29. Vestimenta adecuada en áreas comunes; no sin camisa ni descalzo (excepto piscina); no alcohol en público.</p>
+          <p>30. No vehículos comerciales, barcos o RVs; estacionamiento de huéspedes con pases visibles; límite de velocidad 5 MPH.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><i class="fas fa-toolbox"></i>Mantenimiento y Alquileres</summary>
+        <div class="content">
+          <p>31. Enviar solicitudes de mantenimiento vía Portal del Inquilino; inquilino responsable por daños por violaciones.</p>
+          <p>32. Alquileres a corto plazo (e.g., Airbnb, Vrbo) prohibidos; violación conlleva terminación inmediata y pérdida de depósito.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><i class="fas fa-recycle"></i>Normas de Basura y Reciclaje</summary>
+        <div class="content">
+          <ul>
+            <li>Toda la basura debe estar empaquetada antes de desechar.</li>
+            <li>No colocar cajas en el conducto; aplastar y colocar en cuarto de basura del primer piso.</li>
+            <li>Seguir regulaciones de reciclaje; no materiales tóxicos o combustibles.</li>
+            <li>No baterías de auto, aceites o productos derivados del petróleo.</li>
+            <li>No muebles ni electrodomésticos cerca de áreas de basura.</li>
+            <li>Mantener áreas de basura limpias y sin desechos sueltos.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+        <div class="text-center mt-8">
       <a href="index.html" class="text-emerald-600 hover:underline">
         <i class="fas fa-arrow-left mr-2"></i>Back to General Rules
       </a>
     </div>
-  </main>
+    <!-- Toggle Script -->
+    <script>
+      document.getElementById('en-btn').onclick = () => {
+        document.querySelector('.lang-en').style.display = 'block';
+        document.querySelector('.lang-es').style.display = 'none';
+      };
+      document.getElementById('es-btn').onclick = () => {
+        document.querySelector('.lang-en').style.display = 'none';
+        document.querySelector('.lang-es').style.display = 'block';
+      };
+    </script>
+  </div>
 </body>
 </html>
