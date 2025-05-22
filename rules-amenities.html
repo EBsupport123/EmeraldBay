@@ -1,4 +1,3 @@
-<!-- rules-amenities.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,109 +14,354 @@
 </head>
 <body>
   <header class="py-10 text-center bg-white shadow">
-    <h1 class="text-4xl font-bold text-gray-800 tracking-widest uppercase" style="font-family: 'Georgia', serif;">EMERALD BAY</h1>
-    <p class="text-sm text-gray-500 mt-2 uppercase">Community Information</p>
+    <h1 id="header-title" class="text-4xl font-bold text-gray-800 tracking-widest uppercase" style="font-family: 'Georgia', serif;">EMERALD BAY</h1>
+    <p id="subtitle" class="text-sm text-gray-500 mt-2 uppercase"></p>
   </header>
 
   <main class="max-w-2xl mx-auto px-6 py-10 space-y-6">
     <div class="bg-yellow-100 text-yellow-800 p-4 rounded-md shadow">
-      <p><strong>Note:</strong> Rules and Regulations are posted at each amenity location and must be followed at all times.</p>
-      <p>Landlord reserves the right to modify amenity hours or restrict access for maintenance, repairs, or repeated violations.</p>
-      <p>Tenants who repeatedly disregard the Rules and Regulations may lose access privileges, be subject to monetary fines, or face lease termination.</p>
+      <h2 id="cons-title" class="text-lg font-semibold"></h2>
+      <div id="cons-content" class="space-y-2"></div>
     </div>
 
-    <!-- Toggle Boxes -->
+    <div class="text-center mb-4">
+      <span class="text-gray-600 mr-2">¿Desea cambiar el idioma?</span>
+      <button id="btn-en" class="px-2 py-1 border rounded mr-2">EN</button>
+      <button id="btn-es" class="px-2 py-1 border rounded">ES</button>
+    </div>
+
     <div class="space-y-4">
       <button onclick="toggleSection('pool')" class="w-full bg-white p-4 rounded-xl shadow text-left flex items-center justify-between">
-        <span><i class="fas fa-swimming-pool text-emerald-600 mr-2"></i>Pool Rules</span><i class="fas fa-chevron-down"></i>
+        <span id="title-pool"></span><i class="fas fa-chevron-down"></i>
       </button>
-      <div id="pool" class="hidden-section bg-white p-4 rounded-xl shadow">
-        <ul class="list-disc list-inside text-gray-700 space-y-1">
-          <li>No lifeguard on duty – swim at your own risk.</li>
-          <li>Children under 12 must be supervised by an adult.</li>
-          <li>No food, drinks, glass containers, or pets inside the pool.</li>
-          <li>Shower before entering. Maximum capacity: 50 persons.</li>
-          <li>No running, diving, or horseplay allowed.</li>
-          <li>Pool hours: Sunrise to sunset. Night swimming is not permitted.</li>
-          <li>No alcoholic beverages or smoking/vaping.</li>
-          <li>No music speakers allowed; keep volume moderate.</li>
-        </ul>
-      </div>
+      <div id="pool" class="hidden-section bg-white p-4 rounded-xl shadow"></div>
 
       <button onclick="toggleSection('bbq')" class="w-full bg-white p-4 rounded-xl shadow text-left flex items-center justify-between">
-        <span><i class="fas fa-fire text-emerald-600 mr-2"></i>BBQ Grill Rules</span><i class="fas fa-chevron-down"></i>
+        <span id="title-bbq"></span><i class="fas fa-chevron-down"></i>
       </button>
-      <div id="bbq" class="hidden-section bg-white p-4 rounded-xl shadow">
-        <ul class="list-disc list-inside text-gray-700 space-y-1">
-          <li>For residents only. First come, first served: 10 AM – 9 PM.</li>
-          <li>Minors under 18 must be supervised when using grills.</li>
-          <li>Grills must be attended at all times while in use.</li>
-          <li>Fully extinguish charcoal and clean area after use.</li>
-          <li>Report damage to management. Use at your own risk.</li>
-        </ul>
-      </div>
+      <div id="bbq" class="hidden-section bg-white p-4 rounded-xl shadow"></div>
 
-      <button onclick="toggleSection('club')" class="w-full bg-white p-4 rounded-xl shadow text-left flex items-center justify-between">
-        <span><i class="fas fa-users text-emerald-600 mr-2"></i>Clubhouse & Work Lounge</span><i class="fas fa-chevron-down"></i>
+      <button onclick="toggleSection('clubhouse')" class="w-full bg-white p-4 rounded-xl shadow text-left flex items-center justify-between">
+        <span id="title-clubhouse"></span><i class="fas fa-chevron-down"></i>
       </button>
-      <div id="club" class="hidden-section bg-white p-4 rounded-xl shadow">
-        <ul class="list-disc list-inside text-gray-700 space-y-1">
-          <li>Shared spaces: first come, first served.</li>
-          <li>No monopolizing space or private events unless authorized.</li>
-          <li>No pets, glass, or open containers allowed.</li>
-          <li>Work Lounge must remain quiet, clean, and used individually.</li>
-          <li>No food in the Work Lounge. No group meetings permitted.</li>
-        </ul>
-      </div>
+      <div id="clubhouse" class="hidden-section bg-white p-4 rounded-xl shadow"></div>
+
+      <button onclick="toggleSection('worklounge')" class="w-full bg-white p-4 rounded-xl shadow text-left flex items-center justify-between">
+        <span id="title-worklounge"></span><i class="fas fa-chevron-down"></i>
+      </button>
+      <div id="worklounge" class="hidden-section bg-white p-4 rounded-xl shadow"></div>
 
       <button onclick="toggleSection('gym')" class="w-full bg-white p-4 rounded-xl shadow text-left flex items-center justify-between">
-        <span><i class="fas fa-dumbbell text-emerald-600 mr-2"></i>Gym Rules</span><i class="fas fa-chevron-down"></i>
+        <span id="title-gym"></span><i class="fas fa-chevron-down"></i>
       </button>
-      <div id="gym" class="hidden-section bg-white p-4 rounded-xl shadow">
-        <ul class="list-disc list-inside text-gray-700 space-y-1">
-          <li>Adults only; minors 12+ allowed with adult supervision.</li>
-          <li>Proper use of equipment required. No slamming weights.</li>
-          <li>Dress code enforced: no topless use.</li>
-          <li>Report malfunctions through the tenant portal.</li>
-        </ul>
-      </div>
+      <div id="gym" class="hidden-section bg-white p-4 rounded-xl shadow"></div>
 
       <button onclick="toggleSection('play')" class="w-full bg-white p-4 rounded-xl shadow text-left flex items-center justify-between">
-        <span><i class="fas fa-child text-emerald-600 mr-2"></i>Playground</span><i class="fas fa-chevron-down"></i>
+        <span id="title-play"></span><i class="fas fa-chevron-down"></i>
       </button>
-      <div id="play" class="hidden-section bg-white p-4 rounded-xl shadow">
-        <ul class="list-disc list-inside text-gray-700 space-y-1">
-          <li>For children under 12 with adult supervision only.</li>
-          <li>No pets. Use equipment responsibly.</li>
-        </ul>
-      </div>
+      <div id="play" class="hidden-section bg-white p-4 rounded-xl shadow"></div>
 
       <button onclick="toggleSection('dog')" class="w-full bg-white p-4 rounded-xl shadow text-left flex items-center justify-between">
-        <span><i class="fas fa-dog text-emerald-600 mr-2"></i>Dog Park (Paw-Park)</span><i class="fas fa-chevron-down"></i>
+        <span id="title-dog"></span><i class="fas fa-chevron-down"></i>
       </button>
-      <div id="dog" class="hidden-section bg-white p-4 rounded-xl shadow">
-        <ul class="list-disc list-inside text-gray-700 space-y-1">
-          <li>Use at your own risk. Owners responsible for pet behavior.</li>
-          <li>Dogs must be leashed entering/exiting and always under control.</li>
-          <li>Clean up waste immediately. Pets must be registered.</li>
-          <li>No food/treats, glass containers, or dogs in heat/sick/aggressive.</li>
-          <li>Handlers must be 16+. Children under 13 must be supervised.</li>
-        </ul>
-      </div>
+      <div id="dog" class="hidden-section bg-white p-4 rounded-xl shadow"></div>
     </div>
 
     <div class="mt-10 text-center">
-      <a href="index.html" class="text-emerald-600 hover:underline"><i class="fas fa-arrow-left mr-2"></i>Back to Home</a>
+      <a href="index.html" id="back-link" class="text-emerald-600 hover:underline"></a>
     </div>
   </main>
 
-  <footer class="text-center py-8 text-sm text-gray-400 border-t">© 2025 Emerald Bay. All Rights Reserved.</footer>
-
   <script>
     function toggleSection(id) {
-      const el = document.getElementById(id);
-      el.classList.toggle('hidden-section');
+      document.getElementById(id).classList.toggle('hidden-section');
     }
+
+    const data = {
+      en: {
+        subtitle: 'Community Information',
+        consequences: {
+          title: 'Consequences for Non-Compliance',
+          lines: [
+            'Management reserves the right to enforce disciplinary actions for tenants who violate these rules. This may include verbal or written warnings, temporary suspension of access, or permanent revocation of access to the amenities.',
+            'Landlord reserves the right to modify amenity hours or restrict access for maintenance, repairs, or repeated violations.'
+          ]
+        },
+        sections: {
+          pool: {
+            title: '<i class="fas fa-swimming-pool text-emerald-600 mr-2"></i>Pool Rules',
+            items: [
+              'No lifeguard on duty – swim at your own risk.',
+              'Children under 12 must be supervised by an adult.',
+              'No food, drinks, glass containers, or animals inside the pool or surrounding areas (including the gazebo).',
+              'No events of any kind are permitted (including birthdays).',
+              'Only beach accessories (e.g., beach balls) are allowed; no tennis, football, soccer, or basketballs.',
+              'Shower before entering. Maximum capacity: 50 persons.',
+              'No running, diving, or horseplay allowed.',
+              'Pool hours: Sunrise to sunset. Night swimming is not permitted.',
+              'No alcoholic beverages or smoking/vaping.',
+              'No music speakers allowed; keep volume moderate.'
+            ]
+          },
+          bbq: {
+            title: '<i class="fas fa-fire text-emerald-600 mr-2"></i>BBQ Grill Rules',
+            items: [
+              'For residents only. First come, first served: 10 AM – 9 PM.',
+              'Minors under 18 must be supervised when using grills.',
+              'Grills must be attended at all times while in use.',
+              'Fully extinguish charcoal and clean area after use.',
+              'Report damage to management. Use at your own risk.',
+              'No loud music or external speakers; volume must remain moderate to respect community tranquility.'
+            ]
+          },
+          clubhouse: {
+            title: '<i class="fas fa-building text-emerald-600 mr-2"></i>Clubhouse Rules',
+            items: [
+              'Only trained service animals are allowed, and must be under control; other animals are prohibited.',
+              'Children must be supervised at all times; this space is intended for responsible use, not as a play area.',
+              'Keep the Clubhouse clean, quiet, and organized; only non-alcoholic beverages with lids are allowed, and no food or group meetings.',
+              'Management may issue warnings, suspend access temporarily, or revoke privileges for repeated violations.'
+            ]
+          },
+          worklounge: {
+            title: '<i class="fas fa-laptop-house text-emerald-600 mr-2"></i>Work Lounge Rules',
+            items: [
+              'The Work Lounge is a common area designed to be shared by multiple tenants on a first-come, first-served basis; no tenant may occupy it in a way that prevents others from using it.',
+              'Maximum capacity: 15 people. Hours of operation: 6:00 AM – 11:00 PM.',
+              'No monopolizing space or private events unless authorized.',
+              'Only trained service animals are allowed, and must be under control; other animals are prohibited.',
+              'In case of printer malfunction, notify Management immediately.',
+              'Work Lounge must remain quiet, clean, and used individually.',
+              'No food in the Work Lounge. No group meetings permitted.'
+            ]
+          },
+          gym: {
+            title: '<i class="fas fa-dumbbell text-emerald-600 mr-2"></i>Gym Rules',
+            items: [
+              'Use the equipment at your own risk.',
+              'Adults only; registered children over the age of 12 are only allowed when accompanied by a supervising adult.',
+              'The Landlord is not liable for any injury sustained due to improper use of the gym equipment. Know your physical limitations.',
+              'Tenant is responsible for proper care of equipment (no slamming, throwing, kicking, or relocating). Wipe down equipment after use and rerack weights.',
+              'Dress code enforced: no topless use, no wet bathing suits, and no bare feet.',
+              'No animals, no food, no smoking, no drugs, no glass containers.',
+              'No external speakers of any kind or use of mobile phones as speakers; only community-provided speakers are allowed.',
+              'Any malfunction of gym equipment shall be reported immediately to the Management Office via the Resident Portal or in person.',
+              'Landlord reserves the right to prohibit use of the Gym to any Tenant who repeatedly disregards these Rules and Regulations.'
+            ]
+          },
+          play: {
+            title: '<i class="fas fa-child text-emerald-600 mr-2"></i>Playground',
+            items: [
+              'Use of playground equipment is at your own risk.',
+              'Playground reserved for residents and their guests only.',
+              'Adult supervision required at all times.',
+              'No rough playing or yelling permitted.',
+              'No bare feet; shoes required at all times.',
+              'No glass containers permitted at any time.',
+              'In case of emergency, please dial 911.',
+              'No pets permitted in the playground area.',
+              'This area is for young children only; no football, soccer, ball games, or other rough sports allowed.'
+            ]
+          },
+          dog: {
+            title: '<i class="fas fa-dog text-emerald-600 mr-2"></i>Dog Park',
+            items: [
+              'This area is for resident pets only; not for play.',
+              'No football, soccer, ball games, or other rough sports allowed.',
+              'Use park at your own risk.',
+              'Owners are legally responsible for the behavior of their dog(s) at all times.',
+              'Dogs must be leashed while entering and exiting the park.',
+              'Dog waste must be cleaned up by their owners IMMEDIATELY.',
+              'Owners must be within the dog park and supervising their dog with leash readily available.',
+              'Dog handlers must be at least 16 years of age.',
+              'Children under 13 must be accompanied by an adult and supervised at all times.',
+              'Aggressive dogs must be removed immediately.',
+              'Dogs should be under voice control.'
+            ],
+            prohibited: [
+              'Human & dog food/treats.',
+              'Glass containers.',
+              'Dogs in heat.',
+              'Sick dogs.',
+              'Aggressive dogs.',
+              'Puppies (under 4 months).'
+            ]
+          }
+        },
+        back: 'Back to Home'
+      },
+      es: {
+        subtitle: 'Información de la Comunidad',
+        consequences: {
+          title: 'Consecuencias por Incumplimiento',
+          lines: [
+            'La administración se reserva el derecho de aplicar acciones disciplinarias contra los inquilinos que violen estas reglas. Esto puede incluir advertencias verbales o escritas, suspensión temporal del acceso o revocación permanente del acceso a las amenidades.',
+            'El arrendador se reserva el derecho de modificar los horarios de uso o restringir el acceso por mantenimiento, reparaciones o infracciones repetidas.'
+          ]
+        },
+        sections: {
+          pool: {
+            title: '<i class="fas fa-swimming-pool text-emerald-600 mr-2"></i>Reglas de la Piscina',
+            items: [
+              'No hay socorrista de turno – nade bajo su propio riesgo.',
+              'Los niños menores de 12 años deben ser supervisados por un adulto.',
+              'No se permiten alimentos, bebidas, recipientes de vidrio ni animales dentro de la piscina o áreas circundantes (incluido el gazebo).',
+              'No se permiten eventos de ningún tipo (incluidos cumpleaños).',
+              'Solo se permiten accesorios de playa (por ejemplo, pelotas de playa); no pelotas de tenis, fútbol americano, fútbol o baloncesto.',
+              'Dúchese antes de entrar. Capacidad máxima: 50 personas.',
+              'No se permite correr, bucear ni juegos bruscos.',
+              'Horario de la piscina: Del amanecer al atardecer. No se permite nadar de noche.',
+              'No se permiten bebidas alcohólicas ni fumar/vapear.',
+              'No se permiten altavoces de música; mantenga el volumen moderado.'
+            ]
+          },
+          bbq: {
+            title: '<i class="fas fa-fire text-emerald-600 mr-2"></i>Reglas de la Parrilla (BBQ)',
+            items: [
+              'Solo para residentes. Por orden de llegada: 10 AM – 9 PM.',
+              'Los menores de 18 años deben ser supervisados al usar las parrillas.',
+              'Las parrillas deben ser atendidas en todo momento mientras están en uso.',
+              'Apague completamente el carbón y limpie el área después de usar.',
+              'Informe cualquier daño a la administración. Úselo bajo su propio riesgo.',
+              'No se permite música alta ni altavoces externos; el volumen debe permanecer moderado para respetar la tranquilidad de la comunidad.'
+            ]
+          },
+          clubhouse: {
+            title: '<i class="fas fa-building text-emerald-600 mr-2"></i>Reglas de la Casa Club',
+            items: [
+              'Solo se permiten animales de servicio entrenados y deben estar bajo control; otros animales están prohibidos.',
+              'Los niños deben ser supervisados en todo momento; este espacio está destinado para un uso responsable, no como área de juego.',
+              'Mantenga la Casa Club limpia, silenciosa y organizada; solo se permiten bebidas no alcohólicas con tapa, y no se permiten alimentos ni reuniones grupales.',
+              'La administración puede emitir advertencias, suspender el acceso temporalmente o revocar privilegios por violaciones repetidas.'
+            ]
+          },
+          worklounge: {
+            title: '<i class="fas fa-laptop-house text-emerald-600 mr-2"></i>Reglas del Salón de Trabajo',
+            items: [
+              'El Salón de Trabajo es un área común diseñada para ser compartida por múltiples inquilinos por orden de llegada; ningún inquilino puede ocuparlo de manera que impida que otros lo usen.',
+              'Capacidad máxima: 15 personas. Horario de atención: 6:00 AM – 11:00 PM.',
+              'No monopolizar el espacio ni realizar eventos privados a menos que esté autorizado.',
+              'Solo se permiten animales de servicio entrenados y deben estar bajo control; otros animales están prohibidos.',
+              'En caso de mal funcionamiento de la impresora, notifique a la Administración de inmediato.',
+              'El Salón de Trabajo debe permanecer silencioso, limpio y usarse individualmente.',
+              'No se permite comida en el Salón de Trabajo. No se permiten reuniones grupales.'
+            ]
+          },
+          gym: {
+            title: '<i class="fas fa-dumbbell text-emerald-600 mr-2"></i>Reglas del Gimnasio',
+            items: [
+              'Use el equipo bajo su propio riesgo.',
+              'Solo para adultos; los niños registrados mayores de 12 años solo pueden ingresar acompañados por un adulto supervisor.',
+              'El Arrendador no es responsable de ninguna lesión sufrida debido al uso incorrecto del equipo del gimnasio. Conozca sus limitaciones físicas.',
+              'El inquilino es responsable del cuidado adecuado del equipo (no golpear, lanzar, patear o reubicar). Limpie el equipo después de usarlo y vuelva a colocar las pesas.',
+              'Se exige código de vestimenta: no usar sin camisa, no trajes de baño mojados y no pies descalzos.',
+              'No animales, no comida, no fumar, no drogas, no recipientes de vidrio.',
+              'No se permiten altavoces externos de ningún tipo ni el uso de teléfonos móviles como altavoces; solo se permiten los altavoces proporcionados por la comunidad.',
+              'Cualquier mal funcionamiento del equipo del gimnasio deberá informarse de inmediato a la Oficina de Administración a través del Portal del Residente o en persona.',
+              'El Arrendador se reserva el derecho de prohibir el uso del Gimnasio a cualquier Inquilino que ignore repetidamente estas Reglas y Regulaciones.'
+            ]
+          },
+          play: {
+            title: '<i class="fas fa-child text-emerald-600 mr-2"></i>Parque Infantil',
+            items: [
+              'El uso del equipo del parque infantil es bajo su propio riesgo.',
+              'Parque infantil reservado solo para residentes y sus invitados.',
+              'Se requiere supervisión de un adulto en todo momento.',
+              'No se permiten juegos bruscos ni gritos.',
+              'No pies descalzos; se requieren zapatos en todo momento.',
+              'No se permiten recipientes de vidrio en ningún momento.',
+              'En caso de emergencia, marque el 911.',
+              'No se permiten mascotas en el área del parque infantil.',
+              'Esta área es solo para niños pequeños; no se permiten fútbol americano, fútbol, juegos de pelota u otros deportes bruscos.'
+            ]
+          },
+          dog: {
+            title: '<i class="fas fa-dog text-emerald-600 mr-2"></i>Parque para Perros',
+            items: [
+              'Esta área es solo para mascotas residentes; no para jugar.',
+              'No se permiten fútbol americano, fútbol, juegos de pelota u otros deportes bruscos.',
+              'Use el parque bajo su propio riesgo.',
+              'Los dueños son legalmente responsables del comportamiento de su(s) perro(s) en todo momento.',
+              'Los perros deben estar con correa al entrar y salir del parque.',
+              'Los excrementos de perro deben ser limpiados por sus dueños INMEDIATAMENTE.',
+              'Los dueños deben estar dentro del parque para perros y supervisando a su perro con la correa lista.',
+              'Los cuidadores de perros deben tener al menos 16 años de edad.',
+              'Los niños menores de 13 años deben estar acompañados por un adulto y supervisados en todo momento.',
+              'Los perros agresivos deben ser retirados inmediatamente.',
+              'Los perros deben estar bajo control de voz.'
+            ],
+            prohibited: [ // Nota: El título "Prohibido" se añade en la función renderContent
+              'Comida/golosinas para humanos y perros.',
+              'Recipientes de vidrio.',
+              'Perras en celo.',
+              'Perros enfermos.',
+              'Perros agresivos.',
+              'Cachorros (menores de 4 meses).'
+            ]
+          }
+        },
+        back: 'Volver al Inicio'
+      }
+    };
+
+    function renderContent(lang) {
+      const cfg = data[lang] || data.en; // Fallback a inglés si el idioma no existe
+      document.getElementById('subtitle').textContent = cfg.subtitle;
+      
+      const consTitleEl = document.getElementById('cons-title');
+      const consContentEl = document.getElementById('cons-content');
+      consTitleEl.textContent = cfg.consequences.title;
+      consContentEl.innerHTML = ''; // Limpiar contenido anterior
+      cfg.consequences.lines.forEach(line => {
+        const p = document.createElement('p');
+        p.textContent = line;
+        consContentEl.appendChild(p);
+      });
+
+      Object.keys(cfg.sections).forEach(key => {
+        const sec = cfg.sections[key];
+        document.getElementById(`title-${key}`).innerHTML = sec.title; // innerHTML para los iconos
+        
+        const container = document.getElementById(key);
+        container.innerHTML = ''; // Limpiar contenido anterior
+        
+        const ul = document.createElement('ul');
+        ul.className = 'list-disc list-inside text-gray-700 space-y-1';
+        sec.items.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          ul.appendChild(li);
+        });
+        container.appendChild(ul);
+
+        if (sec.prohibited) {
+          const p = document.createElement('p');
+          p.className = 'font-semibold mt-4';
+          // Adaptar el texto de "Prohibited" según el idioma
+          p.textContent = (lang === 'es') ? '🚫 Prohibido:' : '🚫 Prohibited:'; 
+          container.appendChild(p);
+          
+          const ul2 = document.createElement('ul');
+          ul2.className = 'list-disc list-inside text-gray-700 space-y-1';
+          sec.prohibited.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            ul2.appendChild(li);
+          });
+          container.appendChild(ul2);
+        }
+      });
+      document.getElementById('back-link').textContent = cfg.back;
+    }
+
+    document.getElementById('btn-en').addEventListener('click', () => renderContent('en'));
+    document.getElementById('btn-es').addEventListener('click', () => renderContent('es'));
+
+    // Detectar idioma del navegador y renderizar
+    document.addEventListener('DOMContentLoaded', () => {
+      const userLang = navigator.language || navigator.userLanguage;
+      renderContent(userLang.startsWith('es') ? 'es' : 'en');
+    });
   </script>
 </body>
 </html>
