@@ -3,196 +3,153 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="page-title-text">Parking Regulations – Emerald Bay</title>
+  <title>Parking Regulations – Emerald Bay</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
     body { font-family: 'Montserrat', sans-serif; background-color: #f1f5f9; }
-    .hidden-box { display: none; }
+    .lang-toggle { text-align: right; margin: 1rem 0; }
+    details { background: white; border-radius: 0.75rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-bottom: 1rem; }
+    summary { padding: 1rem; font-size: 1.125rem; font-weight: 600; color: #065f46; display: flex; align-items: center; cursor: pointer; }
+    summary i { margin-right: 0.75rem; color: #10b981; }
+    .content { padding: 0 1rem 1rem; color: #374151; }
+    .content p, .content ul { margin-top: 0.5rem; }
+    .content ul li { margin-left: 1rem; list-style-type: disc; }
   </style>
 </head>
 <body>
-  <header class="py-10 text-center bg-white shadow">
-    <h1 class="text-4xl font-bold text-gray-800 tracking-widest uppercase" style="font-family: 'Georgia', serif;">EMERALD BAY</h1>
-    <p id="header-subtitle" class="text-sm text-gray-500 mt-2 uppercase"></p>
-  </header>
+  <div class="max-w-md mx-auto px-4">
+    <!-- Header -->
+    <header class="py-6 text-center bg-white shadow rounded-b-xl">
+      <h1 class="text-3xl font-bold text-gray-800 tracking-widest uppercase" style="font-family: 'Georgia', serif;">EMERALD BAY</h1>
+      <p id="header-subtitle" class="text-xs text-gray-500 mt-1 uppercase">Parking Regulations</p>
+    </header>
 
-  <main class="max-w-2xl mx-auto px-6 py-10 space-y-6">
+    <!-- Language Switcher -->
+    <div class="lang-toggle">
+      <button id="en-btn" class="px-2 py-1 text-sm font-medium text-gray-700">English</button>
+      <button id="es-btn" class="px-2 py-1 text-sm font-medium text-gray-700">Español</button>
+    </div>
+    
+    <!-- English Section -->
+    <div class="lang lang-en">
+      <details open>
+        <summary><i class="fas fa-parking"></i>Parking Rules</summary>
+        <div class="content">
+          <p>All residents and visitors must comply with the following parking rules:</p>
+          <ul>
+            <li>Residents must park only in their assigned areas.</li>
+            <li>Notify the office and update Parking Enforcement for any license plate or registration changes.</li>
+            <li>Visitor parking is for guests only during permitted hours.</li>
+            <li>All vehicles must display valid parking permits clearly.</li>
+            <li>No mechanical work or maintenance in parking areas.</li>
+            <li>Motorcycles and scooters must also be registered.</li>
+            <li>Vehicles must be operable and not stored unused for long periods.</li>
+          </ul>
+        </div>
+      </details>
 
-    <div class="text-center mb-6">
-      <span id="lang-prompt" class="text-gray-600 mr-2"></span>
-      <button id="btn-en" class="px-2 py-1 border rounded mr-2">EN</button>
-      <button id="btn-es" class="px-2 py-1 border rounded">ES</button>
+      <details>
+        <summary><i class="fas fa-exclamation-triangle text-red-600"></i>Immediate Towing Violations</summary>
+        <div class="content">
+          <ul>
+            <li><strong>Reverse parking only</strong> – Tow immediately.</li>
+            <li><strong>Parking on grass or sidewalk</strong> – Tow immediately.</li>
+            <li><strong>Leaking fluids (fuel, oil)</strong> – Tow immediately.</li>
+            <li><strong>Fire lanes or no-parking zones</strong> – Tow immediately.</li>
+            <li><strong>Blocking dumpsters or mail areas</strong> – Tow immediately.</li>
+            <li><strong>Blocking roadway</strong> – Tow immediately.</li>
+            <li><strong>Unauthorized handicap spots</strong> – Tow immediately.</li>
+            <li><strong>Residents in visitor spots</strong> – Tow immediately.</li>
+            <li><strong>Visitors in resident spots</strong> – Tow immediately.</li>
+            <li><strong>No registration or pass</strong> – Tow immediately.</li>
+            <li><strong>Unauthorized overnight parking (11PM–7AM)</strong> – Tow immediately.</li>
+            <li><strong>Double parking/blocking</strong> – Tow immediately.</li>
+            <li><strong>Oversized vehicles (&gt;18ft)</strong> – Tow immediately.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary><i class="fas fa-file-alt"></i>Need More Information?</summary>
+        <div class="content">
+          <p>View the complete Parking Regulations document for Emerald Bay.</p>
+          <a href="register-parking.html" class="bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 transition block text-center mt-2">View Fullscreen PDF</a>
+        </div>
+      </details>
+
+      <div class="text-center mt-6">
+        <a href="index.html" class="text-emerald-600 hover:underline"><i class="fas fa-arrow-left mr-2"></i>Back to Home</a>
+      </div>
     </div>
 
-    <button onclick="toggleBox('boxReg')" class="w-full bg-white p-4 rounded-xl shadow text-left flex items-center justify-between">
-      <span id="btn-reg-text"></span><i class="fas fa-chevron-down"></i>
-    </button>
-    <section id="boxReg" class="hidden-box bg-white p-6 rounded-xl shadow">
-      <p id="reg-intro" class="text-gray-700 mb-2"></p>
-      <ul id="reg-list" class="list-disc list-inside text-gray-700 space-y-1">
-        </ul>
-    </section>
+    <!-- Spanish Section -->
+    <div class="lang lang-es" style="display:none;">
+      <details open>
+        <summary><i class="fas fa-parking"></i>Regulaciones de Estacionamiento</summary>
+        <div class="content">
+          <p>Todos los residentes y visitantes deben cumplir las siguientes reglas de estacionamiento:</p>
+          <ul>
+            <li>Estacionar sólo en áreas asignadas.</li>
+            <li>Notificar a la oficina y actualizar la información por cambios de placa o registro.</li>
+            <li>Estacionamiento de visitantes sólo para invitados durante horas permitidas.</li>
+            <li>Mostrar permisos válidos claramente.</li>
+            <li>No mantenimiento mecánico en áreas de estacionamiento.</li>
+            <li>Motocicletas y scooters también deben registrarse.</li>
+            <li>Vehículos en condiciones de uso y no almacenados prolongadamente.</li>
+          </ul>
+        </div>
+      </details>
 
-    <button onclick="toggleBox('boxTow')" class="w-full bg-white p-4 rounded-xl shadow text-left flex items-center justify-between">
-      <span id="btn-tow-text"></span><i class="fas fa-chevron-down"></i>
-    </button>
-    <section id="boxTow" class="hidden-box bg-white p-6 rounded-xl shadow border border-red-500">
-      <ul id="tow-list" class="list-disc list-inside text-gray-700 space-y-1">
-        </ul>
-    </section>
+      <details>
+        <summary><i class="fas fa-exclamation-triangle text-red-600"></i>Violaciones de Remolque Inmediato</summary>
+        <div class="content">
+          <ul>
+            <li><strong>Estacionar en reversa únicamente</strong> – Remolque inmediato.</li>
+            <li><strong>Estacionar en césped o acera</strong> – Remolque inmediato.</li>
+            <li><strong>Fugas de líquidos (combustible, aceite)</strong> – Remolque inmediato.</li>
+            <li><strong>Vías de bomberos o zonas prohibidas</strong> – Remolque inmediato.</li>
+            <li><strong>Bloquear contenedores o buzones</strong> – Remolque inmediato.</li>
+            <li><strong>Bloquear la calzada</strong> – Remolque inmediato.</li>
+            <li><strong>Espacios discapacitados no autorizados</strong> – Remolque inmediato.</li>
+            <li><strong>Residentes en zonas de visitantes</strong> – Remolque inmediato.</li>
+            <li><strong>Visitantes en zonas de residentes</strong> – Remolque inmediato.</li>
+            <li><strong>Sin registro o pase válido</strong> – Remolque inmediato.</li>
+            <li><strong>Estacionamiento nocturno no autorizado (11PM–7AM)</strong> – Remolque inmediato.</li>
+            <li><strong>Doble estacionamiento/bloqueo</strong> – Remolque inmediato.</li>
+            <li><strong>Vehículos grandes (&gt;18 pies)</strong> – Remolque inmediato.</li>
+          </ul>
+        </div>
+      </details>
 
-    <div class="mt-8 space-y-4 text-center">
-      <a href="enforcement.html" id="nav-link-enforcement" class="inline-block bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition"></a>
-      <a href="index.html" class="block text-emerald-600 hover:underline mt-2"><i class="fas fa-arrow-left mr-2"></i><span id="nav-link-home-text"></span></a>
+      <details>
+        <summary><i class="fas fa-file-alt"></i>¿Necesita Más Información?</summary>
+        <div class="content">
+          <p>Ver el documento completo de Regulaciones de Estacionamiento de Emerald Bay.</p>
+          <a href="register-parking.html" class="bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 transition block text-center mt-2">Ver PDF a Pantalla Completa</a>
+        </div>
+      </details>
+
+      <div class="text-center mt-6">
+        <a href="index.html" class="text-emerald-600 hover:underline"><i class="fas fa-arrow-left mr-2"></i>Volver al Inicio</a>
+      </div>
     </div>
 
-    <section class="bg-white p-6 rounded-xl shadow">
-      <h2 id="doc-section-title" class="text-lg font-semibold text-gray-800 mb-2"></h2>
-      <p id="doc-section-desc" class="text-gray-700 mb-4"></p>
-      <a href="register-parking.html" id="doc-section-btn" class="bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition block text-center mb-4"></a>
-    </section>
-  </main>
+    <!-- Footer -->
+    <footer class="text-center py-8 text-sm text-gray-400 border-t mt-6">
+      © 2025 Emerald Bay. All Rights Reserved.
+    </footer>
+  </div>
 
-  <footer class="text-center py-8 text-sm text-gray-400 border-t">
-    <span id="footer-text-start"></span><span id="footer-text-end"></span>
-  </footer>
-
+  <!-- Scripts -->
   <script>
-    function toggleBox(id) {
-      document.getElementById(id).classList.toggle('hidden-box');
-    }
-
-    // Note: The original script had an event listener for 'viewParkingDoc' which is not in the HTML.
-    // Assuming the button "View Fullscreen PDF" (now id="doc-section-btn") handles navigation via its href.
-
-    const pageData = {
-      en: {
-        pageTitleText: "Parking Regulations – Emerald Bay",
-        headerSubtitle: "Community Information",
-        langPrompt: "Switch language?",
-        btnRegText: '<i class="fas fa-parking text-emerald-600 mr-2"></i>Parking Regulations',
-        regIntro: "All residents and visitors must comply with the following parking rules to maintain safety and accessibility within the community:",
-        regListItems: [
-          "Residents must park only in their assigned areas.",
-          "In the event of a license plate change, registration update, or any other modification to their vehicle, the resident must notify the office and update their information with Parking Enforcement.",
-          "Visitor parking is strictly for guests and only during permitted hours.",
-          "All vehicles must display valid parking permits clearly.",
-          "No mechanical work or vehicle maintenance is allowed in parking areas.",
-          "Motorcycles and scooters must also be registered if parked on premises.",
-          "Vehicles must be in working condition and cannot be stored or left unused for long periods."
-        ],
-        btnTowText: '<i class="fas fa-exclamation-triangle text-red-600 mr-2"></i>Immediate Towing Violations',
-        towListItems: [
-          '<strong class="text-red-600">Rear-end parking only</strong> – Violators will be towed immediately.',
-          '<strong class="text-red-600">Parking on grass or sidewalk</strong> – Immediate towing.',
-          '<strong class="text-red-600">Leaking fluids (fuel, oil, etc.)</strong> – Immediate towing.',
-          '<strong class="text-red-600">Parking in a fire lane or marked no-parking zone</strong> – Immediate towing.',
-          '<strong class="text-red-600">Blocking access to dumpsters or mail areas</strong> – Immediate towing.',
-          '<strong class="text-red-600">Parking in the middle of the roadway</strong> – Immediate towing.',
-          '<strong class="text-red-600">Unauthorized use of handicap spots</strong> – Immediate towing.',
-          '<strong class="text-red-600">Residents parked in visitor areas</strong> – Immediate towing.',
-          '<strong class="text-red-600">Visitors parked in resident areas</strong> – Immediate towing.',
-          '<strong class="text-red-600">Vehicles without registration or valid parking pass</strong> – Immediate towing.',
-          '<strong class="text-red-600">Unauthorized overnight parking (11:00 PM to 7:00 AM)</strong> – Immediate towing.',
-          '<strong class="text-red-600">Double parking or blocking another vehicle</strong> – Immediate towing.',
-          '<strong class="text-red-600">Oversized vehicles (over 18 feet) in unauthorized areas</strong> – Immediate towing.'
-        ],
-        navLinkEnforcement: "How to Use Parking Enforcement",
-        navLinkHomeText: "Back to Home",
-        docSectionTitle: "Need More Information?",
-        docSectionDesc: "Click the button below to view the complete Parking Regulations document for Emerald Bay.",
-        docSectionBtn: "View Fullscreen PDF",
-        footerTextStart: `© ${new Date().getFullYear()} Emerald Bay. `,
-        footerTextEnd: "All Rights Reserved."
-      },
-      es: {
-        pageTitleText: "Regulaciones de Estacionamiento – Emerald Bay",
-        headerSubtitle: "Información de la Comunidad",
-        langPrompt: "¿Desea cambiar el idioma?",
-        btnRegText: '<i class="fas fa-parking text-emerald-600 mr-2"></i>Regulaciones de Estacionamiento',
-        regIntro: "Todos los residentes y visitantes deben cumplir con las siguientes reglas de estacionamiento para mantener la seguridad y accesibilidad dentro de la comunidad:",
-        regListItems: [
-          "Los residentes deben estacionar únicamente en sus áreas asignadas.",
-          "En caso de cambio de placa, actualización de registro o cualquier otra modificación a su vehículo, el residente debe notificar a la oficina y actualizar su información con la Autoridad de Estacionamiento.",
-          "El estacionamiento para visitantes es estrictamente para invitados y solo durante las horas permitidas.",
-          "Todos los vehículos deben mostrar claramente los permisos de estacionamiento válidos.",
-          "No se permite trabajo mecánico ni mantenimiento de vehículos en las áreas de estacionamiento.",
-          "Las motocicletas y scooters también deben registrarse si se estacionan en las instalaciones.",
-          "Los vehículos deben estar en condiciones de funcionamiento y no pueden almacenarse ni dejarse sin usar durante largos períodos."
-        ],
-        btnTowText: '<i class="fas fa-exclamation-triangle text-red-600 mr-2"></i>Violaciones de Remolque Inmediato',
-        towListItems: [
-          '<strong class="text-red-600">Estacionamiento de reversa únicamente</strong> – Los infractores serán remolcados inmediatamente.',
-          '<strong class="text-red-600">Estacionar sobre el césped o acera</strong> – Remolque inmediato.',
-          '<strong class="text-red-600">Fugas de líquidos (combustible, aceite, etc.)</strong> – Remolque inmediato.',
-          '<strong class="text-red-600">Estacionar en una vía de bomberos o zona marcada de no estacionar</strong> – Remolque inmediato.',
-          '<strong class="text-red-600">Bloquear el acceso a contenedores de basura o áreas de correo</strong> – Remolque inmediato.',
-          '<strong class="text-red-600">Estacionar en medio de la calzada</strong> – Remolque inmediato.',
-          '<strong class="text-red-600">Uso no autorizado de espacios para discapacitados</strong> – Remolque inmediato.',
-          '<strong class="text-red-600">Residentes estacionados en áreas de visitantes</strong> – Remolque inmediato.',
-          '<strong class="text-red-600">Visitantes estacionados en áreas de residentes</strong> – Remolque inmediato.',
-          '<strong class="text-red-600">Vehículos sin registro o pase de estacionamiento válido</strong> – Remolque inmediato.',
-          '<strong class="text-red-600">Estacionamiento nocturno no autorizado (11:00 PM a 7:00 AM)</strong> – Remolque inmediato.',
-          '<strong class="text-red-600">Doble estacionamiento o bloqueo de otro vehículo</strong> – Remolque inmediato.',
-          '<strong class="text-red-600">Vehículos de gran tamaño (más de 18 pies) en áreas no autorizadas</strong> – Remolque inmediato.'
-        ],
-        navLinkEnforcement: "Cómo Usar el Control de Estacionamiento",
-        navLinkHomeText: "Volver al Inicio",
-        docSectionTitle: "¿Necesita Más Información?",
-        docSectionDesc: "Haga clic en el botón de abajo para ver el documento completo de Regulaciones de Estacionamiento de Emerald Bay.",
-        docSectionBtn: "Ver PDF a Pantalla Completa",
-        footerTextStart: `© ${new Date().getFullYear()} Emerald Bay. `,
-        footerTextEnd: "Todos los Derechos Reservados."
-      }
+    document.getElementById('en-btn').onclick = () => {
+      document.querySelector('.lang-es').style.display = 'none'; document.querySelector('.lang-en').style.display = 'block';
     };
-
-    function renderContent(lang) {
-      const content = pageData[lang] || pageData.en;
-
-      document.getElementById('page-title-text').textContent = content.pageTitleText;
-      document.getElementById('header-subtitle').textContent = content.headerSubtitle;
-      document.getElementById('lang-prompt').textContent = content.langPrompt;
-
-      document.getElementById('btn-reg-text').innerHTML = content.btnRegText; // Use innerHTML for icons
-      document.getElementById('reg-intro').textContent = content.regIntro;
-      const regListEl = document.getElementById('reg-list');
-      regListEl.innerHTML = ''; // Clear previous items
-      content.regListItems.forEach(itemText => {
-        const li = document.createElement('li');
-        li.textContent = itemText;
-        regListEl.appendChild(li);
-      });
-
-      document.getElementById('btn-tow-text').innerHTML = content.btnTowText; // Use innerHTML for icons
-      const towListEl = document.getElementById('tow-list');
-      towListEl.innerHTML = ''; // Clear previous items
-      content.towListItems.forEach(itemHtml => { // itemHtml because it contains <strong>
-        const li = document.createElement('li');
-        li.innerHTML = itemHtml;
-        towListEl.appendChild(li);
-      });
-
-      document.getElementById('nav-link-enforcement').textContent = content.navLinkEnforcement;
-      document.getElementById('nav-link-home-text').textContent = content.navLinkHomeText;
-      document.getElementById('doc-section-title').textContent = content.docSectionTitle;
-      document.getElementById('doc-section-desc').textContent = content.docSectionDesc;
-      document.getElementById('doc-section-btn').textContent = content.docSectionBtn;
-      
-      document.getElementById('footer-text-start').textContent = content.footerTextStart;
-      document.getElementById('footer-text-end').textContent = content.footerTextEnd;
-      
-      document.documentElement.lang = lang;
-    }
-
-    document.getElementById('btn-en').addEventListener('click', () => renderContent('en'));
-    document.getElementById('btn-es').addEventListener('click', () => renderContent('es'));
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const userLang = navigator.language || navigator.userLanguage;
-      renderContent(userLang.startsWith('es') ? 'es' : 'en');
-    });
+    document.getElementById('es-btn').onclick = () => {
+      document.querySelector('.lang-en').style.display = 'none'; document.querySelector('.lang-es').style.display = 'block';
+    };
   </script>
 </body>
 </html>
