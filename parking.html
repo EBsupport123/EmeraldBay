@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Parking Regulations – Emerald Bay</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
     body { font-family: 'Montserrat', sans-serif; background-color: #f1f5f9; }
     .lang-toggle { text-align: right; margin: 1rem 0; }
     details { background: white; border-radius: 0.75rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-bottom: 1rem; }
@@ -16,6 +16,11 @@
     .content { padding: 0 1rem 1rem; color: #374151; }
     .content p, .content ul { margin-top: 0.5rem; }
     .content ul li { margin-left: 1rem; list-style-type: disc; }
+    .decal-img { width: 50%; height: auto; display: block; margin: 0.5rem auto; }
+    .map-img { width: 100%; border-radius: 0.5rem; margin-top: 0.5rem; }
+    .bold-note { font-weight: 700; margin: 1rem 0; }
+    .btn-enforcement { display: block; width: 100%; text-align: center; background-color: #10b981; color: white; padding: 0.75rem; border-radius: 0.75rem; font-weight: 600; text-decoration: none; margin: 1rem 0; }
+    .btn-enforcement:hover { background-color: #0f9f70; }
   </style>
 </head>
 <body>
@@ -23,7 +28,7 @@
     <!-- Header -->
     <header class="py-6 text-center bg-white shadow rounded-b-xl">
       <h1 class="text-3xl font-bold text-gray-800 tracking-widest uppercase" style="font-family: 'Georgia', serif;">EMERALD BAY</h1>
-      <p id="header-subtitle" class="text-xs text-gray-500 mt-1 uppercase">Parking Regulations</p>
+      <p class="text-xs text-gray-500 mt-1 uppercase">Community Information</p>
     </header>
 
     <!-- Language Switcher -->
@@ -31,108 +36,270 @@
       <button id="en-btn" class="px-2 py-1 text-sm font-medium text-gray-700">English</button>
       <button id="es-btn" class="px-2 py-1 text-sm font-medium text-gray-700">Español</button>
     </div>
-    
-    <!-- English Section -->
+
+    <!-- English Content -->
     <div class="lang lang-en">
-      <details open>
-        <summary><i class="fas fa-parking"></i>Parking Rules</summary>
+      <!-- Registration Note -->
+      <p class="bold-note text-yellow-900 bg-yellow-100 p-4 rounded-xl shadow">
+        Residents must notify the Leasing Office of any registration or plate changes and upload updated registration and insurance on the Parking Enforcement website, or park in a visitor space until complete.
+      </p>
+
+      <!-- Bold Decal Note -->
+      <p class="bold-note">
+        Only vehicles displaying a valid parking decal may park on the property. Vehicles without a decal will be towed immediately.
+      </p>
+
+      <!-- General Parking Rules -->
+      <details>
+        <summary><i class="fas fa-car"></i>General Parking Rules</summary>
         <div class="content">
-          <p>All residents and visitors must comply with the following parking rules:</p>
           <ul>
-            <li>Residents must park only in their assigned areas.</li>
-            <li>Notify the office and update Parking Enforcement for any license plate or registration changes.</li>
-            <li>Visitor parking is for guests only during permitted hours.</li>
-            <li>All vehicles must display valid parking permits clearly.</li>
-            <li>No mechanical work or maintenance in parking areas.</li>
-            <li>Motorcycles and scooters must also be registered.</li>
-            <li>Vehicles must be operable and not stored unused for long periods.</li>
+            <li>Assigned spaces only.</li>
+            <li>Visitor spaces for guests, permitted hours only.</li>
+            <li>No on‑site mechanical work.</li>
+            <li>Motorcycles/scooters must display a permit.</li>
+            <li>No long‑term storage of inoperative vehicles.</li>
+            <li>Vehicles over 18 feet must rear‑end park in the designated rear area.</li>
           </ul>
         </div>
       </details>
 
+      <!-- Immediate Towing Violations -->
       <details>
         <summary><i class="fas fa-exclamation-triangle text-red-600"></i>Immediate Towing Violations</summary>
         <div class="content">
           <ul>
-            <li><strong>Reverse parking only</strong> – Tow immediately.</li>
-            <li><strong>Parking on grass or sidewalk</strong> – Tow immediately.</li>
-            <li><strong>Leaking fluids (fuel, oil)</strong> – Tow immediately.</li>
-            <li><strong>Fire lanes or no-parking zones</strong> – Tow immediately.</li>
-            <li><strong>Blocking dumpsters or mail areas</strong> – Tow immediately.</li>
-            <li><strong>Blocking roadway</strong> – Tow immediately.</li>
-            <li><strong>Unauthorized handicap spots</strong> – Tow immediately.</li>
-            <li><strong>Residents in visitor spots</strong> – Tow immediately.</li>
-            <li><strong>Visitors in resident spots</strong> – Tow immediately.</li>
-            <li><strong>No registration or pass</strong> – Tow immediately.</li>
-            <li><strong>Unauthorized overnight parking (11PM–7AM)</strong> – Tow immediately.</li>
-            <li><strong>Double parking/blocking</strong> – Tow immediately.</li>
-            <li><strong>Oversized vehicles (&gt;18ft)</strong> – Tow immediately.</li>
+            <li>Rear‑end parking</li>
+            <li>Parking on grass or sidewalk</li>
+            <li>Leaking fluids (fuel, oil, etc.)</li>
+            <li>No‑parking/fire‑zone lines</li>
+            <li>Blocking dumpster or mail area</li>
+            <li>Parking in the middle of the roadway</li>
+            <li>Parking in a handicap space without a handicap decal</li>
+            <li>Residents in visitor spots without authorization</li>
+            <li>Visitors in resident spots without authorization</li>
+            <li>Unregistered vehicle / no parking pass</li>
+            <li>Unauthorized overnight parking (11:00 PM – 7:00 AM)</li>
+            <li>Double‑parking / blocking another vehicle</li>
+            <li>Vehicles stored outside designated spots</li>
+            <li>Oversized vehicles over 18 feet parked outside rear area</li>
+            <li>Commercial vehicles over 6,000 lbs</li>
           </ul>
         </div>
       </details>
 
+      <!-- Designated Parking Areas by Decal Color -->
       <details>
-        <summary><i class="fas fa-file-alt"></i>Need More Information?</summary>
+        <summary><i class="fas fa-map-marker-alt"></i>Designated Parking Areas by Decal Color</summary>
         <div class="content">
-          <p>View the complete Parking Regulations document for Emerald Bay.</p>
-          <a href="register-parking.html" class="bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 transition block text-center mt-2">View Fullscreen PDF</a>
+          <ul>
+            <li>
+              <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/verde.png" alt="Green decal" class="decal-img" />
+              <strong>Edificios 8550–8500–8400–8420–8430:</strong> Green zones/garage.
+            </li>
+            <li>
+              <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/azul.png" alt="Blue decal" class="decal-img" />
+              <strong>8510–8540:</strong> Garage/rear area.
+            </li>
+            <li>
+              <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/rojo.png" alt="Red decal" class="decal-img" />
+              Cualquier unidad solo parqueará en la zona asignada.
+            </li>
+          </ul>
         </div>
       </details>
 
+      <!-- Resident Parking Areas Map -->
+      <details>
+        <summary><i class="fas fa-map-marked-alt"></i>Resident Parking Areas Map</summary>
+        <div class="content">
+          <p>No resident may park outside their assigned zone; vehicles will be towed. Visitors parking here will also be towed without notice.</p>
+          <!-- Green Decal Zone -->
+          <details>
+            <summary><i class="fas fa-square text-green-600"></i>Green Decal Zone (Buildings 8550–8500–8400–8420–8430)</summary>
+            <div class="content">
+              <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/zona%20verde.png" alt="Green zone map" class="map-img" />
+            </div>
+          </details>
+          <!-- Blue Decal Zone -->
+          <details>
+            <summary><i class="fas fa-square text-blue-600"></i>Blue Decal Zone (Buildings 8510–8540)</summary>
+            <div class="content">
+              <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/zona%20azul%201..png" alt="Blue zone map 1" class="map-img" />
+              <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/zona%20azul%202.png" alt="Blue zone map 2" class="map-img" />
+            </div>
+          </details>
+          <!-- Red Decal Zone -->
+          <details>
+            <summary><i class="fas fa-square text-red-600"></i>Red Decal Zone</summary>
+            <div class="content">
+              <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/zona%20roja.png" alt="Red zone map" class="map-img" />
+            </div>
+          </details>
+        </div>
+      </details>
+
+      <!-- Time Restrictions & Visitor Registration -->
+      <details>
+        <summary><i class="fas fa-clock"></i>Time Restrictions & Visitor Registration</summary>
+        <div class="content">
+          <p>Until 11:00 PM: Visitor parking without registration.</p>
+          <p>After 11:00 PM: Unregistered visitors towed immediately.</p>
+          <ul>
+            <li>Up to 7 overnight registrations per plate.</li>
+            <li>Up to 12 visits per month.</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Visitor Parking Areas Map -->
+      <details>
+        <summary><i class="fas fa-map-marked-alt"></i>Visitor Parking Areas Map</summary>
+        <div class="content">
+          <p>Only visitors may park in these zones; if a resident parks here, they will be towed without notice.</p>
+          <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/visitor%201.png" alt="Visitor map 1" class="map-img" />
+          <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/visitor%202.png" alt="Visitor map 2" class="map-img" />
+        </div>
+      </details>
+
+      <!-- Enforcement Contact Button -->
+      <a href="enforcement.html" class="btn-enforcement"><i class="fas fa-users-cog mr-2"></i>Enforcement Contact</a>
+
+      <!-- Back Link -->
       <div class="text-center mt-6">
-        <a href="index.html" class="text-emerald-600 hover:underline"><i class="fas fa-arrow-left mr-2"></i>Back to Home</a>
+        <a href="index.html" class="text-emerald-600 hover:underline"><i class="fas fa-arrow-left mr-2"></i>Back to General Rules</a>
       </div>
     </div>
 
-    <!-- Spanish Section -->
+    <!-- Spanish Content -->
     <div class="lang lang-es" style="display:none;">
-      <details open>
-        <summary><i class="fas fa-parking"></i>Regulaciones de Estacionamiento</summary>
+      <!-- Nota sobre Registro -->
+      <p class="bold-note text-yellow-900 bg-yellow-100 p-4 rounded-xl shadow">
+        Los residentes deben informar a la oficina de arrendamiento sobre cambios de registro o placas y subir el registro y seguro actualizados en el sitio web de Control de Estacionamiento, o estacionar en un espacio de visitantes hasta completar.
+      </p>
+
+      <!-- Calcomanía -->
+      <p class="bold-note">Solo vehículos con calcomanía válida pueden estacionar; sin ella serán remolcados.</p>
+
+      <!-- Reglas Generales -->
+      <details>
+        <summary><i class="fas fa-car"></i>Reglas Generales</summary>
         <div class="content">
-          <p>Todos los residentes y visitantes deben cumplir las siguientes reglas de estacionamiento:</p>
           <ul>
-            <li>Estacionar sólo en áreas asignadas.</li>
-            <li>Notificar a la oficina y actualizar la información por cambios de placa o registro.</li>
-            <li>Estacionamiento de visitantes sólo para invitados durante horas permitidas.</li>
-            <li>Mostrar permisos válidos claramente.</li>
-            <li>No mantenimiento mecánico en áreas de estacionamiento.</li>
-            <li>Motocicletas y scooters también deben registrarse.</li>
-            <li>Vehículos en condiciones de uso y no almacenados prolongadamente.</li>
+            <li>Espacios asignados sólo.</li>
+            <li>Visitantes sólo en horas permitidas.</li>
+            <li>No trabajo mecánico.</li>
+            <li>Motocicletas con pase.</li>
+            <li>No almacenamiento a largo plazo.</li>
+            <li>Vehículos de más de 18 pies deben estacionar de reversa en el área trasera designada.</li>
           </ul>
         </div>
       </details>
 
+      <!-- Sanciones -->
       <details>
-        <summary><i class="fas fa-exclamation-triangle text-red-600"></i>Violaciones de Remolque Inmediato</summary>
+        <summary><i class="fas fa-exclamation-triangle text-red-600"></i>Sanciones por Infracciones</summary>
         <div class="content">
           <ul>
-            <li><strong>Estacionar en reversa únicamente</strong> – Remolque inmediato.</li>
-            <li><strong>Estacionar en césped o acera</strong> – Remolque inmediato.</li>
-            <li><strong>Fugas de líquidos (combustible, aceite)</strong> – Remolque inmediato.</li>
-            <li><strong>Vías de bomberos o zonas prohibidas</strong> – Remolque inmediato.</li>
-            <li><strong>Bloquear contenedores o buzones</strong> – Remolque inmediato.</li>
-            <li><strong>Bloquear la calzada</strong> – Remolque inmediato.</li>
-            <li><strong>Espacios discapacitados no autorizados</strong> – Remolque inmediato.</li>
-            <li><strong>Residentes en zonas de visitantes</strong> – Remolque inmediato.</li>
-            <li><strong>Visitantes en zonas de residentes</strong> – Remolque inmediato.</li>
-            <li><strong>Sin registro o pase válido</strong> – Remolque inmediato.</li>
-            <li><strong>Estacionamiento nocturno no autorizado (11PM–7AM)</strong> – Remolque inmediato.</li>
-            <li><strong>Doble estacionamiento/bloqueo</strong> – Remolque inmediato.</li>
-            <li><strong>Vehículos grandes (&gt;18 pies)</strong> – Remolque inmediato.</li>
+            <li>Estacionar de reversa</li>
+            <li>Sobre césped o acera</li>
+            <li>Fugas de líquidos</li>
+            <li>Zona de no estacionar</li>
+            <li>Bloquear contenedor/buzón</li>
+            <li>En mitad de la vía</li>
+            <li>Espacio discapacitados sin distintivo</li>
+            <li>Residentes en espacios de visitantes</li>
+            <li>Visitantes en espacios de residentes</li>
+            <li>Vehículo sin registro/pase</li>
+            <li>Estacionamiento nocturno no autorizado</li>
+            <li>Doble estacionamiento</li>
+            <li>Vehículo sin calcomanía asignada</li>
+            <li>Vehículos grandes >18 pies fuera de área</li>
+            <li>Vehículos comerciales >6,000 lbs</li>
           </ul>
         </div>
       </details>
 
+      <!-- Áreas por Calcomanía -->
       <details>
-        <summary><i class="fas fa-file-alt"></i>¿Necesita Más Información?</summary>
+        <summary><i class="fas fa-map-marker-alt"></i>Áreas por Calcomanía</summary>
         <div class="content">
-          <p>Ver el documento completo de Regulaciones de Estacionamiento de Emerald Bay.</p>
-          <a href="register-parking.html" class="bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 transition block text-center mt-2">Ver PDF a Pantalla Completa</a>
+          <ul>
+            <li>
+              <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/verde.png" alt="Calcomanía verde" class="decal-img" />
+              <strong>Edificios 8550–8500–8400–8420–8430:</strong> Zonas verdes/garaje.
+            </li>
+            <li>
+              <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/azul.png" alt="Calcomanía azul" class="decal-img" />
+              <strong>8510–8540:</strong> Garaje/área trasera.
+            </li>
+            <li>
+              <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/rojo.png" alt="Calcomanía roja" class="decal-img" />
+              Cualquier unidad solo parqueará en la zona asignada.
+            </li>
+          </ul>
         </div>
       </details>
 
+      <!-- Mapa de Residentes -->
+      <details>
+        <summary><i class="fas fa-map-marked-alt"></i>Mapa de Áreas de Residentes</summary>
+        <div class="content">
+          <p>Ningún residente puede estacionar fuera de su zona asignada; serán remolcados. Visitantes en estas zonas también serán remolcados sin aviso.</p>
+          <!-- Zona Verde -->
+          <details>
+            <summary><i class="fas fa-square text-green-600"></i>Zona Verde (Edif. 8550–8500–8400–8420–8430)</summary>
+            <div class="content">
+              <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/zona%20verde.png" class="map-img" alt="Zona verde" />
+            </div>
+          </details>
+          <!-- Zona Azul -->
+          <details>
+            <summary><i class="fas fa-square text-blue-600"></i>Zona Azul (Edif. 8510–8540)</summary>
+            <div class="content">
+              <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/zona%20azul%201..png" class="map-img" alt="Zona azul 1" />
+              <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/zona%20azul%202.png" class="map-img" alt="Zona azul 2" />
+            </div>
+          </details>
+          <!-- Zona Roja -->
+          <details>
+            <summary><i class="fas fa-square text-red-600"></i>Zona Roja</summary>
+            <div class="content">
+              <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/zona%20roja.png" class="map-img" alt="Zona roja" />
+            </div>
+          </details>
+        </div>
+      </details>
+
+      <!-- Restricciones de Tiempo -->
+      <details>
+        <summary><i class="fas fa-clock"></i>Restricciones de Tiempo y Registro de Visitantes</summary>
+        <div class="content">
+          <p>Hasta 11 PM: Visitantes sin registro.</p>
+          <p>Después de 11 PM: Remolque inmediato.</p>
+          <ul>
+            <li>Máx 7 registros nocturnos por placa.</li>
+            <li>Máx 12 visitas mensuales.</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Mapa de Visitantes -->
+      <details>
+        <summary><i class="fas fa-map-marked-alt"></i>Mapa de Áreas de Visitantes</summary>
+        <div class="content">
+          <p>Solo los visitantes deben parquear en estas zonas; si un residente lo hace, será remolcado sin aviso.</p>
+          <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/visitor%201.png" class="map-img" alt="Mapa visitantes 1" />
+          <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/visitor%202.png" class="map-img" alt="Mapa visitantes 2" />
+        </div>
+      </details>
+
+      <!-- Enforcement Contact Button -->
+      <a href="enforcement.html" class="btn-enforcement"><i class="fas fa-users-cog mr-2"></i>Enforcement Contact</a>
+
+      <!-- Back Link -->
       <div class="text-center mt-6">
-        <a href="index.html" class="text-emerald-600 hover:underline"><i class="fas fa-arrow-left mr-2"></i>Volver al Inicio</a>
+        <a href="index.html" class="text-emerald-600 hover:underline"><i class="fas fa-arrow-left mr-2"></i>Volver a Reglas Generales</a>
       </div>
     </div>
 
@@ -142,14 +309,23 @@
     </footer>
   </div>
 
-  <!-- Scripts -->
+  <!-- Language Toggle Script -->
   <script>
     document.getElementById('en-btn').onclick = () => {
-      document.querySelector('.lang-es').style.display = 'none'; document.querySelector('.lang-en').style.display = 'block';
+      document.querySelector('.lang-en').style.display = 'block';
+      document.querySelector('.lang-es').style.display = 'none';
+      document.documentElement.lang = 'en';
     };
     document.getElementById('es-btn').onclick = () => {
-      document.querySelector('.lang-en').style.display = 'none'; document.querySelector('.lang-es').style.display = 'block';
+      document.querySelector('.lang-en').style.display = 'none';
+      document.querySelector('.lang-es').style.display = 'block';
+      document.documentElement.lang = 'es';
     };
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('.lang-en').style.display = 'block';
+      document.querySelector('.lang-es').style.display = 'none';
+    });
   </script>
 </body>
 </html>
+
