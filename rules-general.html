@@ -1,4 +1,3 @@
-<!-- register-rules.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +7,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
-    body { font-family: 'Montserrat', sans-serif; background-color: #f1f5f9; }
-    .lang-toggle { text-align: right; margin: 1rem 0; }
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+    body { font-family: 'Montserrat', sans-serif; background-color: #f8fafc; }
+    .lang-btn.active { background-color: #10b981; color: white; }
+    .header-gradient { background: linear-gradient(135deg, #10b981 0%, #047857 100%); }
     details { background: white; border-radius: 0.75rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-bottom: 1rem; }
     summary { padding: 1rem; font-size: 1.125rem; font-weight: 600; color: #065f46; display: flex; align-items: center; cursor: pointer; }
     summary i { margin-right: 0.75rem; color: #10b981; }
@@ -19,23 +19,23 @@
     .content ul li { margin-left: 1rem; list-style-type: disc; }
   </style>
 </head>
-<body>
-  <div class="max-w-md mx-auto px-4">
+<body class="min-h-screen flex flex-col">
+  <div class="max-w-2xl mx-auto px-4 py-8 w-full flex-grow">
     <!-- Header -->
-    <header class="py-6 text-center bg-white shadow rounded-b-xl">
-      <h1 class="text-3xl font-bold text-gray-800 tracking-widest uppercase" style="font-family: 'Georgia', serif;">EMERALD BAY</h1>
-      <p class="text-xs text-gray-500 mt-1 uppercase">Community Information</p>
+    <header class="header-gradient text-white py-8 rounded-xl shadow-lg mb-8 text-center">
+      <h1 class="text-4xl font-bold tracking-wide mb-2" style="font-family: 'Playfair Display', serif;">EMERALD BAY</h1>
+      <p class="text-sm opacity-90 uppercase tracking-wider">General Building Rules</p>
     </header>
 
     <!-- Language Switcher -->
-    <div class="lang-toggle">
-      <button id="en-btn" class="px-2 py-1 text-sm font-medium text-gray-700">English</button>
-      <button id="es-btn" class="px-2 py-1 text-sm font-medium text-gray-700">Español</button>
+    <div class="flex justify-center mb-8 bg-white rounded-full p-1 shadow-inner max-w-xs mx-auto">
+      <button id="en-btn" class="lang-btn px-4 py-2 rounded-full text-sm font-medium active"><i class="fas fa-language mr-1"></i> English</button>
+      <button id="es-btn" class="lang-btn px-4 py-2 rounded-full text-sm font-medium"><i class="fas fa-language mr-1"></i> Español</button>
     </div>
 
-    <!-- English Sections -->
-    <div class="lang lang-en">
-      <details open>
+    <!-- Content Sections -->
+    <div class="lang lang-en space-y-5">
+      <details>
         <summary><i class="fas fa-gavel"></i>Use & Conduct in Premises</summary>
         <div class="content">
           <p>1. Residential use only. No commercial activity or solicitation. Follow all applicable laws.</p>
@@ -44,7 +44,6 @@
           <p>4. Children under 12 must be supervised. Guest stays: over 7 days register; over 14 days apply for tenancy; max 2 adults per bedroom + 1 child.</p>
         </div>
       </details>
-
       <details>
         <summary><i class="fas fa-shield-alt"></i>Safety & Storage</summary>
         <div class="content">
@@ -55,7 +54,6 @@
           <p>9. Pets on balconies must be supervised at all times.</p>
         </div>
       </details>
-
       <details>
         <summary><i class="fas fa-key"></i>Access & Property Standards</summary>
         <div class="content">
@@ -66,7 +64,6 @@
           <p>14. Antennas or satellite dishes prohibited without written consent.</p>
         </div>
       </details>
-
       <details>
         <summary><i class="fas fa-wrench"></i>Plumbing, Storage & Disposal</summary>
         <div class="content">
@@ -77,7 +74,6 @@
           <p>19. No exterior signage or decor without permission.</p>
         </div>
       </details>
-
       <details>
         <summary><i class="fas fa-ban"></i>Restricted Behaviors & Substances</summary>
         <div class="content">
@@ -89,7 +85,6 @@
           <p>25. No possession, use, or sale of illegal drugs.</p>
         </div>
       </details>
-
       <details>
         <summary><i class="fas fa-tshirt"></i>Maintenance, Clothing & Parking</summary>
         <div class="content">
@@ -100,7 +95,6 @@
           <p>30. No commercial vehicles, boats, or RVs; guest parking requires visible passes; speed limit: 5 MPH.</p>
         </div>
       </details>
-
       <details>
         <summary><i class="fas fa-toolbox"></i>Maintenance & Rentals</summary>
         <div class="content">
@@ -108,7 +102,6 @@
           <p>32. Short-term rentals (e.g., Airbnb, Vrbo) strictly prohibited; violation leads to immediate termination and deposit forfeiture.</p>
         </div>
       </details>
-
       <details>
         <summary><i class="fas fa-recycle"></i>Trash & Recycling Rules</summary>
         <div class="content">
@@ -123,10 +116,8 @@
         </div>
       </details>
     </div>
-
-    <!-- Spanish Sections -->
-    <div class="lang lang-es" style="display:none;">
-      <details open>
+    <div class="lang lang-es space-y-5" style="display:none;">
+      <details>
         <summary><i class="fas fa-gavel"></i>Uso y Conducta en las Instalaciones</summary>
         <div class="content">
           <p>1. Solo uso residencial. No actividades comerciales o solicitudes. Cumpla con las leyes aplicables.</p>
@@ -135,7 +126,6 @@
           <p>4. Niños menores de 12 años con supervisión. Estancias: >7 días registrarse; >14 días solicitar arrendamiento; máximo 2 adultos por habitación +1 niño.</p>
         </div>
       </details>
-
       <details>
         <summary><i class="fas fa-shield-alt"></i>Seguridad y Almacenaje</summary>
         <div class="content">
@@ -146,7 +136,6 @@
           <p>9. Mascotas en balcones deben estar supervisadas en todo momento.</p>
         </div>
       </details>
-
       <details>
         <summary><i class="fas fa-key"></i>Acceso y Estándares de la Propiedad</summary>
         <div class="content">
@@ -157,18 +146,16 @@
           <p>14. Antenas o platos satelitales prohibidos sin consentimiento escrito.</p>
         </div>
       </details>
-
       <details>
         <summary><i class="fas fa-wrench"></i>Fontanería, Almacenaje y Eliminación</summary>
         <div class="content">
-          <p>15. Solo papel higiénico en los inodoros; inquilinos responsables por mal uso.</p>
-          <p>16. No almacenar materiales inflamables; arrendador no responsable por ítems tras finalizar el contrato.</p>
+          <p>15. Solo papel higiénico en los inodoros. Inquilinos responsables por mal uso.</p>
+          <p>16. No almacenar materiales inflamables. Arrendador no responsable por ítems tras finalizar el contrato.</p>
           <p>17. Multa de $500 por eliminación inadecuada de muebles o electrodomésticos.</p>
           <p>18. Mantener las unidades limpias y sanitarias.</p>
           <p>19. No colocar carteles o decoraciones exteriores sin permiso.</p>
         </div>
       </details>
-
       <details>
         <summary><i class="fas fa-ban"></i>Conductas y Sustancias Restringidas</summary>
         <div class="content">
@@ -180,7 +167,6 @@
           <p>25. Prohibida la posesión, uso o venta de drogas ilegales.</p>
         </div>
       </details>
-
       <details>
         <summary><i class="fas fa-tshirt"></i>Mantenimiento, Vestimenta y Estacionamiento</summary>
         <div class="content">
@@ -191,7 +177,6 @@
           <p>30. No vehículos comerciales, barcos o RVs; estacionamiento de huéspedes con pases visibles; límite de velocidad 5 MPH.</p>
         </div>
       </details>
-
       <details>
         <summary><i class="fas fa-toolbox"></i>Mantenimiento y Alquileres</summary>
         <div class="content">
@@ -199,7 +184,6 @@
           <p>32. Alquileres a corto plazo (e.g., Airbnb, Vrbo) prohibidos; violación conlleva terminación inmediata y pérdida de depósito.</p>
         </div>
       </details>
-
       <details>
         <summary><i class="fas fa-recycle"></i>Normas de Basura y Reciclaje</summary>
         <div class="content">
@@ -215,22 +199,33 @@
       </details>
     </div>
 
-        <div class="text-center mt-8">
-      <a href="index.html" class="text-emerald-600 hover:underline">
-        <i class="fas fa-arrow-left mr-2"></i>Back to General Rules
-      </a>
+    <!-- Back Button -->
+    <div class="mt-8 text-center">
+      <a href="index.html" class="text-emerald-600 hover:underline"><i class="fas fa-arrow-left mr-2"></i>Back to Home</a>
     </div>
-    <!-- Toggle Script -->
-    <script>
-      document.getElementById('en-btn').onclick = () => {
-        document.querySelector('.lang-en').style.display = 'block';
-        document.querySelector('.lang-es').style.display = 'none';
-      };
-      document.getElementById('es-btn').onclick = () => {
-        document.querySelector('.lang-en').style.display = 'none';
-        document.querySelector('.lang-es').style.display = 'block';
-      };
-    </script>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white py-6 text-center border-t">
+    <p class="text-sm text-gray-500"><i class="fas fa-phone-alt mr-1"></i> (305)822-9469 | <i class="fas fa-envelope ml-2 mr-1"></i> info@liveatemeraldbay.com</p>
+    <p class="text-xs text-gray-400 mt-2">© 2025 Emerald Bay. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Toggle Script -->
+  <script>
+    function setActiveLanguage(lang) {
+      document.querySelectorAll('.lang').forEach(el => el.style.display = 'none');
+      document.querySelector(`.lang-${lang}`).style.display = 'block';
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(`${lang}-btn`).classList.add('active');
+    }
+    setActiveLanguage('en');
+    document.getElementById('en-btn').onclick = () => setActiveLanguage('en');
+    document.getElementById('es-btn').onclick = () => setActiveLanguage('es');
+  </script>
+</body>
+</html>
+
   </div>
 </body>
 </html>
