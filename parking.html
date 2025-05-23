@@ -7,51 +7,156 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
-    body { font-family: 'Montserrat', sans-serif; background-color: #f1f5f9; }
-    .lang-toggle { text-align: right; margin: 1rem 0; }
-    details { background: white; border-radius: 0.75rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-bottom: 1rem; }
-    summary { padding: 1rem; font-size: 1.125rem; font-weight: 600; color: #065f46; display: flex; align-items: center; cursor: pointer; }
-    summary i { margin-right: 0.75rem; color: #10b981; }
-    .content { padding: 0 1rem 1rem; color: #374151; }
-    .content p, .content ul { margin-top: 0.5rem; }
-    .content ul li { margin-left: 1rem; list-style-type: disc; }
-    .decal-img { width: 50%; height: auto; display: block; margin: 0.5rem auto; }
-    .map-img { width: 100%; border-radius: 0.5rem; margin-top: 0.5rem; }
-    .bold-note { font-weight: 700; margin: 1rem 0; }
-    .btn-enforcement { display: block; width: 100%; text-align: center; background-color: #10b981; color: white; padding: 0.75rem; border-radius: 0.75rem; font-weight: 600; text-decoration: none; margin: 1rem 0; }
-    .btn-enforcement:hover { background-color: #0f9f70; }
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f8fafc;
+    }
+    
+    .card {
+      transition: all 0.3s ease;
+      border-left: 4px solid #10b981;
+    }
+    
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .lang-btn.active {
+      background-color: #10b981;
+      color: white;
+    }
+    
+    .header-gradient {
+      background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+    }
+    
+    details {
+      background: white;
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+      border-left: 4px solid #10b981;
+    }
+    
+    summary {
+      padding: 1rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #065f46;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    
+    summary i {
+      margin-right: 0.75rem;
+      color: #10b981;
+    }
+    
+    .content {
+      padding: 0 1rem 1rem;
+      color: #374151;
+    }
+    
+    .content p, .content ul {
+      margin-top: 0.5rem;
+    }
+    
+    .content ul li {
+      margin-left: 1rem;
+      list-style-type: disc;
+    }
+    
+    .decal-img {
+      width: 50%;
+      height: auto;
+      display: block;
+      margin: 0.5rem auto;
+    }
+    
+    .map-img {
+      width: 100%;
+      border-radius: 0.5rem;
+      margin-top: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    .bold-note {
+      font-weight: 700;
+      margin: 1rem 0;
+      padding: 1rem;
+      border-radius: 0.5rem;
+    }
+    
+    .btn-enforcement {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background-color: #10b981;
+      color: white;
+      padding: 0.75rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      margin: 1rem 0;
+      transition: background-color 0.3s ease;
+    }
+    
+    .btn-enforcement:hover {
+      background-color: #0f9f70;
+    }
+    
+    .warning-note {
+      background-color: #fef3c7;
+      color: #92400e;
+      border-left: 4px solid #f59e0b;
+    }
+    
+    .important-note {
+      background-color: #fee2e2;
+      color: #991b1b;
+      border-left: 4px solid #ef4444;
+    }
   </style>
 </head>
-<body>
-  <div class="max-w-md mx-auto px-4">
+<body class="min-h-screen flex flex-col">
+  <div class="max-w-2xl mx-auto px-4 py-8 w-full flex-grow">
     <!-- Header -->
-    <header class="py-6 text-center bg-white shadow rounded-b-xl">
-      <h1 class="text-3xl font-bold text-gray-800 tracking-widest uppercase" style="font-family: 'Georgia', serif;">EMERALD BAY</h1>
-      <p class="text-xs text-gray-500 mt-1 uppercase">Community Information</p>
+    <header class="header-gradient text-white py-8 rounded-xl shadow-lg mb-8 text-center">
+      <div class="max-w-md mx-auto px-4">
+        <h1 class="text-4xl font-bold tracking-wide mb-2" style="font-family: 'Playfair Display', serif;">EMERALD BAY</h1>
+        <p class="text-sm opacity-90 uppercase tracking-wider">Parking Regulations</p>
+      </div>
     </header>
 
     <!-- Language Switcher -->
-    <div class="lang-toggle">
-      <button id="en-btn" class="px-2 py-1 text-sm font-medium text-gray-700">English</button>
-      <button id="es-btn" class="px-2 py-1 text-sm font-medium text-gray-700">Español</button>
+    <div class="flex justify-center mb-8 bg-white rounded-full p-1 shadow-inner max-w-xs mx-auto">
+      <button id="en-btn" class="lang-btn px-4 py-2 rounded-full text-sm font-medium active">
+        <i class="fas fa-language mr-1"></i> English
+      </button>
+      <button id="es-btn" class="lang-btn px-4 py-2 rounded-full text-sm font-medium">
+        <i class="fas fa-language mr-1"></i> Español
+      </button>
     </div>
 
     <!-- English Content -->
-    <div class="lang lang-en">
+    <div class="lang lang-en space-y-5">
       <!-- Registration Note -->
-      <p class="bold-note text-yellow-900 bg-yellow-100 p-4 rounded-xl shadow">
-        Residents must notify the Leasing Office of any registration or plate changes and upload updated registration and insurance on the Parking Enforcement website, or park in a visitor space until complete.
-      </p>
+      <div class="warning-note bold-note">
+        <i class="fas fa-exclamation-circle mr-2"></i> Residents must notify the Leasing Office of any registration or plate changes and upload updated registration and insurance on the Parking Enforcement website, or park in a visitor space until complete.
+      </div>
 
       <!-- Bold Decal Note -->
-      <p class="bold-note">
-        Only vehicles displaying a valid parking decal may park on the property. Vehicles without a decal will be towed immediately.
-      </p>
+      <div class="important-note bold-note">
+        <i class="fas fa-car mr-2"></i> Only vehicles displaying a valid parking decal may park on the property. Vehicles without a decal will be towed immediately.
+      </div>
 
       <!-- General Parking Rules -->
-      <details>
-        <summary><i class="fas fa-car"></i>General Parking Rules</summary>
+      <details class="card">
+        <summary><i class="fas fa-car"></i> General Parking Rules</summary>
         <div class="content">
           <ul>
             <li>Assigned spaces only.</li>
@@ -65,8 +170,8 @@
       </details>
 
       <!-- Immediate Towing Violations -->
-      <details>
-        <summary><i class="fas fa-exclamation-triangle text-red-600"></i>Immediate Towing Violations</summary>
+      <details class="card">
+        <summary><i class="fas fa-exclamation-triangle text-red-600"></i> Immediate Towing Violations</summary>
         <div class="content">
           <ul>
             <li>Rear‑end parking</li>
@@ -89,13 +194,13 @@
       </details>
 
       <!-- Designated Parking Areas by Decal Color -->
-      <details>
-        <summary><i class="fas fa-map-marker-alt"></i>Designated Parking Areas by Decal Color</summary>
+      <details class="card">
+        <summary><i class="fas fa-map-marker-alt"></i> Designated Parking Areas by Decal Color</summary>
         <div class="content">
-          <ul>
+          <ul class="space-y-4">
             <li>
               <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/verde.png" alt="Green decal" class="decal-img" />
-              <strong>Edificios 8550–8500–8400–8420–8430:</strong> Green zones/garage.
+              <strong>Buildings 8550–8500–8400–8420–8430:</strong> Green zones/garage.
             </li>
             <li>
               <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/azul.png" alt="Blue decal" class="decal-img" />
@@ -103,35 +208,38 @@
             </li>
             <li>
               <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/rojo.png" alt="Red decal" class="decal-img" />
-              Cualquier unidad solo parqueará en la zona asignada.
+              Any unit will only park in the assigned area.
             </li>
           </ul>
         </div>
       </details>
 
       <!-- Resident Parking Areas Map -->
-      <details>
-        <summary><i class="fas fa-map-marked-alt"></i>Resident Parking Areas Map</summary>
+      <details class="card">
+        <summary><i class="fas fa-map-marked-alt"></i> Resident Parking Areas Map</summary>
         <div class="content">
           <p>No resident may park outside their assigned zone; vehicles will be towed. Visitors parking here will also be towed without notice.</p>
+          
           <!-- Green Decal Zone -->
-          <details>
-            <summary><i class="fas fa-square text-green-600"></i>Green Decal Zone (Buildings 8550–8500–8400–8420–8430)</summary>
+          <details class="mt-4">
+            <summary><i class="fas fa-square text-green-600"></i> Green Decal Zone (Buildings 8550–8500–8400–8420–8430)</summary>
             <div class="content">
               <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/zona%20verde.png" alt="Green zone map" class="map-img" />
             </div>
           </details>
+          
           <!-- Blue Decal Zone -->
-          <details>
-            <summary><i class="fas fa-square text-blue-600"></i>Blue Decal Zone (Buildings 8510–8540)</summary>
+          <details class="mt-4">
+            <summary><i class="fas fa-square text-blue-600"></i> Blue Decal Zone (Buildings 8510–8540)</summary>
             <div class="content">
               <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/zona%20azul%201..png" alt="Blue zone map 1" class="map-img" />
               <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/zona%20azul%202.png" alt="Blue zone map 2" class="map-img" />
             </div>
           </details>
+          
           <!-- Red Decal Zone -->
-          <details>
-            <summary><i class="fas fa-square text-red-600"></i>Red Decal Zone</summary>
+          <details class="mt-4">
+            <summary><i class="fas fa-square text-red-600"></i> Red Decal Zone</summary>
             <div class="content">
               <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/zona%20roja.png" alt="Red zone map" class="map-img" />
             </div>
@@ -140,8 +248,8 @@
       </details>
 
       <!-- Time Restrictions & Visitor Registration -->
-      <details>
-        <summary><i class="fas fa-clock"></i>Time Restrictions & Visitor Registration</summary>
+      <details class="card">
+        <summary><i class="fas fa-clock"></i> Time Restrictions & Visitor Registration</summary>
         <div class="content">
           <p>Until 11:00 PM: Visitor parking without registration.</p>
           <p>After 11:00 PM: Unregistered visitors towed immediately.</p>
@@ -153,8 +261,8 @@
       </details>
 
       <!-- Visitor Parking Areas Map -->
-      <details>
-        <summary><i class="fas fa-map-marked-alt"></i>Visitor Parking Areas Map</summary>
+      <details class="card">
+        <summary><i class="fas fa-map-marked-alt"></i> Visitor Parking Areas Map</summary>
         <div class="content">
           <p>Only visitors may park in these zones; if a resident parks here, they will be towed without notice.</p>
           <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/visitor%201.png" alt="Visitor map 1" class="map-img" />
@@ -163,27 +271,33 @@
       </details>
 
       <!-- Enforcement Contact Button -->
-      <a href="enforcement.html" class="btn-enforcement"><i class="fas fa-users-cog mr-2"></i>Enforcement Contact</a>
+      <a href="enforcement.html" class="btn-enforcement">
+        <i class="fas fa-users-cog mr-2"></i>Enforcement Contact
+      </a>
 
       <!-- Back Link -->
       <div class="text-center mt-6">
-        <a href="index.html" class="text-emerald-600 hover:underline"><i class="fas fa-arrow-left mr-2"></i>Back to General Rules</a>
+        <a href="index.html" class="text-emerald-600 hover:underline">
+          <i class="fas fa-arrow-left mr-2"></i>Back to General Rules
+        </a>
       </div>
     </div>
 
     <!-- Spanish Content -->
-    <div class="lang lang-es" style="display:none;">
+    <div class="lang lang-es space-y-5" style="display:none;">
       <!-- Nota sobre Registro -->
-      <p class="bold-note text-yellow-900 bg-yellow-100 p-4 rounded-xl shadow">
-        Los residentes deben informar a la oficina de arrendamiento sobre cambios de registro o placas y subir el registro y seguro actualizados en el sitio web de Control de Estacionamiento, o estacionar en un espacio de visitantes hasta completar.
-      </p>
+      <div class="warning-note bold-note">
+        <i class="fas fa-exclamation-circle mr-2"></i> Los residentes deben informar a la oficina de arrendamiento sobre cambios de registro o placas y subir el registro y seguro actualizados en el sitio web de Control de Estacionamiento, o estacionar en un espacio de visitantes hasta completar.
+      </div>
 
       <!-- Calcomanía -->
-      <p class="bold-note">Solo vehículos con calcomanía válida pueden estacionar; sin ella serán remolcados.</p>
+      <div class="important-note bold-note">
+        <i class="fas fa-car mr-2"></i> Solo vehículos con calcomanía válida pueden estacionar; sin ella serán remolcados.
+      </div>
 
       <!-- Reglas Generales -->
-      <details>
-        <summary><i class="fas fa-car"></i>Reglas Generales</summary>
+      <details class="card">
+        <summary><i class="fas fa-car"></i> Reglas Generales</summary>
         <div class="content">
           <ul>
             <li>Espacios asignados sólo.</li>
@@ -197,8 +311,8 @@
       </details>
 
       <!-- Sanciones -->
-      <details>
-        <summary><i class="fas fa-exclamation-triangle text-red-600"></i>Sanciones por Infracciones</summary>
+      <details class="card">
+        <summary><i class="fas fa-exclamation-triangle text-red-600"></i> Sanciones por Infracciones</summary>
         <div class="content">
           <ul>
             <li>Estacionar de reversa</li>
@@ -221,10 +335,10 @@
       </details>
 
       <!-- Áreas por Calcomanía -->
-      <details>
-        <summary><i class="fas fa-map-marker-alt"></i>Áreas por Calcomanía</summary>
+      <details class="card">
+        <summary><i class="fas fa-map-marker-alt"></i> Áreas por Calcomanía</summary>
         <div class="content">
-          <ul>
+          <ul class="space-y-4">
             <li>
               <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/verde.png" alt="Calcomanía verde" class="decal-img" />
               <strong>Edificios 8550–8500–8400–8420–8430:</strong> Zonas verdes/garaje.
@@ -242,28 +356,31 @@
       </details>
 
       <!-- Mapa de Residentes -->
-      <details>
-        <summary><i class="fas fa-map-marked-alt"></i>Mapa de Áreas de Residentes</summary>
+      <details class="card">
+        <summary><i class="fas fa-map-marked-alt"></i> Mapa de Áreas de Residentes</summary>
         <div class="content">
           <p>Ningún residente puede estacionar fuera de su zona asignada; serán remolcados. Visitantes en estas zonas también serán remolcados sin aviso.</p>
+          
           <!-- Zona Verde -->
-          <details>
-            <summary><i class="fas fa-square text-green-600"></i>Zona Verde (Edif. 8550–8500–8400–8420–8430)</summary>
+          <details class="mt-4">
+            <summary><i class="fas fa-square text-green-600"></i> Zona Verde (Edif. 8550–8500–8400–8420–8430)</summary>
             <div class="content">
               <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/zona%20verde.png" class="map-img" alt="Zona verde" />
             </div>
           </details>
+          
           <!-- Zona Azul -->
-          <details>
-            <summary><i class="fas fa-square text-blue-600"></i>Zona Azul (Edif. 8510–8540)</summary>
+          <details class="mt-4">
+            <summary><i class="fas fa-square text-blue-600"></i> Zona Azul (Edif. 8510–8540)</summary>
             <div class="content">
               <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/zona%20azul%201..png" class="map-img" alt="Zona azul 1" />
               <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/zona%20azul%202.png" class="map-img" alt="Zona azul 2" />
             </div>
           </details>
+          
           <!-- Zona Roja -->
-          <details>
-            <summary><i class="fas fa-square text-red-600"></i>Zona Roja</summary>
+          <details class="mt-4">
+            <summary><i class="fas fa-square text-red-600"></i> Zona Roja</summary>
             <div class="content">
               <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/zona%20roja.png" class="map-img" alt="Zona roja" />
             </div>
@@ -272,8 +389,8 @@
       </details>
 
       <!-- Restricciones de Tiempo -->
-      <details>
-        <summary><i class="fas fa-clock"></i>Restricciones de Tiempo y Registro de Visitantes</summary>
+      <details class="card">
+        <summary><i class="fas fa-clock"></i> Restricciones de Tiempo y Registro de Visitantes</summary>
         <div class="content">
           <p>Hasta 11 PM: Visitantes sin registro.</p>
           <p>Después de 11 PM: Remolque inmediato.</p>
@@ -285,8 +402,8 @@
       </details>
 
       <!-- Mapa de Visitantes -->
-      <details>
-        <summary><i class="fas fa-map-marked-alt"></i>Mapa de Áreas de Visitantes</summary>
+      <details class="card">
+        <summary><i class="fas fa-map-marked-alt"></i> Mapa de Áreas de Visitantes</summary>
         <div class="content">
           <p>Solo los visitantes deben parquear en estas zonas; si un residente lo hace, será remolcado sin aviso.</p>
           <img src="https://raw.githubusercontent.com/EBsupport123/EmeraldBay/main/visitor%201.png" class="map-img" alt="Mapa visitantes 1" />
@@ -295,37 +412,57 @@
       </details>
 
       <!-- Enforcement Contact Button -->
-      <a href="enforcement.html" class="btn-enforcement"><i class="fas fa-users-cog mr-2"></i>Enforcement Contact</a>
+      <a href="enforcement.html" class="btn-enforcement">
+        <i class="fas fa-users-cog mr-2"></i>Contacto de Cumplimiento
+      </a>
 
       <!-- Back Link -->
       <div class="text-center mt-6">
-        <a href="index.html" class="text-emerald-600 hover:underline"><i class="fas fa-arrow-left mr-2"></i>Volver a Reglas Generales</a>
+        <a href="index.html" class="text-emerald-600 hover:underline">
+          <i class="fas fa-arrow-left mr-2"></i>Volver a Reglas Generales
+        </a>
       </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="text-center py-8 text-sm text-gray-400 border-t mt-6">
-      © 2025 Emerald Bay. All Rights Reserved.
-    </footer>
   </div>
 
-  <!-- Language Toggle Script -->
+  <!-- Footer -->
+  <footer class="bg-white py-6 text-center border-t">
+    <div class="max-w-md mx-auto px-4">
+      <p class="text-sm text-gray-500">
+        <i class="fas fa-phone-alt mr-1"></i> Contact: (305) 822-9469 | 
+        <i class="fas fa-envelope ml-2 mr-1"></i> info@liveatemeraldbay.com
+      </p>
+      <p class="text-xs text-gray-400 mt-2">© 2025 Emerald Bay. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Toggle Script -->
   <script>
-    document.getElementById('en-btn').onclick = () => {
-      document.querySelector('.lang-en').style.display = 'block';
-      document.querySelector('.lang-es').style.display = 'none';
-      document.documentElement.lang = 'en';
-    };
-    document.getElementById('es-btn').onclick = () => {
-      document.querySelector('.lang-en').style.display = 'none';
-      document.querySelector('.lang-es').style.display = 'block';
-      document.documentElement.lang = 'es';
-    };
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelector('.lang-en').style.display = 'block';
-      document.querySelector('.lang-es').style.display = 'none';
-    });
+    function setActiveLanguage(lang) {
+      // Hide all language sections
+      document.querySelectorAll('.lang').forEach(el => {
+        el.style.display = 'none';
+      });
+      
+      // Show selected language
+      document.querySelector(`.lang-${lang}`).style.display = 'block';
+      
+      // Update button states
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.getElementById(`${lang}-btn`).classList.add('active');
+      
+      // Update HTML lang attribute
+      document.documentElement.lang = lang;
+    }
+
+    // Initialize with English
+    setActiveLanguage('en');
+    
+    // Set up event listeners
+    document.getElementById('en-btn').addEventListener('click', () => setActiveLanguage('en'));
+    document.getElementById('es-btn').addEventListener('click', () => setActiveLanguage('es'));
   </script>
 </body>
 </html>
-
