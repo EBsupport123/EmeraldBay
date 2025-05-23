@@ -1,158 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Parking Enforcement – Emerald Bay</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
-    body { font-family: 'Montserrat', sans-serif; background-color: #f1f5f9; }
-    .lang-toggle { text-align: right; margin: 1rem 0; }
-    details { background: white; border-radius: 0.75rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-bottom: 1rem; }
-    summary { padding: 1rem; font-size: 1.125rem; font-weight: 600; color: #065f46; display: flex; align-items: center; cursor: pointer; }
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+    body { font-family: 'Montserrat', sans-serif; background-color: #f8fafc; margin:0; }
+    .card, details {
+      background: white;
+      border-left: 4px solid #10b981;
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+    .card:hover, details:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    summary {
+      padding: 1rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #065f46;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
     summary i { margin-right: 0.75rem; color: #10b981; }
     .content { padding: 0 1rem 1rem; color: #374151; }
-    .content p, .content ul { margin-top: 0.5rem; }
-    .content ul li { margin-left: 1rem; list-style-type: disc; }
+    .content p { margin-top: 0.5rem; }
+    .lang-btn.active { background-color: #10b981; color: white; }
+    .header-gradient { background: linear-gradient(135deg, #10b981 0%, #047857 100%); }
   </style>
 </head>
-<body>
-  <div class="max-w-md mx-auto px-4">
+<body class="min-h-screen flex flex-col">
+  <div class="max-w-2xl mx-auto px-4 py-8 w-full flex-grow">
     <!-- Header -->
-    <header class="py-6 text-center bg-white shadow rounded-b-xl">
-      <h1 class="text-3xl font-bold text-gray-800 tracking-widest uppercase" style="font-family: 'Georgia', serif;">EMERALD BAY</h1>
-      <p id="header-subtitle" class="text-xs text-gray-500 mt-1 uppercase">Parking Enforcement</p>
+    <header class="header-gradient text-white py-8 rounded-xl shadow-lg mb-8 text-center">
+      <h1 class="text-4xl font-bold tracking-wide mb-2" style="font-family: 'Playfair Display', serif;">EMERALD BAY</h1>
+      <p class="text-sm opacity-90 uppercase tracking-wider">Parking Enforcement</p>
     </header>
 
     <!-- Language Switcher -->
-    <div class="lang-toggle">
-      <button id="en-btn" class="px-2 py-1 text-sm font-medium text-gray-700">English</button>
-      <button id="es-btn" class="px-2 py-1 text-sm font-medium text-gray-700">Español</button>
+    <div class="flex justify-center mb-8 bg-white rounded-full p-1 shadow-inner max-w-xs mx-auto">
+      <button id="en-btn" class="lang-btn px-4 py-2 rounded-full text-sm font-medium active"><i class="fas fa-language mr-1"></i> English</button>
+      <button id="es-btn" class="lang-btn px-4 py-2 rounded-full text-sm font-medium"><i class="fas fa-language mr-1"></i> Español</button>
     </div>
 
-    <!-- Note Section -->
-    <section class="bg-yellow-100 text-yellow-900 p-4 rounded-xl shadow mb-4">
-      <p><strong id="note-label"></strong> <span id="note-content"></span></p>
-    </section>
-
-    <!-- English Content -->
-    <div class="lang lang-en">
-      <div class="bg-white p-6 rounded-xl shadow mb-4">
-  <h2 class="text-xl font-semibold text-gray-800 mb-2"><i class="fas fa-info-circle text-emerald-600 mr-2"></i>Enforcement Contact</h2>
-  <div class="content">
-    <p><strong>Property Code: 8570EB</strong></p>
-    <p id="section1-contact-intro"></p>
-    <ul>
-      <li><strong id="phone-label"></strong> 786-708-5002 / 1-800-920-7070</li>
-      <li><strong id="email-label"></strong> support@peosf.com</li>
-      <li><strong id="website-label"></strong> <a href="https://www.peosf.com" target="_blank" class="text-emerald-600 underline">www.peosf.com</a></li>
-      <li><strong id="address-label"></strong> 3500 NW 67 ST, Miami, FL 33147</li>
-    </ul>
-  </div>
-</div>
-
-      <details>
-        <summary><i class="fas fa-user-check"></i>Resident Registration</summary>
-        <div class="content text-center">
-          <a href="register-resident.html" class="bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 transition">How Residents Register</a>
-        </div>
-      </details>
-
-      <details>
-        <summary><i class="fas fa-user-friends"></i>Visitor Registration</summary>
-        <div class="content text-center">
-          <a href="register-visitor.html" class="bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 transition">How to Register a Visitor</a>
-        </div>
-      </details>
-
-      <div class="text-center mt-6">
-        <a href="index.html" class="text-emerald-600 hover:underline"><i class="fas fa-arrow-left mr-2"></i>Back to Home</a>
+    <!-- Enforcement Contact Card -->
+    <div class="card p-6">
+      <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center"><i class="fas fa-info-circle text-emerald-600 mr-2"></i>Enforcement Contact</h2>
+      <div class="content">
+        <p><i class="fas fa-phone-alt text-emerald-600 mr-2"></i><strong>786-708-5002</strong> / <strong>1-800-920-7070</strong></p>
+        <p><i class="fas fa-envelope text-emerald-600 mr-2"></i><strong>support@peosf.com</strong></p>
+        <p><i class="fas fa-globe text-emerald-600 mr-2"></i><a href="https://www.peosf.com" target="_blank" class="text-emerald-600 underline"><strong>www.peosf.com</strong></a></p>
+        <p><i class="fas fa-map-marker-alt text-emerald-600 mr-2"></i><strong>3500 NW 67 ST, Miami, FL 33147</strong></p>
       </div>
     </div>
 
-    <!-- Spanish Content -->
-    <div class="lang lang-es" style="display:none;">
-      <div class="bg-white p-6 rounded-xl shadow mb-4">
-  <h2 class="text-xl font-semibold text-gray-800 mb-2"><i class="fas fa-info-circle text-emerald-600 mr-2"></i>Enforcement Contact</h2>
-  <div class="content">
-    <p><strong>Property Code: 8570EB</strong></p>
-    <p id="section1-contact-intro"></p>
-    <ul>
-      <li><strong id="phone-label"></strong> 786-708-5002 / 1-800-920-7070</li>
-      <li><strong id="email-label"></strong> support@peosf.com</li>
-      <li><strong id="website-label"></strong> <a href="https://www.peosf.com" target="_blank" class="text-emerald-600 underline">www.peosf.com</a></li>
-      <li><strong id="address-label"></strong> 3500 NW 67 ST, Miami, FL 33147</li>
-    </ul>
-  </div>
-</div>
-
-      <details>
-        <summary><i class="fas fa-user-check"></i>Registro de Residentes</summary>
-        <div class="content text-center">
-          <a href="register-resident.html" class="bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 transition">Cómo se Registran los Residentes</a>
-        </div>
-      </details>
-
-      <details>
-        <summary><i class="fas fa-user-friends"></i>Registro de Visitantes</summary>
-        <div class="content text-center">
-          <a href="register-visitor.html" class="bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 transition">Cómo Registrar un Visitante</a>
-        </div>
-      </details>
-
-      <div class="text-center mt-6">
-        <a href="index.html" class="text-emerald-600 hover:underline"><i class="fas fa-arrow-left mr-2"></i>Volver al Inicio</a>
+    <!-- Registration Links -->
+    <details class="card">
+      <summary><i class="fas fa-user-check"></i>Resident Registration</summary>
+      <div class="content text-center">
+        <a href="register-resident.html" class="bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 transition">How Residents Register</a>
       </div>
+    </details>
+
+    <details class="card">
+      <summary><i class="fas fa-user-friends"></i>Visitor Registration</summary>
+      <div class="content text-center">
+        <a href="register-visitor.html" class="bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 transition">How to Register a Visitor</a>
+      </div>
+    </details>
+
+    <!-- Back Link -->
+    <div class="text-center mt-6">
+      <a href="index.html" class="text-emerald-600 hover:underline"><i class="fas fa-arrow-left mr-2"></i>Back to Home</a>
     </div>
 
     <!-- Footer -->
-    <footer class="text-center py-8 text-sm text-gray-400 border-t mt-6">
-      © 2025 Emerald Bay. All Rights Reserved.
+    <footer class="bg-white py-6 text-center border-t mt-8 text-sm text-gray-500">
+      <p>&copy; 2025 Emerald Bay. All Rights Reserved.</p>
     </footer>
   </div>
 
   <script>
-    const pageData = {
-      en: {
-        noteLabel: 'Note:',
-        noteContent: 'If your vehicle has been towed for non-compliance, please contact the towing company directly for retrieval instructions.',
-        section1ContactIntro: 'For vehicle towing or enforcement questions, please contact the towing company directly:',
-        phoneLabel: 'Phone (24-Hour Line):',
-        emailLabel: 'Email:',
-        websiteLabel: 'Website:',
-        addressLabel: 'Towed Vehicle Lot Address:'
-      },
-      es: {
-        noteLabel: 'Nota:',
-        noteContent: 'Si su vehículo fue remolcado por incumplimiento, comuníquese directamente para instrucciones de recuperación.',
-        section1ContactIntro: 'Para consultas de remolque o cumplimiento, por favor contacte directamente a la compañía de remolque:',
-        phoneLabel: 'Teléfono (Línea 24 Horas):',
-        emailLabel: 'Correo Electrónico:',
-        websiteLabel: 'Sitio Web:',
-        addressLabel: 'Dirección del Lote de Vehículos Remolcados:'
-      }
-    };
-
-    function renderContent(lang) {
-      const c = pageData[lang] || pageData.en;
-      document.getElementById('note-label').textContent = c.noteLabel;
-      document.getElementById('note-content').textContent = c.noteContent;
-      document.getElementById('section1-contact-intro').textContent = c.section1ContactIntro;
-      document.getElementById('phone-label').textContent = c.phoneLabel;
-      document.getElementById('email-label').textContent = c.emailLabel;
-      document.getElementById('website-label').textContent = c.websiteLabel;
-      document.getElementById('address-label').textContent = c.addressLabel;
-      document.getElementById('header-subtitle').textContent = lang==='es' ? 'Información de la Comunidad' : 'Community Information';
+    function setActiveLanguage(lang) {
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(`${lang}-btn`).classList.add('active');
+      // No language-specific content needed here as it's static contact info
       document.documentElement.lang = lang;
     }
-
-    document.getElementById('en-btn').onclick = () => renderContent('en');
-    document.getElementById('es-btn').onclick = () => renderContent('es');
-    document.addEventListener('DOMContentLoaded', () => {
-      renderContent(navigator.language.startsWith('es') ? 'es' : 'en');
-    });
+    document.getElementById('en-btn').addEventListener('click', () => setActiveLanguage('en'));
+    document.getElementById('es-btn').addEventListener('click', () => setActiveLanguage('es'));
+    // Initialize
+    setActiveLanguage('en');
   </script>
 </body>
 </html>
