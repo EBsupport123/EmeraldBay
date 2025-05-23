@@ -7,113 +7,199 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
-    body { font-family: 'Montserrat', sans-serif; background-color: #f1f5f9; }
-    .section-link { transition: all 0.2s ease; }
-    .section-link:hover { color: #047857; font-weight: 600; }
-    .lang-toggle { text-align: right; margin: 1rem auto; max-width: 20rem; }
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f8fafc;
+    }
+    
+    .card {
+      transition: all 0.3s ease;
+      border-left: 4px solid #10b981;
+    }
+    
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .lang-btn.active {
+      background-color: #10b981;
+      color: white;
+    }
+    
+    .header-gradient {
+      background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+    }
   </style>
 </head>
-<body>
-  <div class="max-w-md mx-auto px-6">
+<body class="min-h-screen flex flex-col">
+  <div class="max-w-2xl mx-auto px-4 py-8 w-full flex-grow">
     <!-- Header -->
-    <header class="py-10 text-center bg-white shadow rounded-b-xl">
-      <h1 class="text-4xl font-bold text-gray-800 tracking-widest uppercase" style="font-family: 'Georgia', serif;">EMERALD BAY</h1>
-      <p class="text-sm text-gray-500 mt-2 uppercase">Community Information</p>
+    <header class="header-gradient text-white py-8 rounded-xl shadow-lg mb-8 text-center">
+      <div class="max-w-md mx-auto px-4">
+        <h1 class="text-4xl font-bold tracking-wide mb-2" style="font-family: 'Playfair Display', serif;">EMERALD BAY</h1>
+        <p class="text-sm opacity-90 uppercase tracking-wider">Community Information Portal</p>
+      </div>
     </header>
 
     <!-- Language Switcher -->
-    <div class="lang-toggle">
-      <button id="en-btn" class="px-3 py-1 text-sm font-medium text-gray-700">English</button>
-      <button id="es-btn" class="px-3 py-1 text-sm font-medium text-gray-700">Español</button>
+    <div class="flex justify-center mb-8 bg-white rounded-full p-1 shadow-inner max-w-xs mx-auto">
+      <button id="en-btn" class="lang-btn px-4 py-2 rounded-full text-sm font-medium active">
+        <i class="fas fa-language mr-1"></i> English
+      </button>
+      <button id="es-btn" class="lang-btn px-4 py-2 rounded-full text-sm font-medium">
+        <i class="fas fa-language mr-1"></i> Español
+      </button>
     </div>
 
     <!-- English Content -->
-    <div class="lang lang-en space-y-6">
-      <div class="bg-white p-6 rounded-xl shadow flex items-center space-x-4">
-        <i class="fas fa-building text-emerald-600 text-3xl"></i>
-        <div>
-          <h2 class="text-xl font-semibold text-gray-800">General Building Rules</h2>
-          <a href="rules-general.html" class="section-link text-emerald-600">View General Rules</a>
+    <div class="lang lang-en space-y-5">
+      <a href="rules-general.html" class="card block bg-white p-6 rounded-lg shadow flex items-start space-x-5 hover:no-underline">
+        <div class="bg-emerald-50 p-3 rounded-full">
+          <i class="fas fa-building text-emerald-600 text-2xl"></i>
         </div>
-      </div>
+        <div>
+          <h2 class="text-xl font-semibold text-gray-800 mb-1">General Building Rules</h2>
+          <p class="text-gray-500 text-sm">View community guidelines and regulations</p>
+          <div class="mt-3 text-emerald-600 font-medium flex items-center">
+            View Details <i class="fas fa-chevron-right ml-1 text-sm"></i>
+          </div>
+        </div>
+      </a>
 
-      <div class="bg-white p-6 rounded-xl shadow flex items-center space-x-4">
-        <i class="fas fa-th-large text-emerald-600 text-3xl"></i>
-        <div>
-          <h2 class="text-xl font-semibold text-gray-800">Amenity Rules</h2>
-          <a href="rules-amenities.html" class="section-link text-emerald-600">View Amenity Rules</a>
+      <a href="rules-amenities.html" class="card block bg-white p-6 rounded-lg shadow flex items-start space-x-5 hover:no-underline">
+        <div class="bg-emerald-50 p-3 rounded-full">
+          <i class="fas fa-th-large text-emerald-600 text-2xl"></i>
         </div>
-      </div>
+        <div>
+          <h2 class="text-xl font-semibold text-gray-800 mb-1">Amenity Rules</h2>
+          <p class="text-gray-500 text-sm">Pool, gym, and common area regulations</p>
+          <div class="mt-3 text-emerald-600 font-medium flex items-center">
+            View Details <i class="fas fa-chevron-right ml-1 text-sm"></i>
+          </div>
+        </div>
+      </a>
 
-      <div class="bg-white p-6 rounded-xl shadow flex items-center space-x-4">
-        <i class="fas fa-parking text-emerald-600 text-3xl"></i>
-        <div>
-          <h2 class="text-xl font-semibold text-gray-800">Parking Regulations</h2>
-          <a href="parking.html" class="section-link text-emerald-600">View Parking Info</a>
+      <a href="parking.html" class="card block bg-white p-6 rounded-lg shadow flex items-start space-x-5 hover:no-underline">
+        <div class="bg-emerald-50 p-3 rounded-full">
+          <i class="fas fa-parking text-emerald-600 text-2xl"></i>
         </div>
-      </div>
+        <div>
+          <h2 class="text-xl font-semibold text-gray-800 mb-1">Parking Regulations</h2>
+          <p class="text-gray-500 text-sm">Visitor and resident parking information</p>
+          <div class="mt-3 text-emerald-600 font-medium flex items-center">
+            View Details <i class="fas fa-chevron-right ml-1 text-sm"></i>
+          </div>
+        </div>
+      </a>
 
-      <div class="bg-white p-6 rounded-xl shadow flex items-center space-x-4">
-        <i class="fas fa-car-crash text-emerald-600 text-3xl"></i>
-        <div>
-          <h2 class="text-xl font-semibold text-gray-800">Enforcement Info</h2>
-          <a href="enforcement.html" class="section-link text-emerald-600">View Enforcement Details</a>
+      <a href="enforcement.html" class="card block bg-white p-6 rounded-lg shadow flex items-start space-x-5 hover:no-underline">
+        <div class="bg-emerald-50 p-3 rounded-full">
+          <i class="fas fa-car-crash text-emerald-600 text-2xl"></i>
         </div>
-      </div>
+        <div>
+          <h2 class="text-xl font-semibold text-gray-800 mb-1">Enforcement Info</h2>
+          <p class="text-gray-500 text-sm">Violation procedures and fines</p>
+          <div class="mt-3 text-emerald-600 font-medium flex items-center">
+            View Details <i class="fas fa-chevron-right ml-1 text-sm"></i>
+          </div>
+        </div>
+      </a>
     </div>
 
     <!-- Spanish Content -->
-    <div class="lang lang-es space-y-6" style="display:none;">
-      <div class="bg-white p-6 rounded-xl shadow flex items-center space-x-4">
-        <i class="fas fa-building text-emerald-600 text-3xl"></i>
-        <div>
-          <h2 class="text-xl font-semibold text-gray-800">Reglas Generales del Edificio</h2>
-          <a href="rules-general.html" class="section-link text-emerald-600">Ver Reglas Generales</a>
+    <div class="lang lang-es space-y-5" style="display:none;">
+      <a href="rules-general.html" class="card block bg-white p-6 rounded-lg shadow flex items-start space-x-5 hover:no-underline">
+        <div class="bg-emerald-50 p-3 rounded-full">
+          <i class="fas fa-building text-emerald-600 text-2xl"></i>
         </div>
-      </div>
+        <div>
+          <h2 class="text-xl font-semibold text-gray-800 mb-1">Reglas Generales del Edificio</h2>
+          <p class="text-gray-500 text-sm">Normas y regulaciones de la comunidad</p>
+          <div class="mt-3 text-emerald-600 font-medium flex items-center">
+            Ver Detalles <i class="fas fa-chevron-right ml-1 text-sm"></i>
+          </div>
+        </div>
+      </a>
 
-      <div class="bg-white p-6 rounded-xl shadow flex items-center space-x-4">
-        <i class="fas fa-th-large text-emerald-600 text-3xl"></i>
-        <div>
-          <h2 class="text-xl font-semibold text-gray-800">Normas de Amenidades</h2>
-          <a href="rules-amenities.html" class="section-link text-emerald-600">Ver Normas de Amenidades</a>
+      <a href="rules-amenities.html" class="card block bg-white p-6 rounded-lg shadow flex items-start space-x-5 hover:no-underline">
+        <div class="bg-emerald-50 p-3 rounded-full">
+          <i class="fas fa-th-large text-emerald-600 text-2xl"></i>
         </div>
-      </div>
+        <div>
+          <h2 class="text-xl font-semibold text-gray-800 mb-1">Normas de Amenidades</h2>
+          <p class="text-gray-500 text-sm">Regulaciones para piscina, gimnasio y áreas comunes</p>
+          <div class="mt-3 text-emerald-600 font-medium flex items-center">
+            Ver Detalles <i class="fas fa-chevron-right ml-1 text-sm"></i>
+          </div>
+        </div>
+      </a>
 
-      <div class="bg-white p-6 rounded-xl shadow flex items-center space-x-4">
-        <i class="fas fa-parking text-emerald-600 text-3xl"></i>
-        <div>
-          <h2 class="text-xl font-semibold text-gray-800">Regulaciones de Estacionamiento</h2>
-          <a href="parking.html" class="section-link text-emerald-600">Ver Información de Estacionamiento</a>
+      <a href="parking.html" class="card block bg-white p-6 rounded-lg shadow flex items-start space-x-5 hover:no-underline">
+        <div class="bg-emerald-50 p-3 rounded-full">
+          <i class="fas fa-parking text-emerald-600 text-2xl"></i>
         </div>
-      </div>
+        <div>
+          <h2 class="text-xl font-semibold text-gray-800 mb-1">Regulaciones de Estacionamiento</h2>
+          <p class="text-gray-500 text-sm">Información para residentes y visitantes</p>
+          <div class="mt-3 text-emerald-600 font-medium flex items-center">
+            Ver Detalles <i class="fas fa-chevron-right ml-1 text-sm"></i>
+          </div>
+        </div>
+      </a>
 
-      <div class="bg-white p-6 rounded-xl shadow flex items-center space-x-4">
-        <i class="fas fa-car-crash text-emerald-600 text-3xl"></i>
-        <div>
-          <h2 class="text-xl font-semibold text-gray-800">Información de Cumplimiento</h2>
-          <a href="enforcement.html" class="section-link text-emerald-600">Ver Detalles de Cumplimiento</a>
+      <a href="enforcement.html" class="card block bg-white p-6 rounded-lg shadow flex items-start space-x-5 hover:no-underline">
+        <div class="bg-emerald-50 p-3 rounded-full">
+          <i class="fas fa-car-crash text-emerald-600 text-2xl"></i>
         </div>
-      </div>
+        <div>
+          <h2 class="text-xl font-semibold text-gray-800 mb-1">Información de Cumplimiento</h2>
+          <p class="text-gray-500 text-sm">Procedimientos y multas por violaciones</p>
+          <div class="mt-3 text-emerald-600 font-medium flex items-center">
+            Ver Detalles <i class="fas fa-chevron-right ml-1 text-sm"></i>
+          </div>
+        </div>
+      </a>
     </div>
-
-    <!-- Toggle Script -->
-    <script>
-      document.getElementById('en-btn').onclick = () => {
-        document.querySelector('.lang-en').style.display = 'block';
-        document.querySelector('.lang-es').style.display = 'none';
-      };
-      document.getElementById('es-btn').onclick = () => {
-        document.querySelector('.lang-en').style.display = 'none';
-        document.querySelector('.lang-es').style.display = 'block';
-      };
-    </script>
   </div>
 
   <!-- Footer -->
-  <footer class="text-center py-8 text-sm text-gray-400 border-t mt-6">
-    © 2025 Emerald Bay. All Rights Reserved.
+  <footer class="bg-white py-6 text-center border-t">
+    <div class="max-w-md mx-auto px-4">
+      <p class="text-sm text-gray-500">
+        <i class="fas fa-phone-alt mr-1"></i> (305)822-9469 |
+        <i class="fas fa-envelope ml-2 mr-1"></i> info@liveatemeraldbay.com
+      </p>
+      <p class="text-xs text-gray-400 mt-2">© 2025 Emerald Bay Community. All Rights Reserved.</p>
+    </div>
   </footer>
+
+  <!-- Toggle Script -->
+  <script>
+    function setActiveLanguage(lang) {
+      // Hide all language sections
+      document.querySelectorAll('.lang').forEach(el => {
+        el.style.display = 'none';
+      });
+      
+      // Show selected language
+      document.querySelector(`.lang-${lang}`).style.display = 'block';
+      
+      // Update button states
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.getElementById(`${lang}-btn`).classList.add('active');
+    }
+
+    // Initialize with English
+    setActiveLanguage('en');
+    
+    // Set up event listeners
+    document.getElementById('en-btn').onclick = () => setActiveLanguage('en');
+    document.getElementById('es-btn').onclick = () => setActiveLanguage('es');
+  </script>
 </body>
 </html>
