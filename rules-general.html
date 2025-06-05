@@ -1,296 +1,434 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>General Building Rules – Emerald Bay</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: #f8fafc;
-    }
-    .card, details {
-      transition: all 0.3s ease;
-      border-left: 4px solid #10b981;
-      background: white;
-      border-radius: 0.75rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      margin-bottom: 1rem;
-    }
-    details:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    summary {
-      padding: 1rem;
-      font-size: 1.125rem;
-      font-weight: 600;
-      color: #065f46;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-    }
-    summary i {
-      margin-right: 0.75rem;
-      color: #10b981;
-    }
-    .content {
-      padding: 0 1rem 1rem;
-      color: #374151;
-    }
-    .content ul {
-      list-style-type: disc;
-      padding-left: 1.5rem;
-      margin: 0.5rem 0;
-    }
-    .lang-btn.active {
-      background-color: #10b981;
-      color: white;
-    }
-    .header-gradient {
-      background: linear-gradient(135deg, #10b981 0%, #047857 100%);
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>General Building Rules – Emerald Bay</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-pIVP8xVwZRKfZ7GXPDx2E7djVZtNQ7QYpQEvGWRn8X20kcvUDEpJpNnGHScxXKb3HSZjlpQjE7i4vMZ3HVpJvw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f9fafb;
+            color: #1f2937;
+            scroll-behavior: smooth; /* Enables smooth scrolling for anchor links and programmatic scrolling */
+        }
+
+        /* Header styles */
+        .portal-header {
+            background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%);
+            color: #ffffff;
+            padding: 2rem 1rem;
+            border-radius: 0.75rem;
+            margin-bottom: 2rem;
+        }
+        .header-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .header-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .header-subtitle {
+            text-transform: uppercase;
+            opacity: 0.85;
+            letter-spacing: 2px;
+        }
+
+        /* Language switcher styles */
+        .lang-switch-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+            padding: 0 1rem;
+        }
+        .lang-btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: 1px solid #d1d5db;
+            background-color: #ffffff;
+            color: #374151;
+            cursor: pointer;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.25rem;
+        }
+        .lang-btn.active {
+            background-color: #047857;
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .lang-btn:hover:not(.active) {
+            background-color: #f3f4f6;
+        }
+
+        /* Disclaimer Note Styles */
+        .disclaimer-note-container {
+            background-color: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .disclaimer-note-container p {
+            margin: 0;
+            color: #b45309;
+            font-size: 0.9rem;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+         .disclaimer-note-container p i {
+            margin-right: 0.5rem;
+            color: #f59e0b;
+         }
+
+        /* Details/Summary as Cards */
+        details.rule-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        details.rule-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        summary.rule-summary {
+            padding: 1.25rem 1.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #065f46;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            list-style: none; /* Remove default marker for all browsers */
+        }
+        summary.rule-summary::-webkit-details-marker { /* Hide marker for Chrome/Safari */
+            display: none;
+        }
+        summary.rule-summary::marker { /* Hide marker for Firefox - not standard but good to have */
+            display: none;
+        }
+        summary.rule-summary i.icon {
+            margin-right: 0.75rem;
+            color: #047857;
+            font-size: 1.25rem;
+        }
+        details[open] summary.rule-summary {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .rule-content {
+            padding: 0 1.5rem 1.25rem;
+            color: #374151;
+            font-size: 0.925rem;
+            line-height: 1.6;
+        }
+        .rule-content ul {
+            list-style-type: none; 
+            padding-left: 0;
+            margin: 0.75rem 0;
+        }
+        .rule-content ul li {
+            margin-bottom: 1rem; 
+            padding-left: 0; 
+        }
+
+
+        /* Footer styles */
+        .portal-footer {
+            background-color: #e5e7eb;
+            padding: 2rem 1rem;
+            text-align: center; 
+            border-top: 1px solid #d1d5db;
+            margin-top: 3rem;
+        }
+        .footer-text {
+            font-size: 0.875rem;
+            color: #4b5563;
+            margin-bottom: 0.5rem; 
+        }
+        .footer-text i {
+            margin: 0 0.3rem;
+            color: #059669;
+        }
+        .footer-links a {
+            color: #059669;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            font-weight: 500;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
 </head>
-<body class="min-h-screen flex flex-col">
-  <div class="max-w-2xl mx-auto px-4 py-8 w-full flex-grow">
-    <!-- Header -->
-    <header class="header-gradient text-white py-8 rounded-xl shadow-lg mb-8 text-center">
-      <h1 class="text-4xl font-bold tracking-wide mb-2" style="font-family: 'Playfair Display', serif;">EMERALD BAY</h1>
-      <p class="text-sm opacity-90 uppercase tracking-wider">General Building Rules</p>
-    </header>
+<body class="min-h-screen flex flex-col antialiased">
 
-    <!-- Language Switcher -->
-    <div class="flex justify-center mb-8 bg-white rounded-full p-1 shadow-inner max-w-xs mx-auto">
-      <button id="en-btn" class="lang-btn px-4 py-2 rounded-full text-sm font-medium active"><i class="fas fa-language mr-1"></i> English</button>
-      <button id="es-btn" class="lang-btn px-4 py-2 rounded-full text-sm font-medium"><i class="fas fa-language mr-1"></i> Español</button>
+    <div class="max-w-3xl mx-auto px-4 py-8 w-full flex-grow">
+        <!-- Header -->
+        <header class="portal-header text-white text-center">
+            <div class="header-container">
+                <h1 class="header-title text-3xl sm:text-4xl">EMERALD BAY</h1>
+                <p class="header-subtitle text-sm sm:text-base">General Building Rules</p>
+            </div>
+        </header>
+
+        <!-- Language Switcher -->
+        <div class="lang-switch-container">
+            <button id="en-btn" class="lang-btn active">
+                <i class="fas fa-globe-americas"></i> English
+            </button>
+            <button id="es-btn" class="lang-btn">
+                <i class="fas fa-globe-americas"></i> Español
+            </button>
+        </div>
+
+        <!-- Disclaimer Note -->
+        <div class="disclaimer-note-container">
+            <p class="lang lang-en" style="display:block;">
+                <i class="fas fa-exclamation-triangle"></i>Failure to comply with these regulations may result in fines or, depending on the severity of the breach, contract termination.
+            </p>
+            <p class="lang lang-es" style="display:none;">
+                <i class="fas fa-exclamation-triangle"></i>El incumplimiento de estos reglamentos puede resultar en multas o, según la gravedad del incumplimiento, la terminación del contrato.
+            </p>
+        </div>
+
+        <!-- English Content -->
+        <div class="lang lang-en space-y-5">
+            <details class="rule-card"> 
+                <summary class="rule-summary"><i class="icon fas fa-gavel"></i>Residential Use and Tenant Conduct</summary>
+                <div class="rule-content">
+                    <ul>
+                        <li>(1) The Tenant may only use the Unit as a residence. Running a business from the Unit is not allowed. All laws, health codes, and building rules must be followed. No form of soliciting by tenants or guests is allowed.</li>
+                        <li>(2) Tenants must respect other residents' right to peace and quiet. No loud voices, music, TVs, strong smells, or other disturbances. Quiet hours are from 11:00 p.m. to 7:00 a.m.</li>
+                        <li>(3) Abusive, disorderly, violent, or harassing behavior is not allowed. This includes swearing, offensive language, or sexual comments. Any vandalism will result in immediate lease termination.</li>
+                        <li>(4) Tenants are responsible for their guests. Guests must follow all rules. Tenants must pay for any damage or cleaning caused by their guests.</li>
+                        <li>(5) Children under 12 must be supervised at all times in the community. Subletting or allowing guests to live in the Unit permanently is not allowed.</li>
+                        <li>(6) Any adult guest staying over 7 days must register. If staying over 14 days, they must apply to be added to the lease. This is a violation if ignored. Always follow the maximum occupancy rule.</li>
+                        <li>(7) Proper clothing is required outside the Unit or in shared areas. No bare feet or shirtless guests outside, except in the pool area. Alcohol is not allowed in hallways or shared areas.</li>
+                        <li>(8) Airbnb, Vrbo, or other short-term rentals are strictly banned. Violating this will result in eviction and loss of the security deposit.</li>
+                        <li>(9) Tenants and guests must obey traffic signs in the community. Speed limit is 5 mph.</li>
+                        <li>(10) Pets must not be left alone on balconies. Tenants must follow pet rules in amenity areas.</li>
+                    </ul>
+                </div>
+            </details>
+            <details class="rule-card">
+                <summary class="rule-summary"><i class="icon fas fa-shield-alt"></i>Safety, Fire Prevention, and Hazards</summary>
+                <div class="rule-content">
+                    <ul>
+                        <li>(1) Tenants must not store or do anything in the Unit that increases fire risk. No gas-powered vehicles, tools, or grills (of any kind) are allowed in Units, balconies, or shared areas.</li>
+                        <li>(2) Tenants are not allowed on building roofs.</li>
+                        <li>(3) No smoking or vaping inside buildings or within 15 feet (4.5 m) of any entrance.</li>
+                        <li>(4) Smoke detectors must not be disabled or have batteries removed.</li>
+                        <li>(5) Illegal drugs or drug items are not allowed.</li>
+                        <li>(6) Lethal weapons must not be displayed or used outside the Unit. This includes guns, hunting knives, switchblades, machetes, and similar.</li>
+                    </ul>
+                </div>
+            </details>
+            <details class="rule-card">
+                <summary class="rule-summary"><i class="icon fas fa-tools"></i>Facilities, Maintenance, and Modifications</summary>
+                <div class="rule-content">
+                    <ul>
+                        <li>(1) Tenants must not operate building utilities or enter utility rooms without written permission. Balconies can't be used for storage (beds, beach items, sports gear, etc.).</li>
+                        <li>(2) Do not block doors, hallways, stairs, exits, driveways, or fire lanes. Nothing may be stored under stairs.</li>
+                        <li>(3) No screws, holes, or wall damage allowed. You may hang pictures only using small “Bulldog” hooks or push pins. No tape or glue.</li>
+                        <li>(4) Furniture may not be moved into shared areas. Do not install your own blinds or curtains. Only landlord-provided blinds are allowed.</li>
+                        <li>(5) Do not paint, wallpaper, or decorate without written permission. Even with approval, you must pay to restore the Unit.</li>
+                        <li>(6) Vehicles and bikes may not block driveways or be on grass or sidewalks. Bikes are not allowed inside the Unit without approval. No car repair, oil changes, or car washing on the property. Oil leaks must be cleaned at tenant’s expense.</li>
+                        <li>(7) Save water and energy. Report leaks. Don’t leave heaters on with windows open or leave electronics running unsupervised. Do not remove window screens.</li>
+                        <li>(8) No antennas, satellite dishes, or radio transmitters allowed.</li>
+                        <li>(9) Toilets, sinks, tubs, and showers are for hygiene only. Do not flush trash, wipes, or sanitary items. You’ll pay for clogs or damage.</li>
+                        <li>(10) Store personal items only inside your Unit or assigned space. No fuel or flammable materials may be stored. Landlord is not responsible for items left after move-out.</li>
+                        <li>(11) Do not leave bulky items (like furniture or appliances) by trash bins. Dispose of them properly or face a $500 fine.</li>
+                        <li>(12) Keep the Unit clean and sanitary.</li>
+                        <li>(13) Waterbeds, fish tanks, weight equipment, extra AC units, hot plates, space heaters, or personal washers/dryers are not allowed unless approved in writing.</li>
+                        <li>(14) No lofts allowed.</li>
+                        <li>(15) Landlord provides light bulbs at move-in. Tenants must replace them and leave working bulbs when moving out.</li>
+                        <li>(16) HVAC filters are replaced monthly by the landlord. Extra replacements are tenant’s responsibility. Damage due to missed replacements will be billed to the tenant.</li>
+                        <li>(17) Maintenance requests must be submitted through the Tenant Portal, with as much detail as possible. Tenants pay for damage caused by them or their guests.</li>
+                        <li>(18) Tenants must not change or add locks or combinations. A $50 fee applies for lost or damaged mailbox keys.</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+
+        <!-- Spanish Content -->
+        <div class="lang lang-es space-y-5" style="display:none;">
+            <details class="rule-card"> 
+                <summary class="rule-summary"><i class="icon fas fa-gavel"></i>Uso residencial y conducta de los inquilinos</summary>
+                <div class="rule-content">
+                    <ul>
+                        <li>(1) El Inquilino utilizará la Vivienda únicamente con fines residenciales; no llevará a cabo ningún negocio en o desde su Vivienda; cumplirá todas las leyes, ordenanzas y reglamentos sanitarios; y no hará nada que pueda dañar la reputación o el estado del edificio o de su propietario. Queda prohibida en todo momento cualquier forma de solicitación por parte de huéspedes o inquilinos.</li>
+                        <li>(2) Los inquilinos respetarán el derecho de los demás inquilinos/ocupantes del edificio a la paz y tranquilidad y no los molestarán de forma irrazonable gritando o elevando la voz, con ruidos, música, radios, televisores, olores u otras molestias. Las horas de silencio serán de 11 p. m. a 7 a. m.</li>
+                        <li>(3) Se prohíbe toda conducta abusiva, desordenada, violenta o de acoso por parte de un inquilino, incluidos, entre otros, el lenguaje ofensivo y/o soez y los comentarios sexualmente explícitos hacia otros inquilinos, ocupantes o la administración, lo cual constituye causa de terminación inmediata del arrendamiento. Del mismo modo, queda prohibido todo acto de vandalismo cometido por un inquilino en la propiedad del arrendador.</li>
+                        <li>(4) Los inquilinos son responsables del comportamiento de todos sus invitados, visitantes e invitados especiales. Dichas personas no podrán incumplir el Contrato de Arrendamiento ni estas Reglas y Reglamentos. Los inquilinos deberán pagar por los daños o la limpieza que resulten de la conducta de sus invitados.</li>
+                        <li>(5) Los hijos de los inquilinos menores de 12 años NO podrán quedar sin supervisión dentro de la comunidad en ningún momento. El inquilino no podrá subarrendar la Vivienda ni permitir que un invitado resida permanentemente en ella.</li>
+                        <li>(6) Cualquier invitado adulto que permanezca en la Vivienda más de 7 días deberá registrarse; si su estancia supera los 14 días, deberá presentar una solicitud de arrendamiento. Ignorar esta disposición se considerará una violación del contrato. Antes de permitir que un invitado se aloje más de 7 días, se deberá respetar el límite de ocupación permitido.</li>
+                        <li>(7) Los inquilinos y sus invitados deberán vestir ropa adecuada al transitar fuera de su unidad o en cualquier área común de la propiedad. No se permite andar descalzo ni sin camisa en las áreas exteriores, salvo en la zona designada de la piscina. No se permite el consumo de bebidas alcohólicas fuera de los edificios, en áreas comunes o pasillos.</li>
+                        <li>(8) El inquilino no podrá alojar huéspedes mediante Airbnb, Vrbo o cualquier programa similar de alquiler vacacional. El uso de dichos servicios está estrictamente prohibido y constituye una violación del contrato, lo que conllevará a la terminación inmediata del mismo, desalojo y pérdida del depósito de seguridad.</li>
+                        <li>(9) Tanto los inquilinos como sus invitados deben respetar la señalización de tránsito dentro de la comunidad. El límite de velocidad es de cinco (5) mph.</li>
+                        <li>(10) No se permite dejar mascotas sin supervisión en el balcón. Los inquilinos deben respetar los reglamentos establecidos en las zonas de amenities.</li>
+                    </ul>
+                </div>
+            </details>
+            <details class="rule-card">
+                <summary class="rule-summary"><i class="icon fas fa-shield-alt"></i>Seguridad, prevención de incendios y riesgos</summary>
+                <div class="rule-content">
+                    <ul>
+                        <li>(1) Los inquilinos no harán ni guardarán nada en la Vivienda que incremente el riesgo de incendio o que contravenga normas de seguridad. No se permitirá almacenar motocicletas, bicicletas, scooters, vehículos, equipos, herramientas o aparatos de motor a gasolina. Se prohíben las parrillas alimentadas por cualquier tipo de combustible (propano, gas natural, carbón, leña, pellets, electricidad, etc.) en la Vivienda, balcones y áreas comunes.</li>
+                        <li>(2) Los inquilinos no podrán acceder al techo de los edificios por ningún motivo.</li>
+                        <li>(3) No se permite fumar ni vapear dentro de los edificios ni a menos de quince (15) pies (4.5 m) de cualquier entrada.</li>
+                        <li>(4) Los inquilinos no deberán retirar ni desactivar de ninguna manera las baterías de los detectores de humo.</li>
+                        <li>(5) Queda prohibida la posesión, venta o consumo de drogas ilegales o parafernalia relacionada en la Vivienda o el edificio.</li>
+                        <li>(6) Se prohíbe exhibir, mostrar o utilizar armas letales en cualquier lugar fuera de la Vivienda. “Arma letal” se define como cualquier objeto que pueda causar la muerte o lesiones corporales graves, incluyendo armas de fuego, cuchillos de caza, navajas automáticas, arcos y flechas, machetes, entre otros.</li>
+                    </ul>
+                </div>
+            </details>
+            <details class="rule-card">
+                <summary class="rule-summary"><i class="icon fas fa-tools"></i>Instalaciones, mantenimiento y modificaciones</summary>
+                <div class="rule-content">
+                    <ul>
+                        <li>(1) Salvo los controles dentro de la Vivienda destinados al uso del inquilino, este no operará ningún otro control de los servicios del edificio sin autorización previa y por escrito del arrendador. Esto incluye calefacción, aire acondicionado, agua, electricidad, gas y otros. No se permitirá el uso de balcones como almacenamiento (camas, bicicletas, neveras, equipo deportivo, tendederos, escobas, etc.).</li>
+                        <li>(2) Los inquilinos no obstruirán entradas, áreas públicas, pasillos, corredores, escaleras, salidas, vestíbulos, estacionamientos ni salidas de emergencia. Está prohibido almacenar pertenencias detrás de escaleras, incluidos muebles o bicicletas.</li>
+                        <li>(3) No se permite clavar tornillos ni perforar paredes, suelos, techos o carpintería. Se pueden colgar cuadros únicamente con colgadores pequeños tipo “Bulldog” tamaño “a” o chinchetas. Se prohíbe el uso de cinta adhesiva, pegamento u otros adhesivos.</li>
+                        <li>(4) No se podrá sacar mobiliario de la Vivienda ni colocarlo en áreas comunes sin permiso escrito del arrendador. Tampoco se permite instalar persianas, cortinas o mosquiteros distintos de los proporcionados por el arrendador.</li>
+                        <li>(5) No se permite pintar, empapelar, barnizar ni decorar sin autorización por escrito. Todos los costos de restauración correrán a cargo del inquilino, aun si hubo permiso.</li>
+                        <li>(6) Ningún vehículo o bicicleta podrá obstruir accesos ni estacionarse sobre césped o áreas no autorizadas. No se permite ingresar bicicletas a la Vivienda sin autorización previa. Se prohíbe reparar, lubricar o lavar vehículos en el estacionamiento. El inquilino será responsable de cualquier daño causado por fuga de aceite o líquidos.</li>
+                        <li>(7) Los inquilinos deberán conservar el uso de agua y energía, y notificar de fugas o goteos. No deberán dejar ventanas abiertas en invierno ni dispositivos encendidos sin supervisión. No deben remover mosquiteros, ni siquiera temporalmente.</li>
+                        <li>(8) Se prohíbe la instalación de antenas, platos satelitales o transmisores de radio en la Vivienda.</li>
+                        <li>(9) Los sanitarios, bañeras, duchas y lavabos deberán usarse solo para su propósito original. Está prohibido arrojar basura, trapos, toallas sanitarias u otros desechos. El inquilino asumirá los costos por desatascos o reparaciones causados por mal uso.</li>
+                        <li>(10) Los inquilinos deberán guardar sus pertenencias únicamente en su Vivienda o en el espacio asignado por el arrendador. Está prohibido almacenar materiales inflamables o explosivos. El arrendador no será responsable de pertenencias dejadas al terminar el contrato.</li>
+                        <li>(11) No se podrán colocar muebles, colchones ni objetos voluminosos en los contenedores de basura o en sus alrededores. Estos deben desecharse conforme a las normas de la Ciudad de Hialeah y el Condado de Miami-Dade. La infracción conllevará una multa de 500,00 USD.</li>
+                        <li>(12) Los inquilinos deben mantener la Vivienda en condiciones limpias, ordenadas y sanitarias.</li>
+                        <li>(13) Se prohíben camas de agua, acuarios, equipos de pesas, aires acondicionados adicionales, hornillos, estufas eléctricas, lavadoras, secadoras o refrigeradores no provistos por el arrendador, salvo autorización por escrito.</li>
+                        <li>(14) Se prohíben los altillos (lofts) en la Vivienda.</li>
+                        <li>(15) El arrendador proporciona bombillas al inicio del contrato. Los inquilinos deberán reemplazarlas durante su estancia y dejar todas las bombillas funcionando al finalizar el arrendamiento.</li>
+                        <li>(16) El arrendador reemplazará el filtro del sistema HVAC cada 30 días. Si se requiere un reemplazo adicional, será responsabilidad del inquilino. El daño causado por negligencia será cargado como renta adicional.</li>
+                        <li>(17) Las solicitudes de mantenimiento deberán realizarse por escrito a través del Portal del Inquilino, incluyendo todos los detalles posibles. Los inquilinos deberán reembolsar los costos de cualquier daño causado por el incumplimiento de estas reglas.</li>
+                        <li>(18) Los inquilinos no añadirán ni cambiarán cerraduras ni combinaciones. Se cobrará una tarifa de 50,00 USD por la reposición de llaves de buzón perdidas o dañadas.</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+
+        <!-- Back Button (Single, outside language divs) -->
+        <div class="mt-8 text-center footer-links">
+            <a href="index.html" id="back-to-home-link">
+                <i class="fas fa-arrow-left mr-2"></i><span id="back-to-home-text">Back to Home</span>
+            </a>
+        </div>
     </div>
 
-    <!-- English Content -->
-    <div class="lang lang-en space-y-5">
-      <details class="card">
-        <summary><i class="fas fa-gavel"></i>Use & Conduct in Premises</summary>
-        <div class="content">
-          <ul>
-            <li>Residential use only. No commercial activity or solicitation. Follow all applicable laws.</li>
-            <li>No shouting, loud music, strong odors, or harassment. Quiet hours: 11:00 PM–7:00 AM.</li>
-            <li>Tenants are responsible for their guests’ actions and any damages.</li>
-            <li>Children under 12 must be supervised. Guest stays: over 7 days register; over 14 days apply for tenancy; max 2 adults per bedroom + 1 child.</li>
-          </ul>
+    <!-- Footer (Single, outside language divs) -->
+    <footer class="portal-footer">
+        <div class="footer-text">
+            <i class="fas fa-mobile-alt"></i> (305) 822-9469 &nbsp;
         </div>
-      </details>
-      <details class="card">
-        <summary><i class="fas fa-shield-alt"></i>Safety & Storage</summary>
-        <div class="content">
-          <ul>
-            <li>No flammable storage (e.g., gas-powered items, grills) in units, balconies, or common areas.</li>
-            <li>No access to utility areas or equipment without permission.</li>
-            <li>No items stored in hallways, entrances, stairwells, or public areas.</li>
-            <li>No drilling, screwing, or adhesives without permission; only approved hanging tools allowed.</li>
-            <li>Pets on balconies must be supervised at all times.</li>
-          </ul>
+        <div class="footer-text email"> <!-- It was footertext, changed to footer-text for consistency -->
+            <i class="fas fa-envelope"></i> info@liveatemeraldbay.com
         </div>
-      </details>
-      <details class="card">
-        <summary><i class="fas fa-key"></i>Access & Property Standards</summary>
-        <div class="content">
-          <ul>
-            <li>No altering locks. $50 fee for lost or damaged mailbox keys.</li>
-            <li>No furniture stored in public areas. Only landlord-approved window coverings allowed.</li>
-            <li>No lawn parking, blocking, or repairs on premises. Clean leaks and remove vehicles.</li>
-            <li>Report leaks; conserve energy; do not remove screens.</li>
-            <li>Antennas or satellite dishes prohibited without written consent.</li>
-          </ul>
+        <div class="footer-text">
+            © <span id="currentYear"></span> Emerald Bay. All Rights Reserved.
         </div>
-      </details>
-      <details class="card">
-        <summary><i class="fas fa-wrench"></i>Plumbing, Storage & Disposal</summary>
-        <div class="content">
-          <ul>
-            <li>Only toilet paper allowed in toilets. Tenants liable for misuse.</li>
-            <li>No flammable storage; landlord not responsible for items after lease ends.</li>
-            <li>$500 fine for improper bulky waste disposal (furniture/appliances).</li>
-            <li>Maintain units clean and sanitary.</li>
-            <li>No exterior signage or decor without permission.</li>
-          </ul>
+        <div class="footer-links mt-2">
+             <a href="#top">Back to Top</a>
         </div>
-      </details>
-      <details class="card">
-        <summary><i class="fas fa-ban"></i>Restricted Behaviors & Substances</summary>
-        <div class="content">
-          <ul>
-            <li>Roof access strictly prohibited.</li>
-            <li>No waterbeds, aquariums, or unauthorized equipment.</li>
-            <li>Lofts not allowed.</li>
-            <li>No smoking indoors or within 15 feet of any building.</li>
-            <li>Do not tamper with, disable, or remove batteries from smoke detectors.</li>
-            <li>No possession, use, or sale of illegal drugs.</li>
-          </ul>
-        </div>
-      </details>
-      <details class="card">
-        <summary><i class="fas fa-tshirt"></i>Maintenance, Clothing & Parking</summary>
-        <div class="content">
-          <ul>
-            <li>Light bulbs provided at move-in; tenant responsible thereafter.</li>
-            <li>Landlord changes HVAC filters monthly; additional changes are tenant’s responsibility.</li>
-            <li>No display or use of firearms, knives, or similar weapons on property.</li>
-            <li>Proper attire required in public areas. No shirtless or barefoot individuals (except pool); no public alcohol use.</li>
-            <li>No commercial vehicles, boats, or RVs; guest parking requires visible passes; speed limit: 5 MPH.</li>
-          </ul>
-        </div>
-      </details>
-      <details class="card">
-        <summary><i class="fas fa-toolbox"></i>Maintenance & Rentals</summary>
-        <div class="content">
-          <ul>
-            <li>Submit maintenance requests via Tenant Portal. Tenant responsible for damages from violations.</li>
-            <li>Short-term rentals (e.g., Airbnb, Vrbo) strictly prohibited; violation leads to immediate termination and deposit forfeiture.</li>
-          </ul>
-        </div>
-      </details>
-      <details class="card">
-        <summary><i class="fas fa-recycle"></i>Trash & Recycling Rules</summary>
-        <div class="content">
-          <ul>
-            <li>All trash must be securely bagged before disposal.</li>
-            <li>Do not place boxes in the chute; flatten and place in the designated first-floor waste room.</li>
-            <li>Follow recycling regulations; no toxic or combustible materials.</li>
-            <li>No car batteries, oils, or petroleum-based products.</li>
-            <li>No furniture or appliances near trash areas.</li>
-            <li>Keep all trash areas clean and free of litter.</li>
-          </ul>
-        </div>
-      </details>
-    </div>
+    </footer>
 
-    <!-- Spanish Content -->
-    <div class="lang lang-es space-y-5" style="display:none;">
-      <details class="card">
-        <summary><i class="fas fa-gavel"></i>Uso y Conducta en las Instalaciones</summary>
-        <div class="content">
-          <ul>
-            <li>Solo uso residencial. No actividades comerciales o solicitudes. Cumpla con las leyes aplicables.</li>
-            <li>No gritar, música alta, olores fuertes ni acoso. Horas de silencio: 11:00 PM–7:00 AM.</li>
-            <li>Los inquilinos son responsables de las acciones de sus invitados y de cualquier daño.</li>
-            <li>Niños menores de 12 años deben estar supervisados. Estancias: >7 días registrarse; >14 días solicitar arrendamiento; máximo 2 adultos por habitación + 1 niño.</li>
-          </ul>
-        </div>
-      </details>
-      <details class="card">
-        <summary><i class="fas fa-shield-alt"></i>Seguridad y Almacenamiento</summary>
-        <div class="content">
-          <ul>
-            <li>No almacenar materiales inflamables (p. ej., artículos a gas, parrillas) en unidades, balcones o áreas comunes.</li>
-            <li>No acceder a áreas de servicios o equipos sin permiso.</li>
-            <li>No almacenar artículos en pasillos, entradas, escaleras o áreas públicas.</li>
-            <li>No perforar, atornillar o usar adhesivos sin permiso; sólo se permiten herramientas de colgado aprobadas.</li>
-            <li>Las mascotas en balcones deben ser supervisadas en todo momento.</li>
-          </ul>
-        </div>
-      </details>
-      <details class="card">
-        <summary><i class="fas fa-key"></i>Acceso y Estándares de la Propiedad</summary>
-        <div class="content">
-          <ul>
-            <li>No cambiar cerraduras. Cargo de $50 por llaves de buzón perdidas o dañadas.</li>
-            <li>No almacenar muebles en áreas públicas. Sólo se permiten cortinas aprobadas por el arrendador.</li>
-            <li>No estacionar en césped, bloquear o realizar reparaciones en las instalaciones. Limpie fugas y retire vehículos.</li>
-            <li>Reporte fugas; conserve energía; no retire las pantallas.</li>
-            <li>Antenas o platos satelitales prohibidos sin consentimiento por escrito.</li>
-          </ul>
-        </div>
-      </details>
-      <details class="card">
-        <summary><i class="fas fa-wrench"></i>Fontanería, Almacenamiento y Eliminación</summary>
-        <div class="content">
-          <ul>
-            <li>Solo papel sanitario permitido en los inodoros. Los inquilinos son responsables por mal uso.</li>
-            <li>No almacenar materiales inflamables; el arrendador no es responsable por artículos después de terminar el contrato.</li>
-            <li>Multa de $500 por eliminación inadecuada de residuos voluminosos (muebles/electrodomésticos).</li>
-            <li>Mantener las unidades limpias y sanitarias.</li>
-            <li>No colocar señalización o decoraciones exteriores sin permiso.</li>
-          </ul>
-        </div>
-      </details>
-      <details class="card">
-        <summary><i class="fas fa-ban"></i>Conductas y Sustancias Restringidas</summary>
-        <div class="content">
-          <ul>
-            <li>Acceso al techo estrictamente prohibido.</li>
-            <li>No usar camas de agua, acuarios u equipos no autorizados.</li>
-            <li>No se permiten lofts.</li>
-            <li>No fumar en interiores ni a menos de 15 pies de cualquier edificio.</li>
-            <li>No manipular, desactivar o quitar baterías de detectores de humo.</li>
-            <li>No poseer, usar o vender drogas ilegales.</li>
-          </ul>
-        </div>
-      </details>
-      <details class="card">
-        <summary><i class="fas fa-tshirt"></i>Mantenimiento, Vestimenta y Estacionamiento</summary>
-        <div class="content">
-          <ul>
-            <li>Se proporcionan bombillas al mudarse; el inquilino es responsable posteriormente.</li>
-            <li>El arrendador cambia filtros de HVAC mensualmente; cambios adicionales son responsabilidad del inquilino.</li>
-            <li>No exhibir ni usar armas de fuego, cuchillos u otras armas similares en la propiedad.</li>
-            <li>Se requiere ropa adecuada en áreas públicas. No sin camisa ni descalzos (excepto en la piscina); no se permite consumo de alcohol en público.</li>
-            <li>No estacionar vehículos comerciales, embarcaciones o vehículos recreativos; el estacionamiento para invitados requiere pases visibles; límite de velocidad: 5 MPH.</li>
-          </ul>
-        </div>
-      </details>
-      <details class="card">
-        <summary><i class="fas fa-toolbox"></i>Mantenimiento y Alquileres</summary>
-        <div class="content">
-          <ul>
-            <li>Envíe solicitudes de mantenimiento a través del Portal de Inquilinos. El inquilino es responsible for daños por violaciones.</li>
-            <li>Los alquileres a corto plazo (p. ej., Airbnb, Vrbo) están estrictamente prohibidos; su violación conlleva terminación inmediata y pérdida del depósito.</li>
-          </ul>
-        </div>
-      </details>
-      <details class="card">
-        <summary><i class="fas fa-recycle"></i>Reglas de Basura y Reciclaje</summary>
-        <div class="content">
-          <ul>
-            <li>Toda la basura debe colocarse en bolsas cerradas antes de desechar.</li>
-            <li>No coloque cajas en la tolva; aplánelas y colóquelas en la sala de residuos designada del primer piso.</li>
-            <li>Siga las normas de reciclaje; no coloque materiales tóxicos o combustibles.</li>
-            <li>No deseche baterías de automóvil, aceites o productos derivados del petróleo.</li>
-            <li>No deje muebles o electrodomésticos cerca de las áreas de basura.</li>
-            <li>Maintenga todas las áreas de basura limpias y sin desechos.</li>
-          </ul>
-        </div>
-      </details>
-      <!-- Back Button -->
-      <div class="mt-8 text-center">
-        <a href="index.html" class="text-emerald-600 hover:underline"><i class="fas fa-arrow-left mr-2"></i>Volver al inicio</a>
-      </div>
-      <!-- Footer -->
-      <footer class="bg-white py-6 text-center border-t">
-        <p class="text-sm text-gray-500"><i class="fas fa-phone-alt mr-1"></i> (305)822-9469 | <i class="fas fa-envelope ml-2 mr-1"></i> info@liveatemeraldbay.com</p>
-        <p class="text-xs text-gray-400 mt-2">© 2025 Emerald Bay. Todos los derechos reservados.</p>
-      </footer>
-    </div>
+    <script>
+        function updateBackToHomeText(lang) {
+            const linkTextElement = document.getElementById('back-to-home-text');
+            if (lang === 'es') {
+                linkTextElement.textContent = 'Volver al inicio';
+            } else {
+                linkTextElement.textContent = 'Back to Home';
+            }
+        }
 
-    <!-- Back Button for English -->
-    <div class="mt-8 text-center lang lang-en">
-      <a href="index.html" class="text-emerald-600 hover:underline"><i class="fas fa-arrow-left mr-2"></i>Back to Home</a>
-    </div>
-  </div>
+        function setActiveLanguage(lang) {
+            document.querySelectorAll('.lang').forEach(el => {
+                el.style.display = 'none';
+            });
+            // Special handling for the disclaimer note paragraphs
+            if (lang === 'en') {
+                document.querySelector('.disclaimer-note-container .lang-en').style.display = 'block';
+                document.querySelector('.disclaimer-note-container .lang-es').style.display = 'none';
+            } else { // 'es'
+                document.querySelector('.disclaimer-note-container .lang-en').style.display = 'none';
+                document.querySelector('.disclaimer-note-container .lang-es').style.display = 'block';
+            }
 
-  <script>
-    function setActiveLanguage(lang) {
-      document.querySelectorAll('.lang').forEach(el => el.style.display = 'none');
-      document.querySelector(`.lang-${lang}`).style.display = 'block';
-      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-      document.getElementById(`${lang}-btn`).classList.add('active');
-    }
-    setActiveLanguage('en');
-    document.getElementById('en-btn').addEventListener('click', () => setActiveLanguage('en'));
-    document.getElementById('es-btn').addEventListener('click', () => setActiveLanguage('es'));
-  </script>
+            // Handle main content sections
+            // Hide all main language content divs first
+            document.querySelectorAll('div.lang-en, div.lang-es').forEach(el => {
+                if (!el.parentElement.classList.contains('disclaimer-note-container')) {
+                    el.style.display = 'none';
+                }
+            });
+            // Display the selected language's main content div
+            const activeLangDiv = document.querySelector(`div.lang-${lang}:not(.disclaimer-note-container .lang)`);
+            if (activeLangDiv) {
+                 activeLangDiv.style.display = 'block';
+            }
+
+
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(`${lang}-btn`).classList.add('active');
+            localStorage.setItem('preferredLanguage', lang);
+            updateBackToHomeText(lang);
+        }
+        
+        // Wait for the DOM to be fully loaded before running scripts that interact with it.
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+            const preferredLang = localStorage.getItem('preferredLanguage') || 'en';
+            setActiveLanguage(preferredLang);
+
+            document.getElementById('en-btn').addEventListener('click', () => setActiveLanguage('en'));
+            document.getElementById('es-btn').addEventListener('click', () => setActiveLanguage('es'));
+
+            // --- New Scrolling Logic ---
+            // Get all the 'details' elements that represent rule cards
+            const ruleCards = document.querySelectorAll('details.rule-card');
+
+            ruleCards.forEach(card => {
+                // Add an event listener for the 'toggle' event.
+                // This event fires when the 'open' state of the <details> element changes.
+                card.addEventListener('toggle', function(event) {
+                    // 'this' refers to the <details> element that was toggled.
+                    if (this.open) {
+                        // If the card was opened, scroll it into view.
+                        // 'behavior: smooth' makes the scroll animated.
+                        // 'block: start' aligns the top of the card with the top of the viewport.
+                        this.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+            // --- End of New Scrolling Logic ---
+        });
+    </script>
 </body>
 </html>
-
