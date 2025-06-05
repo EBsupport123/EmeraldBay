@@ -1,205 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Emerald Bay Community</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
-    
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: #f8fafc;
-    }
-    
-    .card {
-      transition: all 0.3s ease;
-      border-left: 4px solid #10b981;
-    }
-    
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    }
-    
-    .lang-btn.active {
-      background-color: #10b981;
-      color: white;
-    }
-    
-    .header-gradient {
-      background: linear-gradient(135deg, #10b981 0%, #047857 100%);
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emerald Bay Community Portal</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-pIVP8xVwZRKfZ7GXPDx2E7djVZtNQ7QYpQEvGWRn8X20kcvUDEpJpNnGHScxXKb3HSZjlpQjE7i4vMZ3HVpJvw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f9fafb; /* Light gray background */
+            color: #1f2937; /* Dark gray text */
+            scroll-behavior: smooth;
+        }
+
+        /* Header styles */
+        header {
+            background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%); /* Teal gradient */
+            color: #ffffff; /* White text */
+            padding: 2rem 1rem; /* Responsive padding */
+        }
+        .header-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        /* Applied Tailwind classes for responsive font size directly in HTML for header-title and header-subtitle */
+        .header-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .header-subtitle {
+            text-transform: uppercase;
+            opacity: 0.85;
+            letter-spacing: 2px;
+        }
+
+        /* Language switcher styles */
+        .lang-switch {
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Vertically align items if they wrap */
+            flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+            margin: 1.5rem 0;
+            padding: 0 1rem; /* Add padding for small screens */
+        }
+        .lang-btn {
+            padding: 0.6rem 1.2rem; /* Slightly increased padding */
+            border-radius: 9999px; /* Pill shape */
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 500; /* medium */
+            border: 1px solid #d1d5db; /* Gray border */
+            background-color: #ffffff; /* White background */
+            color: #374151; /* Dark gray text */
+            cursor: pointer;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+            display: inline-flex; /* Align icon and text */
+            align-items: center;
+            gap: 0.5rem; /* Space between icon and text */
+            margin: 0.25rem; /* Add small margin for wrapped buttons */
+        }
+        .lang-btn.active {
+            background-color: #047857; /* Darker teal for active */
+            color: #ffffff; /* White text */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .lang-btn:hover:not(.active) { /* Hover effect only for non-active buttons */
+            background-color: #f3f4f6; /* Light gray hover */
+        }
+
+        /* Card container styles */
+        .card-container {
+            max-width: 700px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding: 0 1rem; /* Horizontal padding */
+        }
+
+        /* Card styles */
+        .card {
+            background-color: #ffffff; /* White background */
+            border-radius: 0.75rem; /* Rounded corners */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+            display: flex;
+            align-items: flex-start; /* Align items to the top for potentially multi-line titles */
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        .card:hover {
+            transform: translateY(-5px); /* Slightly more lift */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+        }
+        .card-icon {
+            font-size: 1.75rem; /* Slightly larger icon */
+            color: #047857; /* Darker teal */
+            margin-right: 1.25rem; /* More space next to icon */
+            flex-shrink: 0;
+            opacity: 0.9;
+            transition: opacity 0.2s ease;
+            margin-top: 0.125rem; /* Align icon better with text if text wraps */
+        }
+        .card:hover .card-icon { /* Icon opacity change on card hover */
+            opacity: 1;
+        }
+        .card-content {
+            flex: 1;
+        }
+        /* Applied Tailwind classes for responsive font size directly in HTML for card-title, card-description, card-link */
+        .card-title {
+            font-weight: 600; /* semibold */
+            margin-bottom: 0.35rem; /* Adjusted margin */
+        }
+        .card-description {
+            color: #6b7280; /* Medium gray text */
+            margin-bottom: 1rem; /* More space before link */
+            line-height: 1.6; /* Improved readability */
+        }
+        .card-link {
+            font-weight: 600; /* Semibold for link */
+            color: #047857; /* Darker teal */
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.2s ease;
+        }
+        .card-link:hover {
+            color: #065f46; /* Darken link on hover */
+        }
+        .card-link i {
+            margin-left: 0.35rem; /* Space before arrow */
+            font-size: 0.8rem; /* Adjusted arrow size */
+            transition: transform 0.2s ease;
+        }
+        .card-link:hover i {
+            transform: translateX(3px); /* Arrow moves slightly on hover */
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #e5e7eb; /* Lighter gray for footer background */
+            padding: 2rem 1rem; /* Increased padding */
+            text-align: center;
+            border-top: 1px solid #d1d5db; /* Slightly darker border */
+            margin-top: 3rem; /* More space above footer */
+        }
+        .footer-text {
+            font-size: 0.875rem; /* text-sm */
+            color: #4b5563; /* Darker gray for footer text for better contrast */
+            margin-bottom: 0.5rem; /* Space between lines */
+        }
+        .footer-text i {
+            margin: 0 0.3rem;
+            color: #059669; /* Teal icon color */
+        }
+        .footer-links a {
+            color: #059669;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
 </head>
-<body class="min-h-screen flex flex-col">
-  <div class="max-w-2xl mx-auto px-4 py-8 w-full flex-grow">
-    <!-- Header -->
-    <header class="header-gradient text-white py-8 rounded-xl shadow-lg mb-8 text-center">
-      <div class="max-w-md mx-auto px-4">
-        <h1 class="text-4xl font-bold tracking-wide mb-2" style="font-family: 'Playfair Display', serif;">EMERALD BAY</h1>
-        <p class="text-sm opacity-90 uppercase tracking-wider">Community Information Portal</p>
-      </div>
+<body class="antialiased"> <!-- Added antialiasing for smoother fonts -->
+
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <!-- Using Tailwind responsive text classes -->
+            <h1 class="header-title text-3xl sm:text-4xl lg:text-5xl">Emerald Bay</h1>
+            <p class="header-subtitle text-sm sm:text-base">Community Information Portal</p>
+        </div>
     </header>
 
     <!-- Language Switcher -->
-    <div class="flex justify-center mb-8 bg-white rounded-full p-1 shadow-inner max-w-xs mx-auto">
-      <button id="en-btn" class="lang-btn px-4 py-2 rounded-full text-sm font-medium active">
-        <i class="fas fa-language mr-1"></i> English
-      </button>
-      <button id="es-btn" class="lang-btn px-4 py-2 rounded-full text-sm font-medium">
-        <i class="fas fa-language mr-1"></i> Español
-      </button>
+    <div class="lang-switch">
+        <!-- Updated icons to fas and added gap in button style -->
+        <button id="en-btn" class="lang-btn active">
+            <i class="fas fa-globe-americas"></i> English
+        </button>
+        <button id="es-btn" class="lang-btn">
+            <i class="fas fa-globe-americas"></i> Español
+        </button>
     </div>
 
-    <!-- English Content -->
-    <div class="lang lang-en space-y-5">
-      <a href="rules-general.html" class="card block bg-white p-6 rounded-lg shadow flex items-start space-x-5 hover:no-underline">
-        <div class="bg-emerald-50 p-3 rounded-full">
-          <i class="fas fa-building text-emerald-600 text-2xl"></i>
-        </div>
-        <div>
-          <h2 class="text-xl font-semibold text-gray-800 mb-1">General Building Rules</h2>
-          <p class="text-gray-500 text-sm">View community guidelines and regulations</p>
-          <div class="mt-3 text-emerald-600 font-medium flex items-center">
-            View Details <i class="fas fa-chevron-right ml-1 text-sm"></i>
-          </div>
-        </div>
-      </a>
+    <!-- Content Cards -->
+    <main class="card-container pb-8"> <!-- Added padding-bottom to main container -->
+        <!-- English Cards -->
+        <a href="General_Building_Rules.html" class="card lang lang-en">
+            <i class="card-icon fas fa-scroll"></i>
+            <div class="card-content">
+                <h2 class="card-title text-lg md:text-xl">General Building Rules</h2>
+                <p class="card-description text-sm">View community guidelines and regulations</p>
+                <span class="card-link text-sm">View Details<i class="fas fa-arrow-right"></i></span>
+            </div>
+        </a>
+        <a href="rules-amenities.html" class="card lang lang-en">
+            <!-- CHANGED ICON for Amenity Rules -->
+            <i class="card-icon fas fa-building-shield"></i>
+            <div class="card-content">
+                <h2 class="card-title text-lg md:text-xl">Amenity Rules</h2>
+                <p class="card-description text-sm">Pool, gym, and common area regulations</p>
+                <span class="card-link text-sm">View Details<i class="fas fa-arrow-right"></i></span>
+            </div>
+        </a>
+        <a href="parking.html" class="card lang lang-en">
+            <i class="card-icon fas fa-parking"></i>
+            <div class="card-content">
+                <h2 class="card-title text-lg md:text-xl">Parking Regulations</h2>
+                <p class="card-description text-sm">Visitor and resident parking information</p>
+                <span class="card-link text-sm">View Details<i class="fas fa-arrow-right"></i></span>
+            </div>
+        </a>
+        <!-- REMOVED Enforcement Info Card for English -->
 
-      <a href="rules-amenities.html" class="card block bg-white p-6 rounded-lg shadow flex items-start space-x-5 hover:no-underline">
-        <div class="bg-emerald-50 p-3 rounded-full">
-          <i class="fas fa-th-large text-emerald-600 text-2xl"></i>
-        </div>
-        <div>
-          <h2 class="text-xl font-semibold text-gray-800 mb-1">Amenity Rules</h2>
-          <p class="text-gray-500 text-sm">Pool, gym, and common area regulations</p>
-          <div class="mt-3 text-emerald-600 font-medium flex items-center">
-            View Details <i class="fas fa-chevron-right ml-1 text-sm"></i>
-          </div>
-        </div>
-      </a>
+        <!-- Spanish Cards (initially hidden) -->
+        <a href="rules-general.html" class="card lang lang-es" style="display: none;">
+            <i class="card-icon fas fa-scroll"></i> <!-- Consistent icon with English version -->
+            <div class="card-content">
+                <h2 class="card-title text-lg md:text-xl">Reglas Generales del Edificio</h2>
+                <p class="card-description text-sm">Normas y regulaciones de la comunidad</p>
+                <span class="card-link text-sm">Ver Detalles<i class="fas fa-arrow-right"></i></span>
+            </div>
+        </a>
+        <a href="rules-amenities.html" class="card lang lang-es" style="display: none;">
+            <!-- CHANGED ICON for Normas de Amenidades -->
+            <i class="card-icon fas fa-building-shield"></i> <!-- Consistent icon -->
+            <div class="card-content">
+                <h2 class="card-title text-lg md:text-xl">Normas de Amenidades</h2>
+                <p class="card-description text-sm">Regulaciones para piscina, gimnasio y áreas comunes</p>
+                <span class="card-link text-sm">Ver Detalles<i class="fas fa-arrow-right"></i></span>
+            </div>
+        </a>
+        <a href="parking.html" class="card lang lang-es" style="display: none;">
+            <i class="card-icon fas fa-parking"></i> <!-- Consistent icon -->
+            <div class="card-content">
+                <h2 class="card-title text-lg md:text-xl">Regulaciones de Estacionamiento</h2>
+                <p class="card-description text-sm">Información para residentes y visitantes</p>
+                <span class="card-link text-sm">Ver Detalles<i class="fas fa-arrow-right"></i></span>
+            </div>
+        </a>
+        <!-- REMOVED Enforcement Info Card for Spanish -->
+    </main>
 
-      <a href="parking.html" class="card block bg-white p-6 rounded-lg shadow flex items-start space-x-5 hover:no-underline">
-        <div class="bg-emerald-50 p-3 rounded-full">
-          <i class="fas fa-parking text-emerald-600 text-2xl"></i>
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-text">
+            <i class="fas fa-mobile-alt"></i> (305) 822-9469 &nbsp;
         </div>
-        <div>
-          <h2 class="text-xl font-semibold text-gray-800 mb-1">Parking Regulations</h2>
-          <p class="text-gray-500 text-sm">Visitor and resident parking information</p>
-          <div class="mt-3 text-emerald-600 font-medium flex items-center">
-            View Details <i class="fas fa-chevron-right ml-1 text-sm"></i>
-          </div>
-        </div>
-      </a>
-
-      <a href="enforcement.html" class="card block bg-white p-6 rounded-lg shadow flex items-start space-x-5 hover:no-underline">
-        <div class="bg-emerald-50 p-3 rounded-full">
-          <i class="fas fa-car-crash text-emerald-600 text-2xl"></i>
-        </div>
-        <div>
-          <h2 class="text-xl font-semibold text-gray-800 mb-1">Enforcement Info</h2>
-          <p class="text-gray-500 text-sm">Violation procedures and fines</p>
-          <div class="mt-3 text-emerald-600 font-medium flex items-center">
-            View Details <i class="fas fa-chevron-right ml-1 text-sm"></i>
-          </div>
-        </div>
-      </a>
+          <div class="footer-text email">
+      <i class="fas fa-envelope"></i> info@liveatemeraldbay.com
     </div>
+        <div class="footer-text">
+            © <span id="currentYear"></span> Emerald Bay. All Rights Reserved.
+        </div>
+        <div class="footer-links mt-2">
+             <a href="#top">Back to Top</a>
+        </div>
+    </footer>
 
-    <!-- Spanish Content -->
-    <div class="lang lang-es space-y-5" style="display:none;">
-      <a href="rules-general.html" class="card block bg-white p-6 rounded-lg shadow flex items-start space-x-5 hover:no-underline">
-        <div class="bg-emerald-50 p-3 rounded-full">
-          <i class="fas fa-building text-emerald-600 text-2xl"></i>
-        </div>
-        <div>
-          <h2 class="text-xl font-semibold text-gray-800 mb-1">Reglas Generales del Edificio</h2>
-          <p class="text-gray-500 text-sm">Normas y regulaciones de la comunidad</p>
-          <div class="mt-3 text-emerald-600 font-medium flex items-center">
-            Ver Detalles <i class="fas fa-chevron-right ml-1 text-sm"></i>
-          </div>
-        </div>
-      </a>
+    <!-- Language Toggle Script -->
+    <script>
+        function setActiveLanguage(lang) {
+            document.querySelectorAll('.lang').forEach((section) => {
+                section.style.display = 'none';
+            });
+            document.querySelectorAll(`.lang-${lang}`).forEach((section) => {
+                section.style.display = 'flex';
+            });
+            document.querySelectorAll('.lang-btn').forEach((btn) => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(`${lang}-btn`).classList.add('active');
+            localStorage.setItem('preferredLanguage', lang);
+        }
 
-      <a href="rules-amenities.html" class="card block bg-white p-6 rounded-lg shadow flex items-start space-x-5 hover:no-underline">
-        <div class="bg-emerald-50 p-3 rounded-full">
-          <i class="fas fa-th-large text-emerald-600 text-2xl"></i>
-        </div>
-        <div>
-          <h2 class="text-xl font-semibold text-gray-800 mb-1">Normas de Amenidades</h2>
-          <p class="text-gray-500 text-sm">Regulaciones para piscina, gimnasio y áreas comunes</p>
-          <div class="mt-3 text-emerald-600 font-medium flex items-center">
-            Ver Detalles <i class="fas fa-chevron-right ml-1 text-sm"></i>
-          </div>
-        </div>
-      </a>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        const preferredLang = localStorage.getItem('preferredLanguage') || 'en';
+        setActiveLanguage(preferredLang);
 
-      <a href="parking.html" class="card block bg-white p-6 rounded-lg shadow flex items-start space-x-5 hover:no-underline">
-        <div class="bg-emerald-50 p-3 rounded-full">
-          <i class="fas fa-parking text-emerald-600 text-2xl"></i>
-        </div>
-        <div>
-          <h2 class="text-xl font-semibold text-gray-800 mb-1">Regulaciones de Estacionamiento</h2>
-          <p class="text-gray-500 text-sm">Información para residentes y visitantes</p>
-          <div class="mt-3 text-emerald-600 font-medium flex items-center">
-            Ver Detalles <i class="fas fa-chevron-right ml-1 text-sm"></i>
-          </div>
-        </div>
-      </a>
-
-      <a href="enforcement.html" class="card block bg-white p-6 rounded-lg shadow flex items-start space-x-5 hover:no-underline">
-        <div class="bg-emerald-50 p-3 rounded-full">
-          <i class="fas fa-car-crash text-emerald-600 text-2xl"></i>
-        </div>
-        <div>
-          <h2 class="text-xl font-semibold text-gray-800 mb-1">Información de Cumplimiento</h2>
-          <p class="text-gray-500 text-sm">Procedimientos y multas por violaciones</p>
-          <div class="mt-3 text-emerald-600 font-medium flex items-center">
-            Ver Detalles <i class="fas fa-chevron-right ml-1 text-sm"></i>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="bg-white py-6 text-center border-t">
-    <div class="max-w-md mx-auto px-4">
-      <p class="text-sm text-gray-500">
-        <i class="fas fa-phone-alt mr-1"></i> (305)822-9469 |
-        <i class="fas fa-envelope ml-2 mr-1"></i> info@liveatemeraldbay.com
-      </p>
-      <p class="text-xs text-gray-400 mt-2">© 2025 Emerald Bay. All Rights Reserved.</p>
-    </div>
-  </footer>
-
-  <!-- Toggle Script -->
-  <script>
-    function setActiveLanguage(lang) {
-      // Hide all language sections
-      document.querySelectorAll('.lang').forEach(el => {
-        el.style.display = 'none';
-      });
-      
-      // Show selected language
-      document.querySelector(`.lang-${lang}`).style.display = 'block';
-      
-      // Update button states
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      document.getElementById(`${lang}-btn`).classList.add('active');
-    }
-
-    // Initialize with English
-    setActiveLanguage('en');
-    
-    // Set up event listeners
-    document.getElementById('en-btn').onclick = () => setActiveLanguage('en');
-    document.getElementById('es-btn').onclick = () => setActiveLanguage('es');
-  </script>
+        document.getElementById('en-btn').addEventListener('click', () => setActiveLanguage('en'));
+        document.getElementById('es-btn').addEventListener('click', () => setActiveLanguage('es'));
+    </script>
 </body>
 </html>
