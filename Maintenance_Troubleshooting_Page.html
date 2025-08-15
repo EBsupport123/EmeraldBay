@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emerald Bay - Community Information Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'playfair': ['"Playfair Display"', 'serif'],
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        'emerald': {
+                            '50': '#ecfdf5',
+                            '100': '#d1fae5',
+                            '200': '#a7f3d0',
+                            '300': '#6ee7b7',
+                            '400': '#34d399',
+                            '500': '#10b981',
+                            '600': '#059669',
+                            '700': '#047857',
+                            '800': '#065f46',
+                            '900': '#064e3b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f9fafb;
+            color: #1f2937;
+            scroll-behavior: smooth;
+        }
+
+        /* Header styles */
+        .portal-header {
+            background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%);
+            color: #ffffff;
+            padding: 2rem 1rem;
+            border-radius: 0.75rem;
+            margin-bottom: 2rem;
+        }
+        .header-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .header-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .header-subtitle {
+            text-transform: uppercase;
+            opacity: 0.85;
+            letter-spacing: 2px;
+        }
+
+        /* Language switcher styles */
+        .lang-switch-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+            padding: 0 1rem;
+        }
+        .lang-btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: 1px solid #d1d5db;
+            background-color: #ffffff;
+            color: #374151;
+            cursor: pointer;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.25rem;
+        }
+        .lang-btn.active {
+            background-color: #047857;
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .lang-btn:hover:not(.active) {
+            background-color: #f3f4f6;
+        }
+
+        /* Card styles */
+        details.rule-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        details.rule-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        summary.rule-summary {
+            padding: 1.25rem 1.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #065f46;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            list-style: none;
+        }
+        summary.rule-summary::-webkit-details-marker {
+            display: none;
+        }
+        summary.rule-summary::marker {
+            display: none;
+        }
+        summary.rule-summary i.icon {
+            margin-right: 0.75rem;
+            color: #047857;
+            font-size: 1.25rem;
+        }
+        details[open] summary.rule-summary {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .rule-content {
+            padding: 0 1.5rem 1.25rem;
+            color: #374151;
+            font-size: 0.925rem;
+            line-height: 1.6;
+        }
+        .rule-content ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0.75rem 0;
+        }
+        .rule-content ul li {
+            margin-bottom: 1rem;
+            padding-left: 0;
+        }
+
+        /* Footer styles */
+        .portal-footer {
+            background-color: #e5e7eb;
+            padding: 2rem 1rem;
+            text-align: center;
+            border-top: 1px solid #d1d5db;
+            margin-top: 3rem;
+        }
+        .footer-text {
+            font-size: 0.875rem;
+            color: #4b5563;
+            margin-bottom: 0.5rem;
+        }
+        .footer-text i {
+            margin: 0 0.3rem;
+            color: #059669;
+        }
+        .footer-links a {
+            color: #059669;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            font-weight: 500;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="font-montserrat bg-gray-50">
+    <!-- Header -->
+    <header class="portal-header text-white text-center">
+        <div class="header-container">
+            <h1 class="header-title text-3xl sm:text-4xl">EMERALD BAY</h1>
+            <p class="header-subtitle text-sm sm:text-base">Maintenance Request Portal</p>
+        </div>
+    </header>
+
+    <!-- Language Switcher -->
+    <div class="lang-switch-container">
+        <button id="en-btn" class="lang-btn active"><i class="fas fa-globe-americas"></i> English</button>
+        <button id="es-btn" class="lang-btn"><i class="fas fa-globe-americas"></i> Español</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-3xl mx-auto px-4 py-8 w-full flex-grow">
+        <div class="space-y-5">
+            <!-- Maintenance Request Method Card -->
+            <div>
+                <details class="rule-card">
+                    <summary class="rule-summary"><i class="icon fas fa-mobile-alt"></i><span class="lang-en">Maintenance Request Method</span><span class="lang-es" style="display:none">Método de Solicitud de Mantenimiento</span></summary>
+                    <div class="rule-content">
+                        <!-- English Content -->
+                        <div class="lang-en space-y-4 text-gray-600">
+                            <p><span class="font-semibold text-emerald-700">All requests must be made through the Online Portal by AppFolio.</span></p>
+                            
+                            <div class="bg-emerald-50 p-4 rounded-lg">
+                                <h3 class="font-semibold text-emerald-700 mb-2">Request must include:</h3>
+                                <ul class="list-disc pl-5 space-y-1">
+                                    <li>Exact location of the issue</li>
+                                    <li>Detailed description of the problem</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h3 class="font-semibold text-gray-700 mb-2">Examples:</h3>
+                                <ul class="list-disc pl-5 space-y-1 italic">
+                                    <li>"In the master bedroom, left corner, there's a switch that doesn't work."</li>
+                                    <li>"In the second bathroom, the mirror light won't turn on."</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="space-y-2">
+                                <p><i class="fas fa-info-circle text-emerald-600 mr-2"></i> Each request should address only one issue.</p>
+                                <p><i class="fas fa-clock text-emerald-600 mr-2"></i> Response time: up to 24 hours, depending on priority and availability.</p>
+                                <p><i class="fas fa-exclamation-triangle text-emerald-600 mr-2"></i> Emergency cases are handled urgently.</p>
+                                <p><i class="fas fa-paw text-emerald-600 mr-2"></i> If there are pets, they must be in a safe area during service.</p>
+                            </div>
+                            
+                            <div class="flex flex-col sm:flex-row gap-4 mt-6">
+                                <a href="https://apps.apple.com/us/app/online-portal-by-appfolio/id1376350358" class="flex-1 bg-gray-900 text-white py-3 px-4 rounded-lg hover:bg-gray-800 transition-all duration-200 text-center font-medium shadow-sm hover:shadow">
+                                    <i class="fab fa-apple mr-2"></i> Download for iPhone
+                                </a>
+                                <a href="https://play.google.com/store/apps/details?id=com.appfolio.resident_portal&pcampaignid=web_share" class="flex-1 bg-emerald-600 text-white py-3 px-4 rounded-lg hover:bg-emerald-700 transition-all duration-200 text-center font-medium shadow-sm hover:shadow">
+                                    <i class="fab fa-google-play mr-2"></i> Download for Android
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Spanish Content -->
+                        <div class="lang-es space-y-4 text-gray-600" style="display:none">
+                            <p><span class="font-semibold text-emerald-700">Todas las solicitudes deben hacerse a través del Portal en Línea de AppFolio.</span></p>
+                            
+                            <div class="bg-emerald-50 p-4 rounded-lg">
+                                <h3 class="font-semibold text-emerald-700 mb-2">La solicitud debe incluir:</h3>
+                                <ul class="list-disc pl-5 space-y-1">
+                                    <li>Ubicación exacta del problema</li>
+                                    <li>Descripción detallada del problema</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h3 class="font-semibold text-gray-700 mb-2">Ejemplos:</h3>
+                                <ul class="list-disc pl-5 space-y-1 italic">
+                                    <li>"En la habitación principal, esquina izquierda, hay un interruptor que no funciona."</li>
+                                    <li>"En el segundo baño, la luz del espejo no enciende."</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="space-y-2">
+                                <p><i class="fas fa-info-circle text-emerald-600 mr-2"></i> Cada solicitud debe abordar solo un problema.</p>
+                                <p><i class="fas fa-clock text-emerald-600 mr-2"></i> Tiempo de respuesta: hasta 24 horas, dependiendo de la prioridad y disponibilidad.</p>
+                                <p><i class="fas fa-exclamation-triangle text-emerald-600 mr-2"></i> Los casos de emergencia se atienden con urgencia.</p>
+                                <p><i class="fas fa-paw text-emerald-600 mr-2"></i> Si hay mascotas, deben estar en un área segura durante el servicio.</p>
+                            </div>
+                            
+                            <div class="flex flex-col sm:flex-row gap-4 mt-6">
+                                <a href="https://apps.apple.com/us/app/online-portal-by-appfolio/id1376350358" class="flex-1 bg-gray-900 text-white py-3 px-4 rounded-lg hover:bg-gray-800 transition-all duration-200 text-center font-medium shadow-sm hover:shadow">
+                                    <i class="fab fa-apple mr-2"></i> Descargar para iPhone
+                                </a>
+                                <a href="https://play.google.com/store/apps/details?id=com.appfolio.resident_portal&pcampaignid=web_share" class="flex-1 bg-emerald-600 text-white py-3 px-4 rounded-lg hover:bg-emerald-700 transition-all duration-200 text-center font-medium shadow-sm hover:shadow">
+                                    <i class="fab fa-google-play mr-2"></i> Descargar para Android
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+            
+            <!-- Covered Services Card -->
+            <div>
+                <details class="rule-card">
+                    <summary class="rule-summary"><i class="icon fas fa-check-circle"></i><span class="lang-en">Maintenance Covered Services</span><span class="lang-es" style="display:none">Servicios Cubiertos por Mantenimiento</span></summary>
+                    <div class="rule-content">
+                        <div class="text-gray-600">
+                            <div>
+                                <h3 class="font-semibold text-emerald-700 mb-1"><span class="lang-en">HVAC Services</span><span class="lang-es" style="display:none">Servicios HVAC</span></h3>
+                                <ul class="pl-2">
+                                    <li class="flex items-center"><span class="inline-block w-5 h-5 border border-gray-300 rounded bg-emerald-100 mr-2 flex items-center justify-center"><i class="fas fa-check text-emerald-600 text-xs"></i></span><span class="lang-en">Air conditioning</span><span class="lang-es" style="display:none">Aire acondicionado</span></li>
+                                    <li class="flex items-center"><span class="inline-block w-5 h-5 border border-gray-300 rounded bg-emerald-100 mr-2 flex items-center justify-center"><i class="fas fa-check text-emerald-600 text-xs"></i></span><span class="lang-en">Monthly A/C filter change</span><span class="lang-es" style="display:none">Cambio mensual de filtro de A/C</span></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="mt-2">
+                                <h3 class="font-semibold text-emerald-700 mb-1"><span class="lang-en">Plumbing</span><span class="lang-es" style="display:none">Plomería</span></h3>
+                                <ul class="pl-2">
+                                    <li class="flex items-center"><span class="inline-block w-5 h-5 border border-gray-300 rounded bg-emerald-100 mr-2 flex items-center justify-center"><i class="fas fa-check text-emerald-600 text-xs"></i></span><span class="lang-en">Water leaks</span><span class="lang-es" style="display:none">Fugas de agua</span></li>
+                                    <li class="flex items-center"><span class="inline-block w-5 h-5 border border-gray-300 rounded bg-emerald-100 mr-2 flex items-center justify-center"><i class="fas fa-check text-emerald-600 text-xs"></i></span><span class="lang-en">Major plumbing</span><span class="lang-es" style="display:none">Plomería mayor</span></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="mt-2">
+                                <h3 class="font-semibold text-emerald-700 mb-1"><span class="lang-en">Other Services</span><span class="lang-es" style="display:none">Otros Servicios</span></h3>
+                                <ul class="pl-2">
+                                    <li class="flex items-center"><span class="inline-block w-5 h-5 border border-gray-300 rounded bg-emerald-100 mr-2 flex items-center justify-center"><i class="fas fa-check text-emerald-600 text-xs"></i></span><span class="lang-en">Appliances</span><span class="lang-es" style="display:none">Electrodomésticos</span></li>
+                                    <li class="flex items-center"><span class="inline-block w-5 h-5 border border-gray-300 rounded bg-emerald-100 mr-2 flex items-center justify-center"><i class="fas fa-check text-emerald-600 text-xs"></i></span><span class="lang-en">Walls and cabinets</span><span class="lang-es" style="display:none">Paredes y gabinetes</span></li>
+                                    <li class="flex items-center"><span class="inline-block w-5 h-5 border border-gray-300 rounded bg-emerald-100 mr-2 flex items-center justify-center"><i class="fas fa-check text-emerald-600 text-xs"></i></span><span class="lang-en">Electrical issues</span><span class="lang-es" style="display:none">Problemas eléctricos</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+            
+            <!-- Not Covered Services Card -->
+            <div>
+                <details class="rule-card">
+                    <summary class="rule-summary"><i class="icon fas fa-times-circle"></i><span class="lang-en">Maintenance Not Covered Services</span><span class="lang-es" style="display:none">Servicios No Cubiertos por Mantenimiento</span></summary>
+                    <div class="rule-content">
+                        <div class="text-gray-600">
+                            <div>
+                                <h3 class="font-semibold text-red-600 mb-1"><span class="lang-en">Tenant Responsibilities</span><span class="lang-es" style="display:none">Responsabilidades del Inquilino</span></h3>
+                                <ul class="pl-2">
+                                    <li class="flex items-center"><span class="inline-block w-5 h-5 border border-gray-300 rounded bg-red-100 mr-2 flex items-center justify-center"><i class="fas fa-times text-red-600 text-xs"></i></span><span class="lang-en">Unit cleaning</span><span class="lang-es" style="display:none">Limpieza de la unidad</span></li>
+                                    <li class="flex items-center"><span class="inline-block w-5 h-5 border border-gray-300 rounded bg-red-100 mr-2 flex items-center justify-center"><i class="fas fa-times text-red-600 text-xs"></i></span><span class="lang-en">Garbage removal</span><span class="lang-es" style="display:none">Retiro de basura</span></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="mt-2">
+                                <h3 class="font-semibold text-red-600 mb-1"><span class="lang-en">Minor Maintenance</span><span class="lang-es" style="display:none">Mantenimiento Menor</span></h3>
+                                <ul class="pl-2">
+                                    <li class="flex items-center"><span class="inline-block w-5 h-5 border border-gray-300 rounded bg-red-100 mr-2 flex items-center justify-center"><i class="fas fa-times text-red-600 text-xs"></i></span><span class="lang-en">Minor toilet clogs</span><span class="lang-es" style="display:none">Obstrucciones menores en inodoros</span></li>
+                                    <li class="flex items-center"><span class="inline-block w-5 h-5 border border-gray-300 rounded bg-red-100 mr-2 flex items-center justify-center"><i class="fas fa-times text-red-600 text-xs"></i></span><span class="lang-en">Shower drains</span><span class="lang-es" style="display:none">Drenajes de ducha</span></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="mt-2">
+                                <h3 class="font-semibold text-red-600 mb-1"><span class="lang-en">Other Exclusions</span><span class="lang-es" style="display:none">Otras Exclusiones</span></h3>
+                                <ul class="pl-2">
+                                    <li class="flex items-center"><span class="inline-block w-5 h-5 border border-gray-300 rounded bg-red-100 mr-2 flex items-center justify-center"><i class="fas fa-times text-red-600 text-xs"></i></span><span class="lang-en">Internet issues</span><span class="lang-es" style="display:none">Problemas con internet</span></li>
+                                    <li class="flex items-center"><span class="inline-block w-5 h-5 border border-gray-300 rounded bg-red-100 mr-2 flex items-center justify-center"><i class="fas fa-times text-red-600 text-xs"></i></span><span class="lang-en">Refrigerator filter replacement</span><span class="lang-es" style="display:none">Reemplazo de filtro del refrigerador</span></li>
+                                    <li class="flex items-center"><span class="inline-block w-5 h-5 border border-gray-300 rounded bg-red-100 mr-2 flex items-center justify-center"><i class="fas fa-times text-red-600 text-xs"></i></span><span class="lang-en">A/C filter outside monthly maintenance</span><span class="lang-es" style="display:none">Filtro de A/C fuera del mantenimiento mensual</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+            
+            <!-- Resident Responsibility Card -->
+            <div>
+                <details class="rule-card">
+                    <summary class="rule-summary"><i class="icon fas fa-user-shield"></i><span class="lang-en">Resident Responsibility</span><span class="lang-es" style="display:none">Responsabilidad del Residente</span></summary>
+                    <div class="rule-content">
+                        <div class="space-y-4 text-gray-600">
+                            <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <span class="inline-block w-5 h-5 border border-blue-300 rounded bg-blue-100 mr-2 mt-0.5 flex items-center justify-center"><i class="fas fa-exclamation text-blue-600 text-xs"></i></span>
+                                        <span class="lang-en">The unit is delivered in optimal conditions.</span><span class="lang-es" style="display:none">La unidad se entrega en óptimas condiciones.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="inline-block w-5 h-5 border border-blue-300 rounded bg-blue-100 mr-2 mt-0.5 flex items-center justify-center"><i class="fas fa-exclamation text-blue-600 text-xs"></i></span>
+                                        <span class="lang-en">Any damage from improper use is the tenant's responsibility.</span><span class="lang-es" style="display:none">Cualquier daño por uso inadecuado es responsabilidad del inquilino.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="inline-block w-5 h-5 border border-blue-300 rounded bg-blue-100 mr-2 mt-0.5 flex items-center justify-center"><i class="fas fa-exclamation text-blue-600 text-xs"></i></span>
+                                        <span class="lang-en">No unauthorized modifications (changing lights, locks, faucets, installing fans, etc.)</span><span class="lang-es" style="display:none">No se permiten modificaciones sin autorización (cambiar lámparas, cerraduras, grifos, instalar ventiladores, etc.)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="inline-block w-5 h-5 border border-blue-300 rounded bg-blue-100 mr-2 mt-0.5 flex items-center justify-center"><i class="fas fa-exclamation text-blue-600 text-xs"></i></span>
+                                        <span class="lang-en">Preventive maintenance is recommended and problems should be reported immediately.</span><span class="lang-es" style="display:none">Se recomienda mantenimiento preventivo y reportar problemas de inmediato.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="inline-block w-5 h-5 border border-blue-300 rounded bg-blue-100 mr-2 mt-0.5 flex items-center justify-center"><i class="fas fa-exclamation text-blue-600 text-xs"></i></span>
+                                        <span class="lang-en">Each request must be made separately.</span><span class="lang-es" style="display:none">Cada solicitud debe hacerse por separado.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Back Buttons -->
+            <div class="mt-8 text-center footer-links">
+                <a href="index.html" id="back-to-home-link" class="mr-4">
+                    <i class="fas fa-home mr-2"></i><span id="back-to-home-text">Back to Home</span>
+                </a>
+                <a href="Mantpage.html" onclick="window.history.back()" id="back-link">
+                    <i class="fas fa-arrow-left mr-2"></i><span id="back-text">Back</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="portal-footer">
+        <div class="footer-text">
+            <i class="fas fa-mobile-alt"></i> (123) 456-7890 &nbsp;
+        </div>
+        <div class="footer-text email">
+            <i class="fas fa-envelope"></i> info@emeraldbay.com
+        </div>
+        <div class="footer-text">
+            © <span id="currentYear"></span> Emerald Bay. All Rights Reserved.
+        </div>
+        <div class="footer-links mt-2">
+            <a href="#top">Back to Top</a>
+        </div>
+    </footer>
+
+    <!-- Footer -->
+    <script>
+        function updateBackToHomeText(lang) {
+            const homeLinkText = document.getElementById('back-to-home-text');
+            const backLinkText = document.getElementById('back-text');
+            
+            if (homeLinkText) {
+                homeLinkText.textContent = lang === 'es' ? 'Volver al inicio' : 'Back to Home';
+            }
+            if (backLinkText) {
+                backLinkText.textContent = lang === 'es' ? 'Atrás' : 'Back';
+            }
+        }
+
+        function setActiveLanguage(lang) {
+            document.querySelectorAll('.lang-en, .lang-es').forEach(el => {
+                el.style.display = 'none';
+            });
+
+            // Show content for selected language
+            const mainContentDivs = document.querySelectorAll(`.lang-${lang}`);
+            mainContentDivs.forEach(div => div.style.display = 'block');
+
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const activeButton = document.getElementById(`${lang}-btn`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+
+            localStorage.setItem('preferredLanguage', lang);
+            document.documentElement.lang = lang;
+            updateBackToHomeText(lang);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentYearSpan = document.getElementById('currentYear');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+
+            const preferredLang = localStorage.getItem('preferredLanguage') || 'en';
+            setActiveLanguage(preferredLang);
+
+            const enButton = document.getElementById('en-btn');
+            const esButton = document.getElementById('es-btn');
+
+            if (enButton) {
+                enButton.addEventListener('click', () => setActiveLanguage('en'));
+            }
+            if (esButton) {
+                esButton.addEventListener('click', () => setActiveLanguage('es'));
+            }
+
+            // Scrolling Logic for rule cards
+            const ruleCards = document.querySelectorAll('details.rule-card');
+            ruleCards.forEach(card => {
+                card.addEventListener('toggle', function() {
+                    if (this.open) {
+                        this.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

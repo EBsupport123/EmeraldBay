@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amenity Rules – Emerald Bay</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome - Corrected integrity attribute -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-pIVP8xVwZRKfZ7GXPDx2E7djVZtNQ7QYpQEvGWRn8X20kcvUDEpJpNnGHScxXKb3HSZjlpQjE7i4vMZ3HVpJvw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Custom Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* Base styles from General Building Rules */
+    html, body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Montserrat', sans-serif;
+        background-color: #f9fafb;
+        color: #1f2937;
+        scroll-behavior: smooth;
+    }
+
+    /* Header styles from General Building Rules */
+    .portal-header {
+        background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%);
+        color: #ffffff;
+        padding: 2rem 1rem;
+        border-radius: 0.75rem;
+        margin-bottom: 2rem;
+    }
+    .header-container {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .header-title {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+    }
+    .header-subtitle {
+        text-transform: uppercase;
+        opacity: 0.85;
+        letter-spacing: 2px;
+    }
+
+    /* Language switcher styles from General Building Rules */
+    .lang-switch-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+        padding: 0 1rem;
+    }
+    .lang-btn {
+        padding: 0.6rem 1.2rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        border: 1px solid #d1d5db;
+        background-color: #ffffff;
+        color: #374151;
+        cursor: pointer;
+        transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0.25rem;
+    }
+    .lang-btn.active {
+        background-color: #047857;
+        color: #ffffff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .lang-btn:hover:not(.active) {
+        background-color: #f3f4f6;
+    }
+
+    /* Disclaimer Note Styles - Kept for potential future use, not currently in Amenity HTML */
+    .disclaimer-note-container {
+        background-color: #fffbeb;
+        border-left: 4px solid #f59e0b;
+        padding: 1rem 1.5rem;
+        margin-bottom: 2rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .disclaimer-note-container p {
+        margin: 0;
+        color: #b45309;
+        font-size: 0.9rem;
+        font-weight: 500;
+        line-height: 1.6;
+    }
+     .disclaimer-note-container p i {
+        margin-right: 0.5rem;
+        color: #f59e0b;
+     }
+
+    /* Details/Summary as Cards from General Building Rules */
+    details.rule-card { /* Changed from .card to .rule-card */
+        background-color: #ffffff;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        margin-bottom: 1.5rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* border-left from Amenity not present in General, so removed for consistency */
+    }
+    details.rule-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    summary.rule-summary {
+        padding: 1.25rem 1.5rem;
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #065f46;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        list-style: none;
+    }
+    summary.rule-summary::-webkit-details-marker {
+        display: none;
+    }
+    summary.rule-summary::marker {
+        display: none;
+    }
+    summary.rule-summary i.icon {
+        margin-right: 0.75rem;
+        color: #047857; /* Matched to General Rules */
+        font-size: 1.25rem;
+    }
+    details[open] summary.rule-summary {
+        border-bottom: 1px solid #e5e7eb;
+    }
+    .rule-content { /* Changed from .content to .rule-content */
+        padding: 0 1.5rem 1.25rem;
+        color: #374151;
+        font-size: 0.925rem;
+        line-height: 1.6;
+    }
+    .rule-content ul { /* Style from General Building Rules */
+        list-style-type: none; 
+        padding-left: 0;
+        margin: 0.75rem 0;
+    }
+    .rule-content ul li { /* Style from General Building Rules */
+        margin-bottom: 1rem; 
+        padding-left: 0; 
+    }
+
+    /* Footer styles from General Building Rules */
+    .portal-footer {
+        background-color: #e5e7eb;
+        padding: 2rem 1rem;
+        text-align: center; 
+        border-top: 1px solid #d1d5db;
+        margin-top: 3rem;
+    }
+    .footer-text {
+        font-size: 0.875rem;
+        color: #4b5563;
+        margin-bottom: 0.5rem; 
+    }
+    .footer-text i {
+        margin: 0 0.3rem; /* Adjusted from only margin-right */
+        color: #059669;
+    }
+    .footer-links a {
+        color: #059669;
+        text-decoration: none;
+        margin: 0 0.5rem;
+        font-weight: 500;
+    }
+    .footer-links a:hover {
+        text-decoration: underline;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased">
+
+  <div class="max-w-3xl mx-auto px-4 py-8 w-full flex-grow"> <!-- Changed max-w-2xl to max-w-3xl -->
+    <!-- Header - Adapted to General Building Rules structure -->
+    <header class="portal-header text-white text-center">
+      <div class="header-container">
+        <h1 class="header-title text-3xl sm:text-4xl">EMERALD BAY</h1>
+        <p class="header-subtitle text-sm sm:text-base">Amenity Rules</p>
+      </div>
+    </header>
+
+    <!-- Language Switcher - Adapted to General Building Rules style -->
+    <div class="lang-switch-container">
+      <button id="en-btn" class="lang-btn active"><i class="fas fa-globe-americas"></i> English</button> <!-- Icon changed -->
+      <button id="es-btn" class="lang-btn"><i class="fas fa-globe-americas"></i> Español</button> <!-- Icon changed -->
+    </div>
+
+    <!-- English Content -->
+    <div class="lang lang-en space-y-5">
+      <details class="rule-card"> <!-- Class changed -->
+        <summary class="rule-summary"><i class="icon fas fa-swimming-pool"></i>Pool Rules</summary>
+        <div class="rule-content"> <!-- Class changed -->
+          <ul>
+            <li>No lifeguard on duty – swim at your own risk.</li>
+            <li>Children under 12 must be supervised by an adult.</li>
+            <li>No food, drinks, glass containers, or animals in pool area.</li>
+            <li>No events of any kind (e.g., birthdays).</li>
+            <li>Only beach accessories allowed; no balls (tennis, football, soccer, basketball).</li>
+            <li>Shower before entering. Max capacity: 50 persons.</li>
+            <li>No running, diving, or horseplay.</li>
+            <li>Pool hours: sunrise to sunset.</li>
+            <li>No alcohol or smoking/vaping.</li>
+            <li>No speakers; volume must remain moderate.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="rule-card"> <!-- Class changed -->
+        <summary class="rule-summary"><i class="icon fas fa-fire"></i>BBQ Grill Rules</summary>
+        <div class="rule-content"> <!-- Class changed -->
+          <ul>
+            <li>Residents only; first come, first served (10 AM–9 PM).</li>
+            <li>Minors under 18 must be supervised.</li>
+            <li>Grills must be attended at all times.</li>
+            <li>Extinguish coals and clean area after use.</li>
+            <li>Report damage to management; use at your own risk.</li>
+            <li>No loud music or external speakers.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="rule-card"> <!-- Class changed -->
+        <summary class="rule-summary"><i class="icon fas fa-building"></i>Clubhouse Rules</summary>
+        <div class="rule-content"> <!-- Class changed -->
+          <ul>
+            <li>Only trained service animals allowed; others prohibited.</li>
+            <li>Children must be supervised; not a play area.</li>
+            <li>Keep space clean and quiet; only non-alcoholic beverages with lids; no food or meetings.</li>
+            <li>Management may warn, suspend, or revoke privileges for violations.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="rule-card"> <!-- Class changed -->
+        <summary class="rule-summary"><i class="icon fas fa-laptop-house"></i>Work Lounge Rules</summary>
+        <div class="rule-content"> <!-- Class changed -->
+          <ul>
+            <li>Shared first-come, first-served; no reserving.</li>
+            <li>Max capacity: 15. Hours: 6 AM–11 PM.</li>
+            <li>Only service animals allowed.</li>
+            <li>Notify management of printer issues.</li>
+            <li>Keep quiet and clean; no food or group meetings.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="rule-card"> <!-- Class changed -->
+        <summary class="rule-summary"><i class="icon fas fa-dumbbell"></i>Gym Rules</summary>
+        <div class="rule-content"> <!-- Class changed -->
+          <ul>
+            <li>Use equipment at your own risk.</li>
+            <li>Adults only; children 12+ supervised.</li>
+            <li>Wipe equipment and rerack weights.</li>
+            <li>Dress code: no topless, no wet suits, no bare feet.</li>
+            <li>No food, smoking, drugs, or glass.</li>
+            <li>Report malfunctions immediately.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="rule-card"> <!-- Class changed -->
+        <summary class="rule-summary"><i class="icon fas fa-child"></i>Playground Rules</summary>
+        <div class="rule-content"> <!-- Class changed -->
+          <ul>
+            <li>Use at your own risk; adult supervision required.</li>
+            <li>No rough play or yelling; shoes required; no glass.</li>
+            <li>Emergency? Call 911.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="rule-card"> <!-- Class changed -->
+        <summary class="rule-summary"><i class="icon fas fa-dog"></i>Dog Park Rules</summary>
+        <div class="rule-content"> <!-- Class changed -->
+          <ul>
+            <li>Resident pets only; use at your own risk.</li>
+            <li>Leash when entering/exiting; clean up waste.</li>
+            <li>Owners responsible for behavior; handlers 16+; supervise children.</li>
+            <li>No aggressive or sick dogs, puppies under 4 months, food, or glass.</li>
+          </ul>
+        </div>
+      </details>
+      <!-- Removed separate English back link -->
+    </div>
+
+    <!-- Spanish Content -->
+    <div class="lang lang-es space-y-5" style="display:none;">
+      <details class="rule-card"> <!-- Class changed -->
+        <summary class="rule-summary"><i class="icon fas fa-swimming-pool"></i>Reglas de la Piscina</summary>
+        <div class="rule-content"> <!-- Class changed -->
+          <ul>
+            <li>No hay socorrista – nade bajo su propio riesgo.</li>
+            <li>Niños menores de 12 años deben ser supervisados por un adulto.</li>
+            <li>No se permiten alimentos, bebidas, envases de vidrio ni animales en el área de la piscina.</li>
+            <li>No se permiten eventos de ningún tipo (p. ej., cumpleaños).</li>
+            <li>Sólo accesorios de playa; no pelotas (tenis, fútbol, baloncesto).</li>
+            <li>Dúchese antes de entrar. Capacidad máxima: 50 personas.</li>
+            <li>No correr, bucear ni juegos bruscos.</li>
+            <li>Horario de piscina: amanecer a atardecer.</li>
+            <li>No alcohol, fumar ni vapear.</li>
+            <li>No altavoces; el volumen debe mantenerse moderado.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="rule-card"> <!-- Class changed -->
+        <summary class="rule-summary"><i class="icon fas fa-fire"></i>Reglas de la Parrilla (BBQ)</summary>
+        <div class="rule-content"> <!-- Class changed -->
+          <ul>
+            <li>Sólo residentes; orden de llegada (10 AM–9 PM).</li>
+            <li>Menores de 18 años deben ser supervisados.</li>
+            <li>Las parrillas deben ser atendidas en todo momento.</li>
+            <li>Apague las brasas y limpie el área después de su uso.</li>
+            <li>Reporte daños a la administración; úselo bajo su proprio riesgo.</li>
+            <li>No música alta ni altavoces externos.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="rule-card"> <!-- Class changed -->
+        <summary class="rule-summary"><i class="icon fas fa-building"></i>Reglas de la Casa Club</summary>
+        <div class="rule-content"> <!-- Class changed -->
+          <ul>
+            <li>Sólo animales de servicio entrenados permitidos; otros prohibidos.</li>
+            <li>Los niños deben estar supervisados; no es área de juegos.</li>
+            <li>Mantenga el espacio limpio y en silencio; sólo bebidas no alcohólicas con tapa; no comida ni reuniones.</li>
+            <li>La administración puede advertir, suspender o revocar privilegios por violaciones.</li>
+          </ul>
+        </div>
+      </details>
+
+       <details class="rule-card"> <!-- Class changed -->
+        <summary class="rule-summary"><i class="icon fas fa-laptop-house"></i>Reglas de la Sala de Trabajo</summary>
+        <div class="rule-content"> <!-- Class changed -->
+          <ul>
+            <li>Compartida por orden de llegada; no se pueden reservar.</li>
+            <li>Capacidad máxima: 15. Horario: 6 AM–11 PM.</li>
+            <li>Sólo animales de servicio permitidos.</li>
+            <li>Informe a la administración sobre problemas con la impresora.</li>
+            <li>Mantenga silencio y limpieza; no comida ni reuniones de grupo.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="rule-card"> <!-- Class changed -->
+        <summary class="rule-summary"><i class="icon fas fa-dumbbell"></i>Reglas del Gimnasio</summary>
+        <div class="rule-content"> <!-- Class changed -->
+          <ul>
+            <li>Use el equipo bajo su propio riesgo.</li>
+            <li>Sólo adultos; niños de 12 años o más supervisados.</li>
+            <li>Limpie el equipo y recoja las pesas después de usar.</li>
+            <li>Código de vestimenta: no sin camisa, no trajes de wet suit, no pies descalzos.</li>
+            <li>No comida, fumar, drogas ni vidrio.</li>
+            <li>Reporte malfuncionamientos de inmediato.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="rule-card"> <!-- Class changed -->
+        <summary class="rule-summary"><i class="icon fas fa-child"></i>Reglas del Parque Infantil</summary>
+        <div class="rule-content"> <!-- Class changed -->
+          <ul>
+            <li>Úselo bajo su propio riesgo; supervisión de adulto requerida.</li>
+            <li>No juegos bruscos ni gritos; uso de calzado obligatorio; no vidrio.</li>
+            <li>¿Emergencia? Llame al 911.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="rule-card"> <!-- Class changed -->
+        <summary class="rule-summary"><i class="icon fas fa-dog"></i>Reglas del Parque Canino</summary>
+        <div class="rule-content"> <!-- Class changed -->
+          <ul>
+            <li>Sólo mascotas de residentes; uso bajo su propio riesgo.</li>
+            <li>Correa al entrar/salir; recoja los desechos.</li>
+            <li>Los dueños son responsables del comportamiento; manejadores de 16 años o más; supervise a los niños.</li>
+            <li>No perros agresivos o enfermos, cachorros menores de 4 meses, comida ni vidrio.</li>
+          </ul>
+        </div>
+      </details>
+      <!-- Removed separate Spanish back link -->
+    </div>
+
+    <!-- Back Button (Single, outside language divs) - Added from General Building Rules -->
+    <div class="mt-8 text-center footer-links">
+        <a href="index.html" id="back-to-home-link">
+            <i class="fas fa-arrow-left mr-2"></i><span id="back-to-home-text">Back to Home</span>
+        </a>
+    </div>
+  </div>
+
+  <!-- Footer - Adapted to General Building Rules structure -->
+  <footer class="portal-footer">
+    <div class="footer-text">
+        <i class="fas fa-mobile-alt"></i> (305) 822-9469 &nbsp;
+    </div>
+    <div class="footer-text email"> <!-- Added class email for potential specific styling if needed -->
+        <i class="fas fa-envelope"></i> info@liveatemeraldbay.com
+    </div>
+    <div class="footer-text">
+        © <span id="currentYear"></span> Emerald Bay. All Rights Reserved.
+    </div>
+    <div class="footer-links mt-2">
+         <a href="#top">Back to Top</a>
+    </div>
+  </footer>
+
+  <!-- JavaScript from General Building Rules, adapted -->
+  <script>
+    function updateBackToHomeText(lang) {
+        const linkTextElement = document.getElementById('back-to-home-text');
+        if (linkTextElement) { // Check if element exists
+            if (lang === 'es') {
+                linkTextElement.textContent = 'Volver al inicio';
+            } else {
+                linkTextElement.textContent = 'Back to Home';
+            }
+        }
+    }
+
+    function setActiveLanguage(lang) {
+        document.querySelectorAll('.lang').forEach(el => {
+            el.style.display = 'none';
+        });
+
+        // Show main content sections for the active language
+        const mainContentDivs = document.querySelectorAll(`div.lang-${lang}.space-y-5`);
+        mainContentDivs.forEach(div => div.style.display = 'block');
+
+        // Handle disclaimer note (it won't find these on amenity page, which is fine)
+        const disclaimerEn = document.querySelector('.disclaimer-note-container .lang-en');
+        const disclaimerEs = document.querySelector('.disclaimer-note-container .lang-es');
+        if (disclaimerEn && disclaimerEs) {
+            if (lang === 'en') {
+                disclaimerEn.style.display = 'block';
+                disclaimerEs.style.display = 'none';
+            } else { // 'es'
+                disclaimerEn.style.display = 'none';
+                disclaimerEs.style.display = 'block';
+            }
+        }
+        
+        // Update active button
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        const activeButton = document.getElementById(`${lang}-btn`);
+        if (activeButton) {
+            activeButton.classList.add('active');
+        }
+        
+        localStorage.setItem('preferredLanguage', lang); // Using 'preferredLanguage' key
+        document.documentElement.lang = lang; // Set HTML lang attribute
+        updateBackToHomeText(lang); // Update back to home link text
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentYearSpan = document.getElementById('currentYear');
+        if (currentYearSpan) {
+            currentYearSpan.textContent = new Date().getFullYear();
+        }
+    
+        const preferredLang = localStorage.getItem('preferredLanguage') || 'en';
+        setActiveLanguage(preferredLang);
+
+        const enButton = document.getElementById('en-btn');
+        const esButton = document.getElementById('es-btn');
+
+        if (enButton) {
+            enButton.addEventListener('click', () => setActiveLanguage('en'));
+        }
+        if (esButton) {
+            esButton.addEventListener('click', () => setActiveLanguage('es'));
+        }
+
+        // Scrolling Logic for rule cards
+        const ruleCards = document.querySelectorAll('details.rule-card'); // Selector updated
+        ruleCards.forEach(card => {
+            card.addEventListener('toggle', function() {
+                if (this.open) {
+                    this.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    });
+  </script>
+</body>
+</html>
