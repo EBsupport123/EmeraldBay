@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f766e" />
     <title>Emerald Bay Community Portal</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -16,21 +17,24 @@
             margin: 0;
             padding: 0;
             font-family: 'Montserrat', sans-serif;
-            background-color: #f9fafb; /* Light gray background */
+            background-color: #f8fafc; /* Lighter gray background */
             color: #1f2937; /* Dark gray text */
             scroll-behavior: smooth;
+            line-height: 1.6;
         }
 
         /* Header styles */
         header {
             background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%); /* Teal gradient */
             color: #ffffff; /* White text */
-            padding: 2rem 1rem; /* Responsive padding */
+            padding: 3rem 1rem; /* Increased padding */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .header-container {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
+            padding: 1rem;
         }
         /* Applied Tailwind classes for responsive font size directly in HTML for header-title and header-subtitle */
         .header-title {
@@ -80,38 +84,40 @@
 
         /* Card container styles */
         .card-container {
-            max-width: 700px;
-            margin: 0 auto;
+            max-width: 800px;
+            margin: 3rem auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            padding: 0 1rem; /* Horizontal padding */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 1.5rem;
         }
 
         /* Card styles */
         .card {
-            background-color: #ffffff; /* White background */
-            border-radius: 0.75rem; /* Rounded corners */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             display: flex;
-            align-items: flex-start; /* Align items to the top for potentially multi-line titles */
-            padding: 1.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            align-items: flex-start;
+            padding: 2rem;
+            transition: all 0.3s ease;
             text-decoration: none;
             color: inherit;
+            border: 1px solid #e2e8f0;
         }
         .card:hover {
-            transform: translateY(-5px); /* Slightly more lift */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #047857;
         }
         .card-icon {
-            font-size: 1.75rem; /* Slightly larger icon */
-            color: #047857; /* Darker teal */
-            margin-right: 1.25rem; /* More space next to icon */
+            font-size: 2rem;
+            color: #047857;
+            margin-right: 1.5rem;
             flex-shrink: 0;
             opacity: 0.9;
-            transition: opacity 0.2s ease;
-            margin-top: 0.125rem; /* Align icon better with text if text wraps */
+            transition: all 0.3s ease;
+            margin-top: 0.25rem;
         }
         .card:hover .card-icon { /* Icon opacity change on card hover */
             opacity: 1;
@@ -150,28 +156,33 @@
 
         /* Footer styles */
         footer {
-            background-color: #e5e7eb; /* Lighter gray for footer background */
-            padding: 2rem 1rem; /* Increased padding */
+            background-color: #f1f5f9;
+            padding: 3rem 1rem;
             text-align: center;
-            border-top: 1px solid #d1d5db; /* Slightly darker border */
-            margin-top: 3rem; /* More space above footer */
+            border-top: 1px solid #e2e8f0;
+            margin-top: 4rem;
         }
         .footer-text {
-            font-size: 0.875rem; /* text-sm */
-            color: #4b5563; /* Darker gray for footer text for better contrast */
-            margin-bottom: 0.5rem; /* Space between lines */
+            font-size: 0.9375rem;
+            color: #4b5563;
+            margin-bottom: 0.75rem;
         }
         .footer-text i {
-            margin: 0 0.3rem;
-            color: #059669; /* Teal icon color */
+            margin: 0 0.4rem;
+            color: #047857;
+            font-size: 1.1em;
         }
         .footer-links a {
-            color: #059669;
+            color: #047857;
             text-decoration: none;
-            margin: 0 0.5rem;
+            margin: 0 0.75rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
         }
         .footer-links a:hover {
+            color: #065f46;
             text-decoration: underline;
+            text-underline-offset: 4px;
         }
 
     </style>
@@ -201,7 +212,7 @@
     <!-- Content Cards -->
     <main class="card-container pb-8"> <!-- Added padding-bottom to main container -->
         <!-- English Cards -->
-        <a href="rules-general.html" class="card lang lang-en">
+        <a href="General_Building_Rules_Page.html" class="card lang lang-en">
             <i class="card-icon fas fa-scroll"></i>
             <div class="card-content">
                 <h2 class="card-title text-lg md:text-xl">General Building Rules</h2>
@@ -209,7 +220,7 @@
                 <span class="card-link text-sm">View Details<i class="fas fa-arrow-right"></i></span>
             </div>
         </a>
-        <a href="rules-amenities.html" class="card lang lang-en">
+        <a href="General_Amenity_Rules_Page.html" class="card lang lang-en">
             <!-- CHANGED ICON for Amenity Rules -->
             <i class="card-icon fas fa-building-shield"></i>
             <div class="card-content">
@@ -218,7 +229,7 @@
                 <span class="card-link text-sm">View Details<i class="fas fa-arrow-right"></i></span>
             </div>
         </a>
-        <a href="parking.html" class="card lang lang-en">
+        <a href="Parking_Regulations_Page.html" class="card lang lang-en">
             <i class="card-icon fas fa-parking"></i>
             <div class="card-content">
                 <h2 class="card-title text-lg md:text-xl">Parking Regulations</h2>
@@ -226,7 +237,7 @@
                 <span class="card-link text-sm">View Details<i class="fas fa-arrow-right"></i></span>
             </div>
         </a>
-        <a href="Mantpage.html" class="card lang lang-en">
+        <a href="Maintenance_Page.html" class="card lang lang-en">
             <i class="card-icon fas fa-tools"></i>
             <div class="card-content">
                 <h2 class="card-title text-lg md:text-xl">Maintenance & Appliance Guides</h2>
@@ -238,7 +249,7 @@
         <!-- REMOVED Enforcement Info Card for English -->
 
         <!-- Spanish Cards (initially hidden) -->
-        <a href="rules-general.html" class="card lang lang-es" style="display: none;">
+        <a href="General_Building_Rules_Page.html" class="card lang lang-es" style="display: none;">
             <i class="card-icon fas fa-scroll"></i> <!-- Consistent icon with English version -->
             <div class="card-content">
                 <h2 class="card-title text-lg md:text-xl">Reglas Generales del Edificio</h2>
@@ -246,7 +257,7 @@
                 <span class="card-link text-sm">Ver Detalles<i class="fas fa-arrow-right"></i></span>
             </div>
         </a>
-        <a href="rules-amenities.html" class="card lang lang-es" style="display: none;">
+        <a href="General_Amenity_Rules_Page.html" class="card lang lang-es" style="display: none;">
             <!-- CHANGED ICON for Normas de Amenidades -->
             <i class="card-icon fas fa-building-shield"></i> <!-- Consistent icon -->
             <div class="card-content">
@@ -255,7 +266,7 @@
                 <span class="card-link text-sm">Ver Detalles<i class="fas fa-arrow-right"></i></span>
             </div>
         </a>
-        <a href="parking.html" class="card lang lang-es" style="display: none;">
+        <a href="Parking_Regulations_Page.html" class="card lang lang-es" style="display: none;">
             <i class="card-icon fas fa-parking"></i> <!-- Consistent icon -->
             <div class="card-content">
                 <h2 class="card-title text-lg md:text-xl">Regulaciones de Estacionamiento</h2>
@@ -263,7 +274,7 @@
                 <span class="card-link text-sm">Ver Detalles<i class="fas fa-arrow-right"></i></span>
             </div>
         </a>
-        <a href="Mantpage.html" class="card lang lang-es" style="display: none;">
+        <a href="Maintenance_Page.html" class="card lang lang-es" style="display: none;">
             <i class="card-icon fas fa-tools"></i>
             <div class="card-content">
                 <h2 class="card-title text-lg md:text-xl">Mantenimiento y Guías de Electrodomésticos</h2>
