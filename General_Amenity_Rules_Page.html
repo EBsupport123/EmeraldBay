@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f766e" />
   <title>Amenity Rules – Emerald Bay</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -23,25 +24,24 @@
 
     /* Header styles from General Building Rules */
     .portal-header {
-        background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%);
-        color: #ffffff;
         padding: 2rem 1rem;
         border-radius: 0.75rem;
-        margin-bottom: 2rem;
     }
-    .header-container {
-        max-width: 800px;
-        margin: 0 auto;
-        text-align: center;
-    }
+        .header-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 1rem;
+        }
     .header-title {
         font-family: 'Playfair Display', serif;
-        font-weight: 700;
+        color: #000;
+        font-weight: 800;
         letter-spacing: 1px;
-        margin-bottom: 0.5rem;
     }
     .header-subtitle {
         text-transform: uppercase;
+        color: #000;
         opacity: 0.85;
         letter-spacing: 2px;
     }
@@ -187,7 +187,7 @@
     <!-- Header - Adapted to General Building Rules structure -->
     <header class="portal-header text-white text-center">
       <div class="header-container">
-        <h1 class="header-title text-3xl sm:text-4xl">EMERALD BAY</h1>
+        <h1 class="header-title text-3xl sm:text-4xl">Emerald Bay</h1>
         <p class="header-subtitle text-sm sm:text-base">Amenity Rules</p>
       </div>
     </header>
@@ -452,7 +452,7 @@
                 disclaimerEs.style.display = 'block';
             }
         }
-        
+      
         // Update active button
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.remove('active');
@@ -461,18 +461,18 @@
         if (activeButton) {
             activeButton.classList.add('active');
         }
-        
+      
         localStorage.setItem('preferredLanguage', lang); // Using 'preferredLanguage' key
         document.documentElement.lang = lang; // Set HTML lang attribute
         updateBackToHomeText(lang); // Update back to home link text
     }
-    
+  
     document.addEventListener('DOMContentLoaded', function() {
         const currentYearSpan = document.getElementById('currentYear');
         if (currentYearSpan) {
             currentYearSpan.textContent = new Date().getFullYear();
         }
-    
+  
         const preferredLang = localStorage.getItem('preferredLanguage') || 'en';
         setActiveLanguage(preferredLang);
 
