@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="theme-color" content="#0f766e" />
     <title>Emerald Bay Community Portal</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -16,26 +17,27 @@
             margin: 0;
             padding: 0;
             font-family: 'Montserrat', sans-serif;
-            background-color: #f9fafb; /* Light gray background */
+            background-color: #f8fafc; /* Lighter gray background */
             color: #1f2937; /* Dark gray text */
             scroll-behavior: smooth;
+            line-height: 1.6;
         }
 
         /* Header styles */
         header {
-            background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%); /* Teal gradient */
-            color: #ffffff; /* White text */
-            padding: 2rem 1rem; /* Responsive padding */
+            padding: 1rem ;
         }
         .header-container {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
+            padding: 1rem;
         }
         /* Applied Tailwind classes for responsive font size directly in HTML for header-title and header-subtitle */
         .header-title {
             font-family: 'Playfair Display', serif;
-            font-weight: 700;
+            font-weight: 3
+00;
             letter-spacing: 1px;
             margin-bottom: 0.5rem;
         }
@@ -80,25 +82,26 @@
 
         /* Card container styles */
         .card-container {
-            max-width: 700px;
-            margin: 0 auto;
+            max-width: 800px;
+            margin: 2rem auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            padding: 0 1rem; /* Horizontal padding */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 1.5rem;
         }
 
         /* Card styles */
         .card {
-            background-color: #ffffff; /* White background */
-            border-radius: 0.75rem; /* Rounded corners */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
             display: flex;
-            align-items: flex-start; /* Align items to the top for potentially multi-line titles */
-            padding: 1.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            align-items: flex-start;
+            padding: 2rem;
+            transition: all 0.3s ease;
             text-decoration: none;
             color: inherit;
+            border: 1px solid #e2e8f0;
         }
         .card:hover {
             transform: translateY(-5px); /* Slightly more lift */
@@ -150,30 +153,79 @@
 
         /* Footer styles */
         footer {
-            background-color: #e5e7eb; /* Lighter gray for footer background */
-            padding: 2rem 1rem; /* Increased padding */
+            background-color: #f1f5f9;
+            padding: 3rem 1rem;
             text-align: center;
-            border-top: 1px solid #d1d5db; /* Slightly darker border */
-            margin-top: 3rem; /* More space above footer */
+            border-top: 1px solid #e2e8f0;
+            margin-top: 4rem;
         }
         .footer-text {
-            font-size: 0.875rem; /* text-sm */
-            color: #4b5563; /* Darker gray for footer text for better contrast */
-            margin-bottom: 0.5rem; /* Space between lines */
+            font-size: 0.9375rem;
+            color: #4b5563;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
         }
         .footer-text i {
-            margin: 0 0.3rem;
-            color: #059669; /* Teal icon color */
+            margin: 0 0.4rem;
+            color: #059669;
+            font-size: 1.1rem;
         }
         .footer-links a {
             color: #059669;
             text-decoration: none;
-            margin: 0 0.5rem;
+            margin: 0 0.75rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
         }
         .footer-links a:hover {
+            color: #55a08b;
             text-decoration: underline;
         }
 
+        /* Responsive Notice */
+        .notice-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .notice {
+            background-color: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .notice-title {
+            font-weight: 700;
+            color: #dc2626;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .notice-text {
+            color: #991b1b;
+            line-height: 1.7;
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background-color: #f3f4f6;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+            margin: 2rem auto;
+        }
+
+        .back-link:hover {
+            background-color: #e5e7eb;
+            transform: translateX(-3px);
+        }
     </style>
 </head>
 <body class="antialiased"> <!-- Added antialiasing for smoother fonts -->
@@ -197,22 +249,50 @@
             <i class="fas fa-globe-americas"></i> Español
         </button>
     </div>
+    
+    <!-- Responsibility Notice - English -->
+    <div class="notice-container lang lang-en">
+        <div class="notice">
+            <div class="notice-title">
+                <i class="fas fa-exclamation-circle"></i>
+                Important Notice:
+            </div>
+            <p class="notice-text">
+                The tenant and occupants are responsible for any damage resulting from improper or negligent use within the unit, including structural elements, finishes, fixed installations, and the appliances provided. It is essential to maintain the unit in good condition and proper hygiene. Unauthorized modifications are strictly prohibited, such as altering lights, locks, faucets, installing fans, or making changes to the appliances provided. Any maintenance issue must be reported immediately to management, with a response time of up to 24 hours depending on the nature of the request.
+            </p>
+        </div>
+    </div>
+
+    <!-- Responsibility Notice - Spanish -->
+    <div class="notice-container lang lang-es" style="display: none;">
+        <div class="notice">
+            <div class="notice-title">
+                <i class="fas fa-exclamation-circle"></i>
+                Aviso Importante:
+            </div>
+            <p class="notice-text">
+                El inquilino y los ocupantes son responsables de cualquier daño resultante del uso inadecuado o negligente dentro de la unidad, incluidos los elementos estructurales, acabados, instalaciones fijas y los electrodomésticos provistos. Es esencial mantener la unidad en buenas condiciones y con higiene adecuada. Las modificaciones no autorizadas están estrictamente prohibidas, como alterar luces, cerraduras, grifos, instalar ventiladores o realizar cambios en los electrodomésticos provistos. Cualquier problema de mantenimiento debe reportarse inmediatamente a la administración, con un tiempo de respuesta de hasta 24 horas dependiendo de la naturaleza de la solicitud.
+            </p>
+        </div>
+    </div>
 
     <!-- Content Cards -->
+     
     <main class="card-container pb-8"> <!-- Added padding-bottom to main container -->
         <!-- English Cards -->
-        <a href="Mantonepage.html" class="card lang lang-en">
+
+                  <a href="Maintenance_Troubleshooting_Page.html" class="card lang lang-en">
             <i class="card-icon fas fa-screwdriver-wrench"></i>
             <div class="card-content">
-                <h2 class="card-title text-lg md:text-xl">Maintenance and Troubleshooting</h2>
+                <h2 class="card-title text-lg md:text-xl">Appliances Guides and use </h2>
                 <p class="card-description text-sm">Cleaning and care tips for the unit and possible troubleshooting</p>
                 <span class="card-link text-sm">View Details<i class="fas fa-arrow-right"></i></span>
             </div>
-              </a>
-               <a href="rules-general.html" class="card lang lang-en">
-            <i class="card-icon fas fa-book-open-reader"></i>
+              </a>   
+               <a href="Appliance_Manuals_Page.html" class="card lang lang-en">
+            <i class="card-icon fas fa-book"></i>
             <div class="card-content">
-                <h2 class="card-title text-lg md:text-xl">Appliances Guides and Manuals</h2>
+                <h2 class="card-title text-lg md:text-xl">Appliances Manuals</h2>
                 <p class="card-description text-sm">Tips and instructions for the uses of the appliances in the unit</p>
                 <span class="card-link text-sm">View Details<i class="fas fa-arrow-right"></i></span>
             </div>
@@ -221,31 +301,32 @@
         <!-- REMOVED Enforcement Info Card for English -->
 
         <!-- Spanish Cards (initially hidden) -->
-        <a href="Mantonepage.html" class="card lang lang-es" style="display: none;">
-            <i class="card-icon fas fa-screwdriver-wrench"></i>
+               <a href="Appliance_Manuals_Page.html" class="card lang lang-es" style="display: none;">
+            <i class="card-icon fas fa-screwdriver-wrench"></i> 
             <div class="card-content">
-                <h2 class="card-title text-lg md:text-xl">Mantenimiento y solución de problemas </h2>
-                <p class="card-description text-sm">Consejos de limpieza y cuidado de la unidad y posible solución de problemas</p>
+                <h2 class="card-title text-lg md:text-xl"> Guia y uso de electrodomésticos</h2>
+                <p class="card-description text-sm">Instrucciones y consejos para el uso de los electrodomésticos de la unidad</p>
                 <span class="card-link text-sm">Ver Detalles<i class="fas fa-arrow-right"></i></span>
             </div>
         </a>
-                <a href="parking.html" class="card lang lang-es" style="display: none;">
-            <i class="card-icon fas fa-book-open-reader"></i> <!-- Consistent icon -->
+                <a href="Appliance_Manuals_Page.html" class="card lang lang-es" style="display: none;">
+                <i class="card-icon fas fa-book"></i> <!-- Consistent icon -->
             <div class="card-content">
-                <h2 class="card-title text-lg md:text-xl">Guías y manuales de electrodomésticos</h2>
+                <h2 class="card-title text-lg md:text-xl">Manuales de electrodomésticos</h2>
                 <p class="card-description text-sm">Instrucciones y consejos para el uso de los electrodomésticos de la unidad</p>
                 <span class="card-link text-sm">Ver Detalles<i class="fas fa-arrow-right"></i></span>
             </div>
         </a>
         <!-- REMOVED Enforcement Info Card for Spanish -->
     </main>
-            <!-- Back Button (Single, outside language divs) -->
-        <div class="mt-8 text-center footer-links">
-            <a href="index.html" id="back-to-home-link">
-                <i class="fas fa-arrow-left mr-2"></i><span id="back-to-home-text">Back to Home</span>
-            </a>
-        </div>
+
+     <!-- Back Button (Single, outside language divs) - Added from General Building Rules -->
+    <div class="mt-8 text-center footer-links">
+        <a href="index.html" id="back-to-home-link">
+            <i class="fas fa-arrow-left mr-2"></i><span id="back-to-home-text">Back to Home</span>
+        </a>
     </div>
+  </div>
 
     <!-- Footer Section -->
     <footer>
@@ -288,3 +369,4 @@
     </script>
 </body>
 </html>
+
