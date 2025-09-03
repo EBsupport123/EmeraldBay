@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f766e" />
     <title>General Building Rules – Emerald Bay</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -22,13 +23,9 @@
         }
 
         /* Header styles */
-        .portal-header {
-            background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%);
-            color: #ffffff;
-            padding: 2rem 1rem;
-            border-radius: 0.75rem;
-            margin-bottom: 2rem;
-        }
+        header {
+    padding: 3rem 1rem;
+}
         .header-container {
             max-width: 800px;
             margin: 0 auto;
@@ -36,12 +33,14 @@
         }
         .header-title {
             font-family: 'Playfair Display', serif;
+            color: #000;
             font-weight: 700;
             letter-spacing: 1px;
             margin-bottom: 0.5rem;
         }
         .header-subtitle {
             text-transform: uppercase;
+            color: #000;
             opacity: 0.85;
             letter-spacing: 2px;
         }
@@ -188,7 +187,7 @@
         <!-- Header -->
         <header class="portal-header text-white text-center">
             <div class="header-container">
-                <h1 class="header-title text-3xl sm:text-4xl">EMERALD BAY</h1>
+                <h1 class="header-title text-3xl sm:text-4xl">Emerald Bay</h1>
                 <p class="header-subtitle text-sm sm:text-base">General Building Rules</p>
             </div>
         </header>
