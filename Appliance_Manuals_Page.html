@@ -1,435 +1,390 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0f766e" />
-  <title>Amenity Rules – Emerald Bay</title>
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome - Corrected integrity attribute -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-pIVP8xVwZRKfZ7GXPDx2E7djVZtNQ7QYpQEvGWRn8X20kcvUDEpJpNnGHScxXKb3HSZjlpQjE7i4vMZ3HVpJvw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- Custom Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  <style>
-    /* Base styles from General Building Rules */
-    html, body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Montserrat', sans-serif;
-        background-color: #f9fafb;
-        color: #1f2937;
-        scroll-behavior: smooth;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="theme-color" content="#0f766e" />
+    <title>Emerald Bay Community Portal</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-pIVP8xVwZRKfZ7GXPDx2E7djVZtNQ7QYpQEvGWRn8X20kcvUDEpJpNnGHScxXKb3HSZjlpQjE7i4vMZ3HVpJvw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8fafc; /* Lighter gray background */
+            color: #1f2937; /* Dark gray text */
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
 
-    /* Header styles from Appliances Manuals*/
-    .portal-header {
-        padding: 2rem 1rem;
-        border-radius: 0.75rem;
-    }
+        /* Header styles */
+        header {
+            padding: 1rem ;
+        }
         .header-container {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
             padding: 1rem;
         }
-    .header-title {
-        font-family: 'Playfair Display', serif;
-        color: #000;
-        font-weight: 800;
-        letter-spacing: 1px;
-    }
-    .header-subtitle {
-        text-transform: uppercase;
-        color: #000;
-        opacity: 0.85;
-        letter-spacing: 2px;
-    }
+        /* Applied Tailwind classes for responsive font size directly in HTML for header-title and header-subtitle */
+        .header-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 3
+00;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .header-subtitle {
+            text-transform: uppercase;
+            opacity: 0.85;
+            letter-spacing: 2px;
+        }
 
-    /* Language switcher styles */
-    .lang-switch-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        margin-bottom: 1.5rem;
-        padding: 0 1rem;
-    }
-    .lang-btn {
-        padding: 0.6rem 1.2rem;
-        border-radius: 9999px;
-        font-size: 0.875rem;
-        font-weight: 500;
-        border: 1px solid #d1d5db;
-        background-color: #ffffff;
-        color: #374151;
-        cursor: pointer;
-        transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin: 0.25rem;
-    }
-    .lang-btn.active {
-        background-color: #047857;
-        color: #ffffff;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-    .lang-btn:hover:not(.active) {
-        background-color: #f3f4f6;
-    }
-    .disclaimer-note-container {
-        background-color: #fffbeb;
-        border-left: 4px solid #f59e0b;
-        padding: 1rem 1.5rem;
-        margin-bottom: 2rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-    .disclaimer-note-container p {
-        margin: 0;
-        color: #b45309;
-        font-size: 0.9rem;
-        font-weight: 500;
-        line-height: 1.6;
-    }
-     .disclaimer-note-container p i {
-        margin-right: 0.5rem;
-        color: #f59e0b;
-     }
+        /* Language switcher styles */
+        .lang-switch {
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Vertically align items if they wrap */
+            flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+            margin: 1.5rem 0;
+            padding: 0 1rem; /* Add padding for small screens */
+        }
+        .lang-btn {
+            padding: 0.6rem 1.2rem; /* Slightly increased padding */
+            border-radius: 9999px; /* Pill shape */
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 500; /* medium */
+            border: 1px solid #d1d5db; /* Gray border */
+            background-color: #ffffff; /* White background */
+            color: #374151; /* Dark gray text */
+            cursor: pointer;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+            display: inline-flex; /* Align icon and text */
+            align-items: center;
+            gap: 0.5rem; /* Space between icon and text */
+            margin: 0.25rem; /* Add small margin for wrapped buttons */
+        }
+        .lang-btn.active {
+            background-color: #047857; /* Darker teal for active */
+            color: #ffffff; /* White text */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .lang-btn:hover:not(.active) { /* Hover effect only for non-active buttons */
+            background-color: #f3f4f6; /* Light gray hover */
+        }
 
-    /* Details/Summary as Cards */
-    details.rule-card { /* Changed from .card to .rule-card */
-        background-color: #ffffff;
-        border-radius: 0.75rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        margin-bottom: 1.5rem;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        /* border-left from Amenity not present in General, so removed for consistency */
-    }
-    details.rule-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
-    summary.rule-summary {
-        padding: 1.25rem 1.5rem;
-        font-size: 1.125rem;
-        font-weight: 600;
-        color: #065f46;
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        list-style: none;
-    }
-    summary.rule-summary::-webkit-details-marker {
-        display: none;
-    }
-    summary.rule-summary::marker {
-        display: none;
-    }
-    summary.rule-summary i.icon {
-        margin-right: 0.75rem;
-        color: #047857; /* Matched to General Rules */
-        font-size: 1.25rem;
-    }
-    details[open] summary.rule-summary {
-        border-bottom: 1px solid #e5e7eb;
-    }
-    .rule-content { /* Changed from .content to .rule-content */
-        padding: 0 1.5rem 1.25rem;
-        color: #374151;
-        font-size: 0.925rem;
-        line-height: 1.6;
-    }
-    .rule-content ul { /* Style from General Building Rules */
-        list-style-type: none; 
-        padding-left: 0;
-        margin: 0.75rem 0;
-    }
-    .rule-content ul li { /* Style from General Building Rules */
-        margin-bottom: 1rem; 
-        padding-left: 0; 
-    }
+        /* Card container styles */
+        .card-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 1.5rem;
+        }
 
-    /* Footer styles from General Building Rules */
-    .portal-footer {
-        background-color: #e5e7eb;
-        padding: 2rem 1rem;
-        text-align: center; 
-        border-top: 1px solid #d1d5db;
-        margin-top: 3rem;
-    }
-    .footer-text {
-        font-size: 0.875rem;
-        color: #4b5563;
-        margin-bottom: 0.5rem; 
-    }
-    .footer-text i {
-        margin: 0 0.3rem; /* Adjusted from only margin-right */
-        color: #059669;
-    }
-    .footer-links a {
-        color: #059669;
-        text-decoration: none;
-        margin: 0 0.5rem;
-        font-weight: 500;
-    }
-    .footer-links a:hover {
-        text-decoration: underline;
-    }
-  </style>
+        /* Card styles */
+        .card {
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: flex-start;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid #e2e8f0;
+        }
+        .card:hover {
+            transform: translateY(-5px); /* Slightly more lift */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+        }
+        .card-icon {
+            font-size: 1.75rem; /* Slightly larger icon */
+            color: #047857; /* Darker teal */
+            margin-right: 1.rem; /* More space next to icon */
+            flex-shrink: 0;
+            opacity: 0.9;
+            transition: opacity 0.2s ease;
+            margin-top: 0.125rem; /* Align icon better with text if text wraps */
+        }
+        .card:hover .card-icon { /* Icon opacity change on card hover */
+            opacity: 1;
+        }
+        .card-content {
+            flex: 1;
+        }
+        /* Applied Tailwind classes for responsive font size directly in HTML for card-title, card-description, card-link */
+        .card-title {
+            font-weight: 600; /* semibold */
+            margin-bottom: 0.35rem; /* Adjusted margin */
+        }
+        .card-description {
+            color: #6b7280; /* Medium gray text */
+            margin-bottom: 1rem; /* More space before link */
+            line-height: 1.6; /* Improved readability */
+        }
+        .card-link {
+            font-weight: 600; /* Semibold for link */
+            color: #047857; /* Darker teal */
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.2s ease;
+        }
+        .card-link:hover {
+            color: #065f46; /* Darken link on hover */
+        }
+        .card-link i {
+            margin-left: 0.35rem; /* Space before arrow */
+            font-size: 0.8rem; /* Adjusted arrow size */
+            transition: transform 0.2s ease;
+        }
+        .card-link:hover i {
+            transform: translateX(3px); /* Arrow moves slightly on hover */
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #f1f5f9;
+            padding: 3rem 1rem;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 4rem;
+        }
+        .footer-text {
+            font-size: 0.9375rem;
+            color: #4b5563;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+        .footer-text i {
+            margin: 0 0.4rem;
+            color: #059669;
+            font-size: 1.1rem;
+        }
+        .footer-links a {
+            color: #059669;
+            text-decoration: none;
+            margin: 0 0.75rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+        .footer-links a:hover {
+            color: #55a08b;
+            text-decoration: underline;
+        }
+
+        /* Responsive Notice */
+        .notice-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .notice {
+            background-color: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .notice-title {
+            color: #dc2626;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .notice-text {
+            font-weight: 400;
+            font-size: 0.95rem;
+            color: #991b1b;
+            line-height: 1.2;
+            margin-right: 0.rem;
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background-color: #f3f4f6;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+            margin: 2rem auto;
+        }
+
+        .back-link:hover {
+            background-color: #e5e7eb;
+            transform: translateX(-3px);
+        }
+    </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased">
+<body class="antialiased"> <!-- Added antialiasing for smoother fonts -->
 
-  <div class="max-w-3xl mx-auto px-4 py-8 w-full flex-grow"> <!-- Changed max-w-2xl to max-w-3xl -->
-    <!-- Header - Adapted to General Building Rules structure -->
-    <header class="portal-header text-white text-center">
-      <div class="header-container">
-        <h1 class="header-title text-3xl sm:text-4xl">Emerald Bay</h1>
-        <p class="header-subtitle text-sm sm:text-base">Appliances Manuals</p>
-      </div>
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <!-- Using Tailwind responsive text classes -->
+            <h1 class="header-title text-3xl sm:text-4xl lg:text-5xl">Emerald Bay</h1>
+            <p class="header-subtitle text-sm sm:text-base">Appliances Manuals</p>
+        </div>
     </header>
 
-    <!-- Language Switcher - Adapted to General Building Rules style -->
-    <div class="lang-switch-container">
-      <button id="en-btn" class="lang-btn active"><i class="fas fa-globe-americas"></i> English</button> <!-- Icon changed -->
-      <button id="es-btn" class="lang-btn"><i class="fas fa-globe-americas"></i> Español</button> <!-- Icon changed -->
+    <!-- Language Switcher -->
+    <div class="lang-switch">
+        <!-- Updated icons to fas and added gap in button style -->
+        <button id="en-btn" class="lang-btn active">
+            <i class="fas fa-globe-americas"></i> English
+        </button>
+        <button id="es-btn" class="lang-btn">
+            <i class="fas fa-globe-americas"></i> Español
+        </button>
+    </div>
+    
+    <!-- Responsibility Notice - English -->
+    <div class="notice-container lang lang-en">
+        <div class="notice">
+            <div class="notice-title">
+            </div>
+            <p class="notice-text">
+            <i class="fas fa-exclamation-circle"> </i> The Tenant and occupants shall be liable for any structural damage to the property, for damages to appliances resulting from improper use or maintenance, for lack of hygiene within the premises, and for any unauthorized modifications, whether structural, to appliances, or to installations.
+            </p>
+        </div>
     </div>
 
-    <!-- English Content -->
-    <div class="lang lang-en space-y-5">
-      <details class="rule-card">
-        <summary class="rule-summary"><i class="icon fas fa-utensils"></i>Kitchen Appliances</summary>
-        <div class="rule-content">
-          <div class="mb-6">
-            <h3 class="font-bold text-lg mb-2"></i>Single-Door Refrigerator</h3>
-            <p class="mb-2">Keep temperature between 35-38°F (2-3°C) for optimal food preservation.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
-              <p class="text-sm text-green-700">• Let hot food cool before placing inside<br>• Keep door closed as much as possible<br>• Organize items for proper air circulation</p>
+    <!-- Responsibility Notice - Spanish -->
+    <div class="notice-container lang lang-es" style="display: none;">
+        <div class="notice">
+            <div class="notice-title">
             </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
-              <p class="text-sm text-red-700">• Don't overload shelves<br>• Avoid placing liquids without lids<br>• Never use sharp objects to remove ice</p>
-            </div>
-            <a href="https://ebsupport123.github.io/EmeraldBay/Refigerator_Manual.pdf" class="text-teal-600 hover:underline"><i class="fas fa-book mr-1"></i><strong> Wiew Manual</strong> </a>
-          </div>
-          <hr></hr>
-            <div class="mb-6">
-            <h3 class="font-bold text-lg mb-2"></i>Double-Door Refrigerator</h3>
-            <p class="mb-2">Keep temperature between 35-38°F (2-3°C) for optimal food preservation.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
-              <p class="text-sm text-green-700">• Let hot food cool before placing inside<br>• Keep door closed as much as possible<br>• Organize items for proper air circulation</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
-              <p class="text-sm text-red-700">• Don't overload shelves<br>• Avoid placing liquids without lids<br>• Never use sharp objects to remove ice</p>
-            </div>
-            <a href="https://ebsupport123.github.io/EmeraldBay/Refigerator_Ice_Maker_Manual.pdf" class="text-teal-600 hover:underline"><i class="fas fa-book mr-1"></i><strong> Wiew Manual</strong> </a>
-          </div>
-          <hr></hr>
-          <div class="mb-6">
-            <h3 class="font-bold text-lg mb-2"></i>Dishwasher</h3>
-            <p class="mb-2">Load dishes facing center, use detergent pods for best results.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
-              <p class="text-sm text-green-700">• Scrape food scraps before loading<br>• Use recommended detergent amount<br>• Run hot water in sink before starting cycle</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
-              <p class="text-sm text-red-700">• Don't overload or stack dishes<br>• Avoid placing wood, cast iron, or delicate items<br>• Never use regular dish soap</p>
-            </div>
-            <a href="https://ebsupport123.github.io/EmeraldBay/Dishwasher_Manual.pdf" class="text-teal-600 hover:underline"><i class="fas fa-book mr-1"></i><strong> Wiew Manual</strong> </a>
-          </div>
-            <hr></hr>
-          <div class="mb-6">
-            <h3 class="font-bold text-lg mb-2"></i>Electric Stove</h3>
-            <p class="mb-2">Use medium heat for most cooking, clean spills immediately.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
-              <p class="text-sm text-green-700">• Use flat-bottomed cookware<br>• Turn off burner when not in use<br>• Clean surface after it cools down</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
-              <p class="text-sm text-red-700">• Don't place aluminum foil directly on burners<br>• Avoid dragging pots across surface<br>• Never pour water on hot spills</p>
-            </div>
-            <a href="https://ebsupport123.github.io/EmeraldBay/Electric_Range_Manual.pdf\
-            " class="text-teal-600 hover:underline"><i class="fas fa-book mr-1"></i> <strong> Wiew Manual</strong> </a>
-          </div>
+            <p class="notice-text">
+            <i class="fas fa-exclamation-circle"></i> El Inquilino y los ocupantes serán responsables de cualquier daño estructural a la propiedad, de los daños a los electrodomésticos por uso o mantenimiento indebido, de la falta de higiene en la unidad, así como de cualquier modificación realizada sin autorización, ya sea estructural, de los electrodomésticos o de las instalaciones.
+            </p>
         </div>
-      </details>
-
-      <details class="rule-card">
-        <summary class="rule-summary"><i class="icon fas fa-tshirt"></i>Laundry Appliances</summary>
-        <div class="rule-content">
-            <div class="mb-6">
-            <h3 class="font-bold text-lg mb-2"></i>Washer & Dryer Combo</h3>
-            <p class="mb-2">Use high-efficiency detergent only, load evenly for best performance.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
-              <p class="text-sm text-green-700">• Sort clothes by color and fabric type<br>• Measure detergent according to load size<br>• Leave door open after use to prevent mold</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
-              <p class="text-sm text-red-700">• Don't overload the machine<br>• Avoid using regular detergent (HE only)<br>• Never wash items with loose buttons or zippers open</p>
-            </div>
-            <a href="https://ebsupport123.github.io/EmeraldBay/" class="text-teal-600 hover:underline"><i class="fas fa-book mr-1"></i><strong> Wiew Manual</strong> </a>
-          </div>
-          <hr></hr>
-          <div class="mb-6">
-            <h3 class="font-bold text-lg mb-2"></i>Washer</h3>
-            <p class="mb-2">Use high-efficiency detergent only, load evenly for best performance.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
-              <p class="text-sm text-green-700">• Sort clothes by color and fabric type<br>• Measure detergent according to load size<br>• Leave door open after use to prevent mold</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
-              <p class="text-sm text-red-700">• Don't overload the machine<br>• Avoid using regular detergent (HE only)<br>• Never wash items with loose buttons or zippers open</p>
-            </div>
-            <a href="https://ebsupport123.github.io/EmeraldBay/" class="text-teal-600 hover:underline"><i class="fas fa-book mr-1"></i><strong> Wiew Manual</strong> </a>
-          </div>
-          <hr></hr>
-          <div class="mb-6">
-            <h3 class="font-bold text-lg mb-2"></i>Dryer</h3>
-            <p class="mb-2">Clean lint filter before each use, don't overload to prevent wrinkles.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
-              <p class="text-sm text-green-700">• Clean lint filter after every load<br>• Use appropriate heat setting for fabrics<br>• Remove clothes promptly to reduce wrinkling</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
-              <p class="text-sm text-red-700">• Don't dry rubber, plastic, or foam items<br>• Avoid overloading the drum<br>• Never ignore lint buildup</p>
-            </div>
-            <a href="https://ebsupport123.github.io/EmeraldBay/Dryer_Manuals.pdf" class="text-teal-600 hover:underline"><i class="fas fa-book mr-1"></i><strong> Wiew Manual</strong> </a>
-          </div>
-        </div>
-      </details>
-
-      <details class="rule-card">
-        <summary class="rule-summary"><i class="icon fas fa-temperature-low"></i>HVAC Thermostat</summary>
-        <div class="rule-content">
-          <div class="mb-6">
-            <h3 class="font-bold text-lg mb-2"></i>Thermostat</h3>
-            <p class="mb-2">Set to 72°F (22°C) for comfort, use auto mode for energy savings.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
-              <p class="text-sm text-green-700">• Use programmable settings for efficiency<br>• Adjust temperature gradually<br>• Keep area around thermostat clear</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
-              <p class="text-sm text-red-700">• Don't set extreme temperatures<br>• Don’t Turn off the thermostat.<br>• Never attempt to repair it yourself <br>• Don’t set the thermostat (67°F) or below</p>
-            </div>
-            <a href="https://ebsupport123.github.io/EmeraldBay/Honeywell-RTH6500WF-Wi-Fi-Programmable-Thermostat-User-Guide.pdf" class="text-teal-600 hover:underline"><i class="fas fa-book mr-1"></i><strong> Wiew Manual</strong> </a>
-          </div>
-        </div>
-      <!-- Removed separate English back link -->
     </div>
 
-    <!-- Spanish Content -->
-    <div class="lang lang-es space-y-5" style="display:none;">
-      <details class="rule-card">
-        <summary class="rule-summary"><i class="icon fas fa-utensils"></i>Electrodomésticos de la cocina</summary>
-        <div class="rule-content">
-          <div class="mb-6">
-            <h3 class="font-bold text-lg mb-2"><i class="fas fa-refrigerator mr-2"></i>Refrigerador</h3>
-            <p class="mb-2">Mantenga la temperatura entre 2-3°C para mejor conservación de alimentos.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Cómo Usar:</h4>
-              <p class="text-sm text-green-700">• Deje enfriar la comida caliente antes de guardar<br>• Mantenga la puerta cerrada lo más posible<br>• Organice los artículos para buena circulación de aire</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>Qué NO Hacer:</h4>
-              <p class="text-sm text-red-700">• No sobrecargue los estantes<br>• Evite colocar líquidos sin tapa<br>• Nunca use objetos afilados para quitar hielo</p>
-            </div>
-            <a href="https://ebsupport123.github.io/EmeraldBay/Refigerator_Manual.pdf" class="text-teal-600 hover:underline"><i class="fas fa-book mr-1"></i><strong>Ver Manual</strong></a>
-          </div>
-          
-          <div class="mb-6">
-            <h3 class="font-bold text-lg mb-2"><i class="fas fa-blender mr-2"></i>Lavavajillas</h3>
-            <p class="mb-2">Coloque platos hacia el centro, use cápsulas de detergente.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Cómo Usar:</h4>
-              <p class="text-sm text-green-700">• Raspe los restos de comida antes de cargar<br>• Use la cantidad recomendada de detergente<br>• Abra el agua caliente antes de iniciar el ciclo</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>Qué NO Hacer:</h4>
-              <p class="text-sm text-red-700">• No sobrecargue o apile platos<br>• Evite colocar madera, hierro fundido o artículos delicados<br>• Nunca use jabón regular para lavar platos</p>
-            </div>
-            <a href="https://ebsupport123.github.io/EmeraldBay/Dishwasher_Manual.pdf" class="text-teal-600 hover:underline"><i class="fas fa-book mr-1"></i><strong>Ver Manual</strong></a>
-          </div>
+    <!-- Content Cards -->
+    <main class="pb-8 mt-4">
+        <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-10 px-20">
+            <!-- Appliance Cards - English -->
+            <a href="https://ebsupport123.github.io/EmeraldBay/Dryer_Manuals.pdf" Target="_blank" class="card lang lang-en aspect-square flex flex-col items-center justify-center p-4">
+                <i class="card-icon fas fa-book text-3xl mb-2"></i>
+                <h2 class="card-title text-lg md:text-xl text-center">Single-Door Refrigerator</h2>
+                <span class="card-link text-sm mt-2">View Manual<i class="fas fa-arrow-right ml-1"></i></span>
+            </a>
+                        <a href="Refrigerator_Manual.html" class="card lang lang-en aspect-square flex flex-col items-center justify-center p-4">
+                <i class="card-icon fas fa-book text-3xl mb-2"></i>
+                <h2 class="card-title text-lg md:text-xl text-center">Double-Door Refrigerator</h2>
+                <span class="card-link text-sm mt-2">View Manual<i class="fas fa-arrow-right ml-1"></i></span>
+            </a>
+            <a href="Oven_Manual.html" class="card lang lang-en aspect-square flex flex-col items-center justify-center p-4">
+                <i class="card-icon fas fa-book text-3xl mb-2"></i>
+                <h2 class="card-title text-lg md:text-xl text-center">Electric Stove</h2>
+                <span class="card-link text-sm mt-2">View Manual<i class="fas fa-arrow-right ml-1"></i></span>
+            </a>
 
-          <div class="mb-6">
-            <h3 class="font-bold text-lg mb-2"><i class="fas fa-fire-burner mr-2"></i>Estufa Eléctrica</h3>
-            <p class="mb-2">Use fuego medio para cocinar, limpie derrames inmediatamente.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Cómo Usar:</h4>
-              <p class="text-sm text-green-700">• Use utensilios de cocina con fondo plano<br>• Apague la hornilla cuando no esté en uso<br>• Limpie la superficie después de que se enfríe</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>Qué NO Hacer:</h4>
-              <p class="text-sm text-red-700">• No coloque papel aluminio directamente sobre las hornillas<br>• Evite arrastrar ollas sobre la superficie<br>• Nunca vierta agua sobre derrames calientes</p>
-            </div>
-            <a href="https://ebsupport123.github.io/EmeraldBay/Electric_Range_Manual.pdf" class="text-teal-600 hover:underline"><i class="fas fa-book mr-1"></i><strong>Ver Manual</strong></a>
-          </div>
+            <a href="Microwave_Manual.html" class="card lang lang-en aspect-square flex flex-col items-center justify-center p-4">
+                <i class="card-icon fas fa-book text-3xl mb-2"></i>
+                <h2 class="card-title text-lg md:text-xl text-center">Microwave</h2>
+                <span class="card-link text-sm mt-2">View Manual<i class="fas fa-arrow-right ml-1"></i></span>
+            </a>
+
+            <a href="Dishwasher_Manual.html" class="card lang lang-en aspect-square flex flex-col items-center justify-center p-4">
+                <i class="card-icon fas fa-book text-3xl mb-2"></i>
+                <h2 class="card-title text-lg md:text-xl text-center">Dishwasher</h2>
+                <span class="card-link text-sm mt-2">View Manual<i class="fas fa-arrow-right ml-1"></i></span>
+            </a>
+
+            <a href="Stove_Manual.html" class="card lang lang-en aspect-square flex flex-col items-center justify-center p-4">
+                <i class="card-icon fas fa-book text-3xl mb-2"></i>
+                <h2 class="card-title text-lg md:text-xl text-center">Washer/Dryer Combo</h2>
+                <span class="card-link text-sm mt-2">View Manual<i class="fas fa-arrow-right ml-1"></i></span>
+            </a>
+
+            <a href="Stove_Manual.html" class="card lang lang-en aspect-square flex flex-col items-center justify-center p-4">
+                <i class="card-icon fas fa-book text-3xl mb-2"></i>
+                <h2 class="card-title text-lg md:text-xl text-center">Washer</h2>
+                <span class="card-link text-sm mt-2">View Manual<i class="fas fa-arrow-right ml-1"></i></span>
+            </a>
+                        <a href="Stove_Manual.html" class="card lang lang-en aspect-square flex flex-col items-center justify-center p-4">
+                <i class="card-icon fas fa-book text-3xl mb-2"></i>
+                <h2 class="card-title text-lg md:text-xl text-center">Dryer</h2>
+                <span class="card-link text-sm mt-2">View Manual<i class="fas fa-arrow-right ml-1"></i></span>
+            </a>
+                        <a href="Stove_Manual.html" class="card lang lang-en aspect-square flex flex-col items-center justify-center p-4">
+                <i class="card-icon fas fa-book text-3xl mb-2"></i>
+                <h2 class="card-title text-lg md:text-xl text-center">Thermostat</h2>
+                <span class="card-link text-sm mt-2">View Manual<i class="fas fa-arrow-right ml-1"></i></span>
+            </a>
+            <!-- Appliance Cards - Spanish -->
+            <a href="Refrigerator_Manual.html" class="card lang lang-es aspect-square flex flex-col items-center justify-center p-4" style="display: none;">
+                <i class="card-icon fas fa-book text-3xl mb-2"></i>
+                <h2 class="card-title text-lg md:text-xl text-center">Refrigerador de una puerta</h2>
+                <span class="card-link text-sm mt-2">Ver Manual<i class="fas fa-arrow-right ml-1"></i></span>
+            </a>
+
+            <a href="Refrigerator_Manual.html" class="card lang lang-es aspect-square flex flex-col items-center justify-center p-4" style="display: none;">
+                <i class="card-icon fas fa-book text-3xl mb-2"></i>
+                <h2 class="card-title text-lg md:text-xl text-center">Refrigerador de dos puertas</h2>
+                <span class="card-link text-sm mt-2">Ver Manual<i class="fas fa-arrow-right ml-1"></i></span>
+            </a>
+
+            <a href="Oven_Manual.html" class="card lang lang-es aspect-square flex flex-col items-center justify-center p-4" style="display: none;">
+                <i class="card-icon fas fa-book text-3xl mb-2"></i>
+                <h2 class="card-title text-lg md:text-xl text-center">Estufa Electrica</h2>
+                <span class="card-link text-sm mt-2">Ver Manual<i class="fas fa-arrow-right ml-1"></i></span>
+            </a>
+
+            <a href="Microwave_Manual.html" class="card lang lang-es aspect-square flex flex-col items-center justify-center p-4" style="display: none;">
+                <i class="card-icon fas fa-book text-3xl mb-2"></i>
+                <h2 class="card-title text-lg md:text-xl text-center">Microondas</h2>
+                <span class="card-link text-sm mt-2">Ver Manual<i class="fas fa-arrow-right ml-1"></i></span>
+            </a>
+
+            <a href="Dishwasher_Manual.html" class="card lang lang-es aspect-square flex flex-col items-center justify-center p-4" style="display: none;">
+                <i class="card-icon fas fa-book text-3xl mb-2"></i>
+                <h2 class="card-title text-lg md:text-xl text-center">Lavavajillas</h2>
+                <span class="card-link text-sm mt-2">Ver Manual<i class="fas fa-arrow-right ml-1"></i></span>
+            </a>
+
+            <a href="Stove_Manual.html" class="card lang lang-es aspect-square flex flex-col items-center justify-center p-4" style="display: none;">
+                <i class="card-icon fas fa-book text-3xl mb-2"></i>
+                <h2 class="card-title text-lg md:text-xl text-center">Lavadora/Secadora Combo</h2>
+                <span class="card-link text-sm mt-2">Ver Manual<i class="fas fa-arrow-right ml-1"></i></span>
+            </a>
+
+            <a href="Stove_Manual.html" class="card lang lang-es aspect-square flex flex-col items-center justify-center p-4" style="display: none;">
+                <i class="card-icon fas fa-book text-3xl mb-2"></i>
+                <h2 class="card-title text-lg md:text-xl text-center">Lavadora</h2>
+                <span class="card-link text-sm mt-2">Ver Manual<i class="fas fa-arrow-right ml-1"></i></span>
+            </a>
+        
+            <a href="Stove_Manual.html" class="card lang lang-es aspect-square flex flex-col items-center justify-center p-4" style="display: none;">
+                <i class="card-icon fas fa-book text-3xl mb-2"></i>
+                <h2 class="card-title text-lg md:text-xl text-center">Secadora</h2>
+                <span class="card-link text-sm mt-2">Ver Manual<i class="fas fa-arrow-right ml-1"></i></span>
+            </a>
+            <a href="Stove_Manual.html" class="card lang lang-es aspect-square flex flex-col items-center justify-center p-4" style="display: none;">
+                <i class="card-icon fas fa-book text-3xl mb-2"></i>
+                <h2 class="card-title text-lg md:text-xl text-center">Termostato</h2>
+                <span class="card-link text-sm mt-2">Ver Manual<i class="fas fa-arrow-right ml-1"></i></span>
+            </a>
+
         </div>
-      </details>
+    </main>
 
-      <details class="rule-card">
-        <summary class="rule-summary"><i class="icon fas fa-tshirt"></i>Electrodomésticos de Lavandería</summary>
-        <div class="rule-content">
-          <div class="mb-6">
-            <h3 class="font-bold text-lg mb-2"><i class="fas fa-washer mr-2"></i>Lavadora</h3>
-            <p class="mb-2">Use detergente de alta eficiencia, cargue uniformemente.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Cómo Usar:</h4>
-              <p class="text-sm text-green-700">• Separe la ropa por color y tipo de tela<br>• Mida el detergente según el tamaño de la carga<br>• Deje la puerta abierta después de usar para prevenir moho</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>Qué NO Hacer:</h4>
-              <p class="text-sm text-red-700">• No sobrecargue la máquina<br>• Evite usar detergente regular (solo HE)<br>• Nunca lave artículos con botones sueltos o cremalleras abiertas</p>
-            </div>
-            <a href="https://ebsupport123.github.io/EmeraldBay/" class="text-teal-600 hover:underline"><i class="fas fa-book mr-1"></i><strong>Ver Manual</strong></a>
-          </div>
-          
-          <div class="mb-6">
-            <h3 class="font-bold text-lg mb-2"><i class="fas fa-wind mr-2"></i>Secadora</h3>
-            <p class="mb-2">Limpie el filtro de pelusa antes de cada uso.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Cómo Usar:</h4>
-              <p class="text-sm text-green-700">• Limpie el filtro de pelusa después de cada carga<br>• Use la temperatura apropiada para las telas<br>• Saque la ropa pronto para reducir arrugas</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>Qué NO Hacer:</h4>
-              <p class="text-sm text-red-700">• No seque artículos de goma, plástico o espuma<br>• Evite sobrecargar el tambor<br>• Nunca ignore la acumulación de pelusa</p>
-            </div>
-            <a href="https://ebsupport123.github.io/EmeraldBay/Dryer_Manuals.pdf" class="text-teal-600 hover:underline"><i class="fas fa-book mr-1"></i><strong>Ver Manual</strong></a>
-          </div>
-        </div>
-      </details>
-
-      <details class="rule-card">
-        <summary class="rule-summary"><i class="icon fas fa-temperature-low"></i>Termostato del A/C</summary>
-        <div class="rule-content">
-          <div class="mb-6">
-            <h3 class="font-bold text-lg mb-2"><i class="fas fa-thermometer-half mr-2"></i>Termostato</h3>
-            <p class="mb-2">Ajuste a 22°C para comodidad, use modo automático para ahorrar energía.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Cómo Usar:</h4>
-              <p class="text-sm text-green-700">• Use configuraciones programables para eficiencia<br>• Ajuste la temperatura gradualmente<br>• Mantenga el área alrededor del termostato despejada</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>Qué NO Hacer:</h4>
-              <p class="text-sm text-red-700">• No ajuste temperaturas extremas<br>• Evite cubrir o bloquear el termostato<br>• Nunca intente repararlo usted mismo</p>
-            </div>
-            <a href="https://ebsupport123.github.io/EmeraldBay/Honeywell-RTH6500WF-Wi-Fi-Programmable-Thermostat-User-Guide.pdf" class="text-teal-600 hover:underline"><i class="fas fa-book mr-1"></i><strong>Ver Manual</strong></a>
-          </div>
-        </div>
-      <!-- Removed separate Spanish back link -->
-    </div>
-
-    <!-- Back Button (Single, outside language divs) - Added from General Building Rules -->
+     <!-- Back Button (Single, outside language divs) - Added from General Building Rules -->
     <div class="mt-8 text-center footer-links">
         <a href="index.html" id="back-to-home-link">
             <i class="fas fa-arrow-left mr-2"></i><span id="back-to-home-text">Back to Home</span>
@@ -437,100 +392,44 @@
     </div>
   </div>
 
-  <!-- Footer - Adapted to General Building Rules structure -->
-  <footer class="portal-footer">
-    <div class="footer-text">
-        <i class="fas fa-mobile-alt"></i> (305) 822-9469 &nbsp;
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-text">
+            <i class="fas fa-mobile-alt"></i> (305) 822-9469 &nbsp;
+        </div>
+          <div class="footer-text email">
+      <i class="fas fa-envelope"></i> info@liveatemeraldbay.com
     </div>
-    <div class="footer-text email"> <!-- Added class email for potential specific styling if needed -->
-        <i class="fas fa-envelope"></i> info@liveatemeraldbay.com
-    </div>
-    <div class="footer-text">
-        © <span id="currentYear"></span> Emerald Bay. All Rights Reserved.
-    </div>
-    <div class="footer-links mt-2">
-         <a href="#top">Back to Top</a>
-    </div>
-  </footer>
+        <div class="footer-text">
+            © <span id="currentYear"></span> Emerald Bay. All Rights Reserved.
+        </div>
+        <div class="footer-links mt-2">
+             <a href="#top">Back to Top</a>
+        </div>
+    </footer>
 
-  <!-- JavaScript from General Building Rules, adapted -->
-  <script>
-    function updateBackToHomeText(lang) {
-        const linkTextElement = document.getElementById('back-to-home-text');
-        if (linkTextElement) { // Check if element exists
-            if (lang === 'es') {
-                linkTextElement.textContent = 'Volver al inicio';
-            } else {
-                linkTextElement.textContent = 'Back to Home';
-            }
+    <!-- Language Toggle Script -->
+    <script>
+        function setActiveLanguage(lang) {
+            document.querySelectorAll('.lang').forEach((section) => {
+                section.style.display = 'none';
+            });
+            document.querySelectorAll(`.lang-${lang}`).forEach((section) => {
+                section.style.display = 'flex';
+            });
+            document.querySelectorAll('.lang-btn').forEach((btn) => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(`${lang}-btn`).classList.add('active');
+            localStorage.setItem('preferredLanguage', lang);
         }
-    }
 
-    function setActiveLanguage(lang) {
-        document.querySelectorAll('.lang').forEach(el => {
-            el.style.display = 'none';
-        });
-
-        // Show main content sections for the active language
-        const mainContentDivs = document.querySelectorAll(`div.lang-${lang}.space-y-5`);
-        mainContentDivs.forEach(div => div.style.display = 'block');
-
-        // Handle disclaimer note (it won't find these on amenity page, which is fine)
-        const disclaimerEn = document.querySelector('.disclaimer-note-container .lang-en');
-        const disclaimerEs = document.querySelector('.disclaimer-note-container .lang-es');
-        if (disclaimerEn && disclaimerEs) {
-            if (lang === 'en') {
-                disclaimerEn.style.display = 'block';
-                disclaimerEs.style.display = 'none';
-            } else { // 'es'
-                disclaimerEn.style.display = 'none';
-                disclaimerEs.style.display = 'block';
-            }
-        }
-      
-        // Update active button
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        const activeButton = document.getElementById(`${lang}-btn`);
-        if (activeButton) {
-            activeButton.classList.add('active');
-        }
-      
-        localStorage.setItem('preferredLanguage', lang); // Using 'preferredLanguage' key
-        document.documentElement.lang = lang; // Set HTML lang attribute
-        updateBackToHomeText(lang); // Update back to home link text
-    }
-  
-    document.addEventListener('DOMContentLoaded', function() {
-        const currentYearSpan = document.getElementById('currentYear');
-        if (currentYearSpan) {
-            currentYearSpan.textContent = new Date().getFullYear();
-        }
-  
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
         const preferredLang = localStorage.getItem('preferredLanguage') || 'en';
         setActiveLanguage(preferredLang);
 
-        const enButton = document.getElementById('en-btn');
-        const esButton = document.getElementById('es-btn');
-
-        if (enButton) {
-            enButton.addEventListener('click', () => setActiveLanguage('en'));
-        }
-        if (esButton) {
-            esButton.addEventListener('click', () => setActiveLanguage('es'));
-        }
-
-        // Scrolling Logic for rule cards
-        const ruleCards = document.querySelectorAll('details.rule-card'); // Selector updated
-        ruleCards.forEach(card => {
-            card.addEventListener('toggle', function() {
-                if (this.open) {
-                    this.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    });
-  </script>
+        document.getElementById('en-btn').addEventListener('click', () => setActiveLanguage('en'));
+        document.getElementById('es-btn').addEventListener('click', () => setActiveLanguage('es'));
+    </script>
 </body>
 </html>
