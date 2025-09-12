@@ -198,9 +198,16 @@
 
     <!-- English Content -->
     <div class="lang lang-en space-y-5">
-      <summary class="rule-summary"><i class="icon fas fa-utensils"></i>Kitchen Appliances</summary>
+      <div class="category-selector flex justify-center gap-4 mb-8 flex-wrap">
+        <button class="category-btn active" data-category="kitchen"><i class="fas fa-utensils mr-2"></i>Kitchen Zone</button>
+        <button class="category-btn" data-category="bedrooms"><i class="fas fa-bed mr-2"></i>Bedrooms Zone</button>
+        <button class="category-btn" data-category="bathroom"><i class="fas fa-bath mr-2"></i>Bathroom Zone</button>
+        <button class="category-btn" data-category="appliances"><i class="fas fa-plug mr-2"></i>Appliances</button>
+      </div>
+
+      <div class="category-section" data-category="kitchen">
       <details class="rule-card">
-     <summary class="rule-summary"></i>Single-Door Refrigerator</summary>
+        <summary class="rule-summary"><i class="icon fas fa-snowflake"></i>Single-Door Refrigerator</summary>
         <div class="rule-content">
           <div class="mb-6">
             <p class="mb-2">Keep temperature between 35-38°F (2-3°C) for optimal food preservation.</p>
@@ -220,7 +227,7 @@
           </div>
       </details>
       <details class="rule-card">
-     <summary class="rule-summary"></i>Double-Door Refrigerator</summary>
+        <summary class="rule-summary"><i class="icon fas fa-snowflake"></i>Double-Door Refrigerator</summary>
         <div class="rule-content">
             <div class="mb-6">
             <p class="mb-2">Keep temperature between 35-38°F (2-3°C) for optimal food preservation.</p>
@@ -240,7 +247,7 @@
           </div>
       </details>
       <details class="rule-card">
-     <summary class="rule-summary"></i>Dishwasher</summary>
+        <summary class="rule-summary"><i class="icon fas fa-shower"></i>Dishwasher</summary>
         <div class="rule-content">
           <div class="mb-6">
             <p class="mb-2">Load dishes facing center, use detergent pods for best results.</p>
@@ -260,7 +267,7 @@
           </div>
       </details>
       <details class="rule-card">
-     <summary class="rule-summary"></i>Electric Stove</summary>
+        <summary class="rule-summary"><i class="icon fas fa-fire"></i>Electric Stove</summary>
         <div class="rule-content">
           <div class="mb-6">
             <p class="mb-2">Use medium heat for most cooking, clean spills immediately.</p>
@@ -280,8 +287,8 @@
           </div>
         </div>
       </details>
-            <details class="rule-card">
-     <summary class="rule-summary"></i>Microwave</summary>
+      <details class="rule-card">
+        <summary class="rule-summary"><i class="icon fas fa-microchip"></i>Microwave</summary>
         <div class="rule-content">
           <div class="mb-6">
             <p class="mb-2">Use microwave-safe containers and cover food to prevent splatters.</p>
@@ -302,13 +309,12 @@
         </div>
       </details>
     </div>
-    </details>
+      </div>
 
-    <details class="rule-card">
-      <summary class="rule-summary"><i class="icon fas fa-tshirt"></i>Laundry Appliances</summary>
+      <div class="category-section" data-category="bedrooms" style="display:none;">
       <div class="rule-content">
       <details class="rule-card">
-        <summary class="rule-summary"></i>Washer & Dryer Combo</summary>
+        <summary class="rule-summary"><i class="icon fas fa-washer"></i>Washer & Dryer Combo</summary>
         <div class="rule-content">
             <div class="mb-6">
             <p class="mb-2">Use high-efficiency detergent only, load evenly for best performance.</p>
@@ -327,8 +333,8 @@
             <a href="https://ebsupport123.github.io/EmeraldBay/" class="text-teal-600 hover:underline"><i class="fas fa-book mr-1"></i><strong> View Manual</strong></a>
           </div>
       </details>
-          <details class="rule-card">
-        <summary class="rule-summary"></i>Washer</summary>
+      <details class="rule-card">
+        <summary class="rule-summary"><i class="icon fas fa-washer"></i>Washer</summary>
         <div class="rule-content">
             <div class="mb-6">
             <p class="mb-2">Use high-efficiency detergent only, load evenly for best performance.</p>
@@ -347,8 +353,8 @@
             <a href="https://ebsupport123.github.io/EmeraldBay/" class="text-teal-600 hover:underline"><i class="fas fa-book mr-1"></i><strong> View Manual</strong></a>
           </div>
       </details>
-        <details class="rule-card">
-        <summary class="rule-summary"></i>Dryer</summary>
+      <details class="rule-card">
+        <summary class="rule-summary"><i class="icon fas fa-wind"></i>Dryer</summary>
         <div class="rule-content">
             <div class="mb-6">
           <div class="mb-6">
@@ -370,9 +376,14 @@
           </div>
         </div>
       </details>
-      <summary class="rule-summary"><i class="icon fas fa-temperature-low"></i>HVAC Thermostat</summary>
+      </div>
+
+      <div class="category-section" data-category="bathroom" style="display:none;">
+      </div>
+
+      <div class="category-section" data-category="appliances" style="display:none;">
       <details class="rule-card">
-        <summary class="rule-summary"></i>Thermostat</summary>
+        <summary class="rule-summary"><i class="icon fas fa-thermometer-half"></i>Thermostat</summary>
         <div class="rule-content">
           <div class="mb-6">
             <p class="mb-2">Set to 70°F for comfort, use auto mode for energy savings.</p>
@@ -395,7 +406,14 @@
     </div>
     <!-- Spanish Content -->
     <div class="lang lang-es space-y-5" style="display:none;">
-        <summary class="rule-summary"><i class="icon fas fa-utensils"></i>Electrodomésticos de la cocina</summary>
+      <div class="category-selector flex justify-center gap-4 mb-8 flex-wrap">
+        <button class="category-btn active" data-category="kitchen"><i class="fas fa-utensils mr-2"></i>Zona Cocina</button>
+        <button class="category-btn" data-category="bedrooms"><i class="fas fa-bed mr-2"></i>Zona Dormitorios</button>
+        <button class="category-btn" data-category="bathroom"><i class="fas fa-bath mr-2"></i>Zona Baño</button>
+        <button class="category-btn" data-category="appliances"><i class="fas fa-plug mr-2"></i>Electrodomésticos</button>
+      </div>
+
+      <div class="category-section" data-category="kitchen">
       <details class="rule-card">
         <summary class="rule-summary"></i>Refigerador de una Puerta</summary>
         <div class="rule-content">
@@ -478,7 +496,9 @@
           </div>
         </div>
       </details>
-        <summary class="rule-summary"><i class="icon fas fa-tshirt"></i>Electrodomésticos de Lavandería</summary>
+      </div>
+
+      <div class="category-section" data-category="bedrooms" style="display:none;">
       <details class="rule-card">
         <summary class="rule-summary"></i>Lavadora y secadora Combo</summary>
         <div class="rule-content">
@@ -543,7 +563,12 @@
           </div>
         </div>
       </details>
- <summary class="rule-summary"><i class="icon fas fa-temperature-low"></i>Termostato del A/C</summary>
+      </div>
+
+      <div class="category-section" data-category="bathroom" style="display:none;">
+      </div>
+
+      <div class="category-section" data-category="appliances" style="display:none;">
       <details class="rule-card">
         <summary class="rule-summary">Termostato del A/C</summary>
         <div class="rule-content">
@@ -589,8 +614,61 @@
     </div>
   </footer>
 
+  <style>
+    .category-selector {
+      margin: 1.5rem 0;
+    }
+    .category-btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      background: #f3f4f6;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .category-btn.active {
+      background: #047857;
+      color: white;
+    }
+    .category-btn:hover:not(.active) {
+      background: #e5e7eb;
+    }
+  </style>
+
   <!-- JavaScript from General Building Rules, adapted -->
   <script>
+    function toggleCategory(category) {
+      document.querySelectorAll('.category-section').forEach(section => {
+        section.style.display = section.dataset.category === category ? 'block' : 'none';
+      });
+      
+      document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.category === category);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add category button event listeners
+      document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.addEventListener('click', () => toggleCategory(btn.dataset.category));
+      });
+
+      // Set default category to kitchen
+      toggleCategory('kitchen');
+      
+      // Move laundry appliances to appliances category
+      const laundryItems = document.querySelectorAll('[data-category="laundry"]');
+      const appliancesSection = document.querySelector('[data-category="appliances"]');
+      laundryItems.forEach(item => {
+        appliancesSection.appendChild(item);
+      });
+
+      // Move HVAC to appliances category
+      const hvacItems = document.querySelectorAll('[data-category="hvac"]');
+      hvacItems.forEach(item => {
+        appliancesSection.appendChild(item);
+      });
     function updateBackToHomeText(lang) {
         const linkTextElement = document.getElementById('back-to-home-text');
         if (linkTextElement) { // Check if element exists
