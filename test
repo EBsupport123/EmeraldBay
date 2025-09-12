@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f766e" />
+  <title>Amenity Rules – Emerald Bay</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome - Corrected integrity attribute -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-pIVP8xVwZRKfZ7GXPDx2E7djVZtNQ7QYpQEvGWRn8X20kcvUDEpJpNnGHScxXKb3HSZjlpQjE7i4vMZ3HVpJvw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Custom Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* Category switcher styles */
+    .category-switch-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+      padding: 0 1rem;
+    }
+    .category-btn {
+      padding: 0.6rem 1.2rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      border: 1px solid #d1d5db;
+      background-color: #ffffff;
+      color: #374151;
+      cursor: pointer;
+      transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0.25rem;
+    }
+    .category-btn.active {
+      background-color: #0e7490;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .category-btn:hover:not(.active) {
+      background-color: #f3f4f6;
+    }
+    /* Base styles from General Building Rules */
+    html, body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Montserrat', sans-serif;
+        background-color: #f9fafb;
+        color: #1f2937;
+        scroll-behavior: smooth;
+    }
+
+    /* Header styles from Appliances Manuals*/
+    .portal-header {
+        padding: 2rem 1rem;
+        border-radius: 0.75rem;
+    }
+        .header-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 1rem;
+        }
+    .header-title {
+        font-family: 'Playfair Display', serif;
+        color: #000;
+        font-weight: 800;
+        letter-spacing: 1px;
+    }
+    .header-subtitle {
+        text-transform: uppercase;
+        color: #000;
+        opacity: 0.85;
+        letter-spacing: 2px;
+    }
+
+    /* Language switcher styles */
+    .lang-switch-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+        padding: 0 1rem;
+    }
+    .lang-btn {
+        padding: 0.6rem 1.2rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        border: 1px solid #d1d5db;
+        background-color: #ffffff;
+        color: #374151;
+        cursor: pointer;
+        transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0.25rem;
+    }
+    .lang-btn.active {
+        background-color: #047857;
+        color: #ffffff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .lang-btn:hover:not(.active) {
+        background-color: #f3f4f6;
+    }
+    .disclaimer-note-container {
+        background-color: #fffbeb;
+        border-left: 4px solid #f59e0b;
+        padding: 1rem 1.5rem;
+        margin-bottom: 2rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .disclaimer-note-container p {
+        margin: 0;
+        color: #b45309;
+        font-size: 0.9rem;
+        font-weight: 500;
+        line-height: 1.6;
+    }
+     .disclaimer-note-container p i {
+        margin-right: 0.5rem;
+        color: #f59e0b;
+     }
+
+    /* Details/Summary as Cards */
+    details.rule-card { /* Changed from .card to .rule-card */
+        background-color: #ffffff;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        margin-bottom: 1.5rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* border-left from Amenity not present in General, so removed for consistency */
+    }
+    details.rule-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    summary.rule-summary {
+        padding: 1.25rem 1.5rem;
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #065f46;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        list-style: none;
+    }
+    summary.rule-summary::-webkit-details-marker {
+        display: none;
+    }
+    summary.rule-summary::marker {
+        display: none;
+    }
+    summary.rule-summary i.icon {
+        margin-right: 0.75rem;
+        color: #047857; /* Matched to General Rules */
+        font-size: 1.25rem;
+    }
+    details[open] summary.rule-summary {
+        border-bottom: 1px solid #e5e7eb;
+    }
+    .rule-content { /* Changed from .content to .rule-content */
+        padding: 0 1.5rem 1.25rem;
+        color: #374151;
+        font-size: 0.925rem;
+        line-height: 1.6;
+    }
+    .rule-content ul { /* Style from General Building Rules */
+        list-style-type: none; 
+        padding-left: 0;
+        margin: 0.75rem 0;
+    }
+    .rule-content ul li { /* Style from General Building Rules */
+        margin-bottom: 1rem; 
+        padding-left: 0; 
+    }
+
+    /* Footer styles from General Building Rules */
+    .portal-footer {
+        background-color: #e5e7eb;
+        padding: 2rem 1rem;
+        text-align: center; 
+        border-top: 1px solid #d1d5db;
+        margin-top: 3rem;
+    }
+    .footer-text {
+        font-size: 0.875rem;
+        color: #4b5563;
+        margin-bottom: 0.5rem; 
+    }
+    .footer-text i {
+        margin: 0 0.3rem; /* Adjusted from only margin-right */
+        color: #059669;
+    }
+    .footer-links a {
+        color: #059669;
+        text-decoration: none;
+        margin: 0 0.5rem;
+        font-weight: 500;
+    }
+    .footer-links a:hover {
+        text-decoration: underline;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased">
+
+  <div class="max-w-3xl mx-auto px-4 py-8 w-full flex-grow"> <!-- Changed max-w-2xl to max-w-3xl -->
+    <!-- Header - Adapted to General Building Rules structure -->
+    <header class="portal-header text-center">
+      <div class="header-container">
+        <h1 class="header-title text-3xl sm:text-4xl">Emerald Bay</h1>
+        <p class="header-subtitle text-sm sm:text-base">Guía Completa de Uso, Mantenimiento y Troubleshooting</p>
+      </div>
+    </header>
+
+    <!-- Language and Category Switcher -->
+    <div class="flex flex-col gap-4">
+      <div class="lang-switch-container">
+        <button id="en-btn" class="lang-btn active"><i class="fas fa-globe-americas"></i> English</button>
+        <button id="es-btn" class="lang-btn"><i class="fas fa-globe-americas"></i> Español</button>
+      </div>
+
+      <div class="category-switch-container">
+        <button class="category-btn" data-category="all"><i class="fas fa-layer-group"></i> All</button>
+        <button class="category-btn" data-category="kitchen"><i class="fas fa-utensils"></i> Kitchen</button>
+        <button class="category-btn" data-category="bathroom"><i class="fas fa-toilet"></i> Bathroom</button>
+        <button class="category-btn" data-category="appliances"><i class="fas fa-plug"></i> Appliances</button>
+        <button class="category-btn" data-category="general"><i class="fas fa-home"></i> General</button>
+      </div>
+    </div>
+
+    <!-- Hidden by default until category is selected -->
+    <style>
+      .rule-card {
+        display: none;
+      }
+      .rule-summary[data-category] {
+        display: none;
+      }
+    </style>
+
+    <!-- English Content -->
+    <div class="lang lang-en space-y-5">
+      <summary class="rule-summary" data-category="all"><i class="icon fas fa-home"></i>Complete Tenant Guide</summary>
+      <details class="rule-card" data-category="kitchen,bathroom,general">
+        <summary class="rule-summary"><i class="fas fa-broom"></i>Limpieza y Cuidado de Superficies</summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Proper cleaning methods for different surfaces in your unit.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Recommended Products:</h4>
+              <p class="text-sm text-green-700">• Vinyl floors: Mild pH-neutral cleaner or vinegar solution (1 cup vinegar to 1 gallon water)<br>• Countertops: Manufacturer-recommended cleaner or mild soap and water<br>• Bathroom surfaces: Non-abrasive cleaners with anti-mold properties<br>• Windows: Glass cleaner or vinegar solution<br>• Carpets: Mild carpet shampoo or baking soda</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
+              <p class="text-sm text-red-700">• Don't use bleach or ammonia on vinyl floors<br>• Avoid abrasive scrubbers on countertops<br>• Never pour harsh chemicals down drains<br>• Don't let spills sit for long periods<br>• Don't use wax-based products on vinyl floors<br>• Avoid steam cleaning vinyl floors</p>
+            </div>
+            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance Tips:</h4> 
+              <p class="text-sm text-orange-700">• Clean spills immediately to prevent stains<br>• Use furniture pads to protect floors<br>• Ventilate bathrooms after showering<br>• Regularly clean baseboards and corners<br>• Sweep or vacuum floors before mopping<br>• Use doormats to reduce dirt accumulation</p>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details class="rule-card">
+     <summary class="rule-summary"></i>Single-Door Refrigerator</summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Keep temperature between 35-38°F (2-3°C) for optimal food preservation.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
+              <p class="text-sm text-green-700">• Let hot food cool before placing inside<br>• Keep door closed as much as possible<br>• Organize items for proper air circulation</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
+              <p class="text-sm text-red-700">• Don't overload shelves<br>• Avoid placing liquids without lids<br>• Never use sharp objects to remove ice <br>• Don't store hot food directly inside</p>
+            </div>
+            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance:</h4> 
+              <p class="text-sm text-orange-700">• Clean interior monthly with baking soda solution<br>• Check and clean door gaskets</p>
+            </div>
+            
+          </div>
+      </details>
+      <details class="rule-card">
+     <summary class="rule-summary"></i>Double-Door Refrigerator</summary>
+        <div class="rule-content">
+            <div class="mb-6">
+            <p class="mb-2">Keep temperature between 35-38°F (2-3°C) for optimal food preservation.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
+              <p class="text-sm text-green-700">• Let hot food cool before placing inside<br>• Keep door closed as much as possible<br>• Organize items for proper air circulation</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
+              <p class="text-sm text-red-700">• Don't overload shelves<br>• Avoid placing liquids without lids<br>• Never use sharp objects to remove ice</p>
+            </div>
+            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance:</h4> 
+              <p class="text-sm text-orange-700">• Clean interior monthly with baking soda solution<br>• Check and clean door gaskets<br>• Replace water filter as needed</p>
+            </div>
+          </div>
+      </details>
+      <details class="rule-card">
+     <summary class="rule-summary"></i>Dishwasher</summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Load dishes facing center, use detergent pods for best results.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
+              <p class="text-sm text-green-700">• Scrape food scraps before loading<br>• Use recommended detergent amount<br>• Run hot water in sink before starting cycle</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
+              <p class="text-sm text-red-700">• Don't overload or stack dishes<br>• Avoid placing wood, cast iron, or delicate items<br>• Never use regular dish soap</p>
+            </div>
+            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance:</h4> 
+              <p class="text-sm text-orange-700">• Clean filter monthly<br>• Run cleaning cycle with dishwasher cleaner<br>• Wipe door seals regularly</p>
+            </div>
+          </div>
+      </details>
+      <details class="rule-card">
+     <summary class="rule-summary"></i>Electric Stove</summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Use medium heat for most cooking, clean spills immediately.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
+              <p class="text-sm text-green-700">• Use flat-bottomed cookware<br>• Turn off burner when not in use<br>• Clean surface after it cools down</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
+              <p class="text-sm text-red-700">• Don't place aluminum foil directly on burners<br>• Avoid dragging pots across surface<br>• Never pour water on hot spills</p>
+            </div>
+            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance:</h4> 
+              <p class="text-sm text-orange-700">• Clean cooktop daily after use<br>• Remove and clean drip pans weekly</p>
+            </div>
+          </div>
+        </div>
+      </details>
+            <details class="rule-card">
+     <summary class="rule-summary"></i>Microwave</summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Use microwave-safe containers and cover food to prevent splatters.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
+              <p class="text-sm text-green-700">• Use microwave-safe glass or ceramic containers<br>• Stir food halfway through cooking time<br>• Cover food with a microwave-safe lid or paper towel<br>• Clean interior after each use</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
+              <p class="text-sm text-red-700">• Never put metal or aluminum foil inside<br>• Don't operate when empty<br>• Avoid superheating liquids<br>• Don't use containers not labeled microwave-safe</p>
+            </div>
+            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance:</h4> 
+              <p class="text-sm text-orange-700">• Clean interior regularly with mild soap<br>• Remove and wash turntable frequently</p>
+            </div>
+          </div>
+        </div>
+      </details>
+    <summary class="rule-summary"><i class="icon fas fa-tshirt"></i>Lavandería</summary>
+      <details class="rule-card" data-category="appliances">
+        <summary class="rule-summary"></i>Washer & Dryer Combo</summary>
+        <div class="rule-content">
+            <div class="mb-6">
+            <p class="mb-2">Use high-efficiency detergent only, load evenly for best performance.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
+              <p class="text-sm text-green-700">• Sort clothes by color and fabric type<br>• Measure detergent according to load size<br>• Leave door open after use to prevent mold</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
+              <p class="text-sm text-red-700">• Don't overload the machine<br>• Avoid using regular detergent (HE only)<br>• Never wash items with loose buttons or zippers open</p>
+            </div>
+            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance:</h4> 
+              <p class="text-sm text-orange-700">• Clean lint filter after every load<br>• Run cleaning cycle monthly<br>• Check and clean door seals</p>
+            </div>
+          </div>
+      </details>
+          <details class="rule-card">
+        <summary class="rule-summary"></i>Washer</summary>
+        <div class="rule-content">
+            <div class="mb-6">
+            <p class="mb-2">Use high-efficiency detergent only, load evenly for best performance.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
+              <p class="text-sm text-green-700">• Sort clothes by color and fabric type<br>• Measure detergent according to load size<br>• Leave door open after use to prevent mold</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
+              <p class="text-sm text-red-700">• Don't overload the machine<br>• Avoid using regular detergent (HE only)<br>• Never wash items with loose buttons or zippers open</p>
+            </div>
+            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance:</h4> 
+              <p class="text-sm text-orange-700">• Clean detergent dispenser monthly<br>• Run cleaning cycle monthly<br>• Check and clean door seals<br>• Keep door and dispenser open to air dry</p>
+            </div>
+          </div>
+      </details>
+        <details class="rule-card">
+        <summary class="rule-summary"></i>Dryer</summary>
+        <div class="rule-content">
+            <div class="mb-6">
+          <div class="mb-6">
+            <h3 class="font-bold text-lg mb-2"></i>Dryer</h3>
+            <p class="mb-2">Clean lint filter before each use, don't overload to prevent wrinkles.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
+              <p class="text-sm text-green-700">• Clean lint filter after every load<br>• Use appropriate heat setting for fabrics<br>• Remove clothes promptly to reduce wrinkling</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
+              <p class="text-sm text-red-700">• Don't dry rubber, plastic, or foam items<br>• Avoid overloading the drum<br>• Never ignore lint buildup</p>
+            </div>
+            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance:</h4> 
+              <p class="text-sm text-orange-700">• Clean exhaust vent annually<br>• Clean lint filter after every load<br>• Check and clean door seals<br>• Ensure proper ventilation</p>
+            </div>
+          </div>
+        </div>
+      </details>
+      <summary class="rule-summary" data-category="bathroom"><i class="icon fas fa-toilet"></i>Bathroom</summary>
+      <details class="rule-card" data-category="bathroom">
+        <summary class="rule-summary"><i class="fas fa-shower"></i>Mantenimiento del Baño</summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Cuidados esenciales para mantener tu baño en óptimas condiciones.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Qué Hacer:</h4>
+              <p class="text-sm text-green-700">• Ventilar después de cada ducha (extractor o ventana)<br>• Limpiar juntas con producto anti-moho semanalmente<br>• Retirar cabello del desagüe semanalmente<br>• Revisar fugas al cerrar llaves y tanque del inodoro<br>• Usar limpiadores no abrasivos para superficies<br>• Limpiar persianas con paño seco semanalmente</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>Qué NO Hacer:</h4>
+              <p class="text-sm text-red-700">• Tirar pañales, toallitas o productos de higiene al inodoro<br>• Usar químicos demasiado fuertes o abrasivos<br>• Dejar agua estancada en las superficies<br>• Usar herramientas metálicas para limpiar porcelana o acrílico<br>• Forzar o tirar bruscamente de las persianas</p>
+            </div>
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-3">
+              <h4 class="font-semibold text-blue-800 mb-1"><i class="fas fa-wrench mr-1"></i>Troubleshooting:</h4>
+              <p class="text-sm text-blue-700">• Inodoro tapado → usar desatascador<br>• Fuga de agua → revisar flotador del tanque<br>• Desagüe lento → quitar pelo/rejilla y enjuagar<br>• Moho en juntas → limpiar con solución de vinagre y bicarbonato</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <summary class="rule-summary" data-category="general"><i class="icon fas fa-tools"></i>General Maintenance</summary>
+      <details class="rule-card" data-category="general">
+        <summary class="rule-summary"><i class="fas fa-calendar-check"></i>Mantenimiento Preventivo</summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Routine tasks to keep your unit in top condition.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Weekly Tasks:</h4>
+              <p class="text-sm text-green-700">• Vacuum floors and carpets<br>• Clean bathroom fixtures and drains<br>• Wipe down kitchen surfaces<br>• Check for leaks under sinks<br>• Dust blinds with soft cloth</p>
+            </div>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Monthly Tasks:</h4>
+              <p class="text-sm text-green-700">• Clean refrigerator coils<br>• Inspect and clean HVAC filters<br>• Check smoke detector batteries<br>• Clean window tracks and sills</p>
+            </div>
+            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Seasonal Tasks:</h4> 
+              <p class="text-sm text-orange-700">• Deep clean carpets (spring/fall)<br>• Check weather stripping (winter)<br>• Clean patio/balcony area (seasonal)<br>• Inspect exterior drainage<br>• Clean blinds with soft cloth or vacuum attachment</p>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details class="rule-card" data-category="appliances">
+        <summary class="rule-summary"><i class="fas fa-thermometer-half"></i>Termostato</summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Set to 70°F for comfort, use auto mode for energy savings.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
+              <p class="text-sm text-green-700">• Use programmable settings for efficiency<br>• Adjust temperature gradually<br>• Keep area around thermostat clear</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
+              <p class="text-sm text-red-700">• Don't set extreme temperatures<br>• Don’t Turn off the thermostat.<br>• Never attempt to repair it yourself <br>• Don’t set the thermostat (67°F) or below</p>
+            </div>
+            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance:</h4> 
+              <p class="text-sm text-orange-700">• Ensure no obstructions around unit<br>• Keep thermostat clean and dust-free<br></p>
+            </div>
+          </div>
+        </div>
+      <!-- Removed separate English back link -->
+    </div>
+    <!-- Spanish Content -->
+    <div class="lang lang-es space-y-5" style="display:none;">
+      <summary class="rule-summary" data-category="all"><i class="icon fas fa-home"></i>Guía Completa para Inquilinos</summary>
+      <details class="rule-card">
+        <summary class="rule-summary"><i class="fas fa-shower"></i>Mantenimiento del Baño</summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Cuidados esenciales para mantener tu baño en óptimas condiciones.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Qué Hacer:</h4>
+              <p class="text-sm text-green-700">• Ventilar después de cada ducha (extractor o ventana)<br>• Limpiar juntas con producto anti-moho semanalmente<br>• Retirar cabello del desagüe semanalmente<br>• Revisar fugas al cerrar llaves y tanque del inodoro<br>• Usar limpiadores no abrasivos para superficies</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>Qué NO Hacer:</h4>
+              <p class="text-sm text-red-700">• Tirar pañales, toallitas o productos de higiene al inodoro<br>• Usar químicos demasiado fuertes o abrasivos<br>• Dejar agua estancada en las superficies<br>• Usar herramientas metálicas para limpiar porcelana o acrílico</p>
+            </div>
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-3">
+              <h4 class="font-semibold text-blue-800 mb-1"><i class="fas fa-wrench mr-1"></i>Solución de Problemas:</h4>
+              <p class="text-sm text-blue-700">• Inodoro tapado → usar desatascador<br>• Fuga de agua → revisar flotador del tanque<br>• Desagüe lento → quitar pelo/rejilla y enjuagar<br>• Moho en juntas → limpiar con solución de vinagre y bicarbonato</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <summary class="rule-summary" data-category="kitchen"><i class="icon fas fa-utensils"></i>Kitchen Appliances</summary>
+      <details class="rule-card">
+        <summary class="rule-summary"></i>Refigerador de una Puerta</summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Mantenga la temperatura entre 2-3°C para mejor conservación de alimentos.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Cómo Usar:</h4>
+              <p class="text-sm text-green-700">• Deje enfriar la comida caliente antes de guardar<br>• Mantenga la puerta cerrada lo más posible<br>• Organice los artículos para buena circulación de aire</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>Qué NO Hacer:</h4>
+              <p class="text-sm text-red-700">• No sobrecargue los estantes<br>• Evite colocar líquidos sin tapa<br>• Nunca use objetos afilados para quitar hielo</p>
+            </div>
+          </div>
+      </details>
+      <details class="rule-card">
+        <summary class="rule-summary"></i>Refigerador de dos Puertas</summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Mantenga la temperatura entre 2-3°C para mejor conservación de alimentos.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Cómo Usar:</h4>
+              <p class="text-sm text-green-700">• Deje enfriar la comida caliente antes de guardar<br>• Mantenga la puerta cerrada lo más posible<br>• Organice los artículos para buena circulación de aire</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>Qué NO Hacer:</h4>
+              <p class="text-sm text-red-700">• No sobrecargue los estantes<br>• Evite colocar líquidos sin tapa<br>• Nunca use objetos afilados para quitar hielo</p>
+            </div>
+          </div>
+      </details>
+      <details class="rule-card">
+        <summary class="rule-summary"></i>Lavavajillas</summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Coloque platos hacia el centro, use cápsulas de detergente.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Cómo Usar:</h4>
+              <p class="text-sm text-green-700">• Raspe los restos de comida antes de cargar<br>• Use la cantidad recomendada de detergente<br>• Abra el agua caliente antes de iniciar el ciclo</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>Qué NO Hacer:</h4>
+              <p class="text-sm text-red-700">• No sobrecargue o apile platos<br>• Evite colocar madera, hierro fundido o artículos delicados<br>• Nunca use jabón regular para lavar platos</p>
+            </div>
+          </div>
+      </details>
+            <details class="rule-card">
+        <summary class="rule-summary"></i>Estufa Eléctrica</summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Use fuego medio para cocinar, limpie derrames inmediatamente.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Cómo Usar:</h4>
+              <p class="text-sm text-green-700">• Use utensilios de cocina con fondo plano<br>• Apague la hornilla cuando no esté en uso<br>• Limpie la superficie después de que se enfríe</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>Qué NO Hacer:</h4>
+              <p class="text-sm text-red-700">• No coloque papel aluminio directamente sobre las hornillas<br>• Evite arrastrar ollas sobre la superficie<br>• Nunca vierta agua sobre derrames calientes</p>
+            </div>
+            <a href="https://ebsupport123.github.io/EmeraldBay/Electric_Range_Manual.pdf" class="text-teal-600 hover:underline"><i class="fas fa-book mr-1"></i><strong> Ver Manual</strong></a>
+          </div>
+        </div>
+      </details>
+        <details class="rule-card">
+        <summary class="rule-summary"></i>Microondas</summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Use recipientes aptos para microondas y cubra los alimentos para evitar salpicaduras.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Cómo Usar:</h4>
+              <p class="text-sm text-green-700">• Use recipientes de vidrio o cerámica aptos para microondas<br>• Revuelva los alimentos a mitad del tiempo de cocción<br>• Cubra los alimentos con una tapa apta o toalla de papel<br>• Limpie el interior después de cada uso</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>Qué NO Hacer:</h4>
+              <p class="text-sm text-red-700">• Nunca ponga metal o papel aluminio adentro<br>• No lo opere cuando esté vacío<br>• Evite sobrecalentar líquidos<br>• No use recipientes no etiquetados como aptos para microondas</p>
+            </div>
+            <a href="https://ebsupport123.github.io/EmeraldBay/Microwave_Manual.pdf" class="text-teal-600 hover:underline"><i class="fas fa-book mr-1"></i><strong> Ver Manual</strong></a>
+          </div>
+        </div>
+      </details>
+        <summary class="rule-summary"><i class="icon fas fa-tshirt"></i>Lavandería</summary>
+      <details class="rule-card">
+        <summary class="rule-summary"></i>Lavadora y secadora Combo</summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Use detergente de alta eficiencia, cargue uniformemente.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Cómo Usar:</h4>
+              <p class="text-sm text-green-700">• Separe la ropa por color y tipo de tela<br>• Mida el detergente según el tamaño de la carga<br>• Deje la puerta abierta después de usar para prevenir moho</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>Qué NO Hacer:</h4>
+              <p class="text-sm text-red-700">• No sobrecargue la máquina<br>• Evite usar detergente regular (solo HE)<br>• Nunca lave artículos con botones sueltos o cremalleras abiertas</p>
+            </div>
+            <a href="https://ebsupport123.github.io/EmeraldBay/" class="text-teal-600 hover:underline"><i class="fas fa-book mr-1"></i><strong> Ver Manual</strong></a>
+          </div>
+          
+          <div class="mb-6">
+            <h3 class="font-bold text-lg mb-2"><i class="fas fa-wind mr-2"></i>Secadora</h3>
+            <p class="mb-2">Limpie el filtro de pelusa antes de cada uso.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Cómo Usar:</h4>
+              <p class="text-sm text-green-700">• Limpie el filtro de pelusa después de cada carga<br>• Use la temperatura apropiada para las telas<br>• Saque la ropa pronto para reducir arrugas</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>Qué NO Hacer:</h4>
+              <p class="text-sm text-red-700">• No seque artículos de goma, plástico o espuma<br>• Evite sobrecargar el tambor<br>• Nunca ignore la acumulación de pelusa</p>
+            </div>
+            <a href="https://ebsupport123.github.io/EmeraldBay/Dryer_Manuals.pdf" class="text-teal-600 hover:underline"><i class="fas fa-book mr-1"></i><strong> Ver Manual</strong></a>
+          </div>
+        </div>
+      </details>
+      <details class="rule-card">
+        <summary class="rule-summary"></i>Lavadora</summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Use detergente de alta eficiencia, cargue uniformemente.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Cómo Usar:</h4>
+              <p class="text-sm text-green-700">• Separe la ropa por color y tipo de tela<br>• Mida el detergente según el tamaño de la carga<br>• Deje la puerta abierta después de usar para prevenir moho</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>Qué NO Hacer:</h4>
+              <p class="text-sm text-red-700">• No sobrecargue la máquina<br>• Evite usar detergente regular (solo HE)<br>• Nunca lave artículos con botones sueltos o cremalleras abiertas</p>
+            </div>
+            <a href="https://ebsupport123.github.io/EmeraldBay/" class="text-teal-600 hover:underline"><i class="fas fa-book mr-1"></i><strong> Ver Manual</strong></a>
+          </div>
+      </details>
+       <details class="rule-card">
+        <summary class="rule-summary"></i>Secadora</summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Limpie el filtro de pelusa antes de cada uso.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Cómo Usar:</h4>
+              <p class="text-sm text-green-700">• Limpie el filtro de pelusa después de cada carga<br>• Use la temperatura apropiada para las telas<br>• Saque la ropa pronto para reducir arrugas</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>Qué NO Hacer:</h4>
+              <p class="text-sm text-red-700">• No seque artículos de goma, plástico o espuma<br>• Evite sobrecargar el tambor<br>• Nunca ignore la acumulación de pelusa</p>
+            </div>
+            <a href="https://ebsupport123.github.io/EmeraldBay/Dryer_Manuals.pdf" class="text-teal-600 hover:underline"><i class="fas fa-book mr-1"></i><strong> Ver Manual</strong></a>
+          </div>
+        </div>
+      </details>
+ <summary class="rule-summary"><i class="icon fas fa-temperature-low"></i>Termostato del A/C</summary>
+      <details class="rule-card">
+        <summary class="rule-summary"><i class="fas fa-thermometer-half"></i>Termostato</summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Ajuste a 70°F para su comodidad, use modo automático para ahorrar energía.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Cómo Usar:</h4>
+              <p class="text-sm text-green-700">• Use configuraciones programables para eficiencia<br>• Ajuste la temperatura gradualmente<br>• Mantenga el área alrededor del termostato despejada</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>Qué NO Hacer:</h4>
+              <p class="text-sm text-red-700">• No ajuste temperaturas extremas<br>• Evite cubrir o bloquear el termostato<br>• Nunca intente repararlo usted mismo</p>
+            </div>
+            <a href="https://ebsupport123.github.io/EmeraldBay/Honeywell-RTH6500WF-Wi-Fi-Programmable-Thermostat-User-Guide.pdf" class="text-teal-600 hover:underline"><i class="fas fa-book mr-1"></i><strong> Ver Manual</strong></a>
+          </div>
+        </div>
+      <!-- Removed separate Spanish back link -->
+    </div>
+
+    <!-- Back Button (Single, outside language divs) - Added from General Building Rules -->
+    <div class="mt-8 text-center footer-links">
+        <a href="index.html" id="back-to-home-link">
+            <i class="fas fa-arrow-left mr-2"></i><span id="back-to-home-text">Back to Home</span>
+        </a>
+    </div>
+  </div>
+
+  <!-- Footer - Adapted to General Building Rules structure -->
+  <footer class="portal-footer">
+    <div class="footer-text">
+        <i class="fas fa-mobile-alt"></i> (305) 822-9469 &nbsp;
+    </div>
+    <div class="footer-text email">
+        <i class="fas fa-envelope"></i> info@liveatemeraldbay.com
+    </div>
+    <div class="footer-text">
+        © <span id="currentYear"></span> Emerald Bay. All Rights Reserved.
+    </div>
+    <div class="footer-links mt-2">
+        <a href="#top">Back to Top</a>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Category filtering function
+    function filterByCategory(category) {
+      // Hide all content first
+      document.querySelectorAll('.rule-card, .rule-summary[data-category]').forEach(el => {
+        el.style.display = 'none';
+      });
+
+      // Show selected category
+      if (category === 'all') {
+        document.querySelectorAll('.rule-card, .rule-summary[data-category]').forEach(el => {
+          el.style.display = 'block';
+        });
+      } else {
+        // Show category headers
+        document.querySelectorAll(`.rule-summary[data-category*="${category}"]`).forEach(el => {
+          el.style.display = 'block';
+        });
+        // Show matching cards
+        document.querySelectorAll(`.rule-card[data-category*="${category}"]`).forEach(el => {
+          el.style.display = 'block';
+        });
+      }
+
+      // Update active category button
+      document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelector(`.category-btn[data-category="${category}"]`).classList.add('active');
+    }
+
+    // Initialize by hiding all content
+    document.addEventListener('DOMContentLoaded', function() {
+      filterByCategory('all'); // Start with all hidden
+    });
+
+    function updateBackToHomeText(lang) {
+        const linkTextElement = document.getElementById('back-to-home-text');
+        if (linkTextElement) { // Check if element exists
+            if (lang === 'es') {
+                linkTextElement.textContent = 'Volver al inicio';
+            } else {
+                linkTextElement.textContent = 'Back to Home';
+            }
+        }
+    }
+
+    function setActiveLanguage(lang) {
+        document.querySelectorAll('.lang').forEach(el => {
+            el.style.display = 'none';
+        });
+
+        // Show main content sections for the active language
+        const mainContentDivs = document.querySelectorAll(`div.lang-${lang}.space-y-5`);
+        mainContentDivs.forEach(div => div.style.display = 'block');
+
+        // Handle disclaimer note (it won't find these on amenity page, which is fine)
+        const disclaimerEn = document.querySelector('.disclaimer-note-container .lang-en');
+        const disclaimerEs = document.querySelector('.disclaimer-note-container .lang-es');
+        if (disclaimerEn && disclaimerEs) {
+            if (lang === 'en') {
+                disclaimerEn.style.display = 'block';
+                disclaimerEs.style.display = 'none';
+            } else { // 'es'
+                disclaimerEn.style.display = 'none';
+                disclaimerEs.style.display = 'block';
+            }
+        }
+      
+        // Update active button
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        const activeButton = document.getElementById(`${lang}-btn`);
+        if (activeButton) {
+            activeButton.classList.add('active');
+        }
+      
+        localStorage.setItem('preferredLanguage', lang); // Using 'preferredLanguage' key
+        document.documentElement.lang = lang; // Set HTML lang attribute
+        updateBackToHomeText(lang); // Update back to home link text
+    }
+  
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize category buttons
+      document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          filterByCategory(this.dataset.category);
+        });
+      });
+
+        const currentYearSpan = document.getElementById('currentYear');
+        if (currentYearSpan) {
+            currentYearSpan.textContent = new Date().getFullYear();
+        }
+  
+        const preferredLang = localStorage.getItem('preferredLanguage') || 'en';
+        setActiveLanguage(preferredLang);
+
+        const enButton = document.getElementById('en-btn');
+        const esButton = document.getElementById('es-btn');
+
+        if (enButton) {
+            enButton.addEventListener('click', () => setActiveLanguage('en'));
+        }
+        if (esButton) {
+            esButton.addEventListener('click', () => setActiveLanguage('es'));
+        }
+
+        // Scrolling Logic for rule cards
+        const ruleCards = document.querySelectorAll('details.rule-card'); // Selector updated
+        ruleCards.forEach(card => {
+            card.addEventListener('toggle', function() {
+                if (this.open) {
+                    this.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    });
+  </script>
+</body>
+</html>
