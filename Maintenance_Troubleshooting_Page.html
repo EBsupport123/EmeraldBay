@@ -223,180 +223,276 @@
       </div>
     </header>
 
-    <!-- Language and Category Switcher -->
-    <div class="flex flex-col gap-4">
-      <div class="lang-switch-container">
-        <button id="en-btn" class="lang-btn active"><i class="fas fa-globe-americas"></i> English</button>
-        <button id="es-btn" class="lang-btn"><i class="fas fa-globe-americas"></i> Español</button>
+      <!-- Language and Category Switcher -->
+      <div class="flex flex-col gap-4 mb-6">
+        <div class="lang-switch-container">
+          <button id="en-btn" class="lang-btn active"><i class="fas fa-globe-americas"></i> English</button>
+          <button id="es-btn" class="lang-btn"><i class="fas fa-globe-americas"></i> Español</button>
+        </div>
+
+        <div class="category-switch-container">
+          <button class="category-btn active" data-category="kitchen"><i class="fa-solid fa-kitchen-set"></i> Kitchen Area</button>
+          <button class="category-btn" data-category="HVAC"><i class="fa-solid fa-temperature-high"></i> A/C Room</button>
+          <button class="category-btn" data-category="water"><i class="fa-solid fa-water"></i> Water Heater Room</button>
+          <button class="category-btn" data-category="laundry"><i class="fas fa-tshirt"></i> Laundry Area</button>
+          <button class="category-btn" data-category="bathroom"><i class="fa-solid fa-bath"></i> Bathroom Area</button>
+          <button class="category-btn" data-category="balcony"><i class="fa-solid fa-people-line"></i> Balcony Area</button>
+          <button class="category-btn" data-category="general"><i class="fas fa-home"></i> General Areas</button>
+        </div>
       </div>
 
-      <div class="category-switch-container">
-        <button class="category-btn active" data-category="kitchen"><i class="fa-solid fa-kitchen-set"></i> Kitchen Area</button>
-        <button class="category-btn" data-category="HVAC"><i class="fa-solid fa-temperature-high"></i> A/C Room</button>
-        <button class="category-btn" data-category="water"><i class="fa-solid fa-water"></i> Water Heater Room</button>
-        <button class="category-btn" data-category="laundry"><i class="fas fa-tshirt"></i> Laundry Area</button>
-        <button class="category-btn" data-category="bathroom"><i class="fa-solid fa-bath"></i> Bathroom Area</button>
-        <button class="category-btn" data-category="balcony"><i class="fa-solid fa-people-line"></i> Balcony Area</button>
-        <button class="category-btn" data-category="general"><i class="fas fa-home"></i> General Areas</button>
+      <style>
+        .rule-card {
+          display: none;
+        }
+        .rule-summary[data-category] {
+          display: none;
+        }
+        .rule-card[data-category*="kitchen"], 
+        .rule-summary[data-category*="kitchen"] {
+          display: block;
+        }
+      </style>
+      <!-- Tenant Responsibility Notice -->
+      <div class="disclaimer-note-container mb-6">
+        <p class="font-bold">
+          <span class="lang-en"><i class="fas fa-exclamation-circle"></i> Every resident and occupant is responsible for maintaining their unit in clean, hygienic conditions and performing basic maintenance. Proper care prevents damage and ensures a comfortable living environment.</span>
+          <span class="lang-es" style="display:none;"><i class="fas fa-exclamation-circle"></i> Todo residente y ocupante es responsable de mantener su unidad en condiciones limpias e higiénicas y realizar mantenimiento básico. El cuidado adecuado previene daños y asegura un ambiente de vida confortable.</span>
+        </p>
       </div>
-    </div>
-
-    <style>
-      .rule-card {
-        display: none;
-      }
-      .rule-summary[data-category] {
-        display: none;
-      }
-      .rule-card[data-category*="kitchen"], 
-      .rule-summary[data-category*="kitchen"] {
-        display: block;
-      }
-    </style>
-<div class="max-w-3xl mx-auto px-4 py-8 w-full flex-grow"> <!-- Changed max-w-2xl to max-w-3xl -->
-    <!-- Tenant Responsibility Notice -->
-    <div class="disclaimer-note-container mb-6">
-      <p class="font-bold">
-        
-        <span class="lang-en"> <i class="fas fa-exclamation-circle"></i>Every resident and ocupant is responsible for maintaining their unit in clean, hygienic conditions and performing basic maintenance. Proper care prevents damage and ensures a comfortable living environment.</span>
-        <span class="lang-es" style="display:none;"><i class="fas fa-exclamation-circle"></i>Todo residente y ocupante es responsable de mantener su unidad en condiciones limpias e higiénicas y realizar mantenimiento básico. El cuidado adecuado previene daños y asegura un ambiente de vida confortable.</span>
-      </p>
-    </div>
-    <!-- English Content -->
-    <div class="lang lang-en space-y-5" style="display: none;">
+      <!-- English Content -->
+      <div class="lang lang-en space-y-5" style="display: none;">
    <!-- Kitchen Area -->
-      <summary class="rule-summary" data-category="kitchen"><span class="lang-en">Maintenance Guidelines</span></summary>
+      <summary class="rule-summary" data-category="kitchen"><i class="fa-solid fa-kitchen-set"></i><span class="lang-en"> Kitchen Area</span></summary>
       <details class="rule-card" data-category="kitchen">
-        <summary class="rule-summary"><span class="lang-en">Countertops & Cabinets</span></summary>
+        <summary class="rule-summary"><span class="lang-en">Stone Countertops</span></summary>
         <div class="rule-content">
           <div class="mb-6">
-            <p class="mb-2"><span class="lang-en">Proper cleaning methods for different surfaces in your unit.</span></p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i><span class="lang-en">Recommended Products:</span></h4>
-              <p class="text-sm text-green-700">• Vinyl floors: Mild pH-neutral cleaner or vinegar solution (1 cup vinegar to 1 gallon water)<br>• Countertops: Manufacturer-recommended cleaner or mild soap and water<br>• Bathroom surfaces: Non-abrasive cleaners with anti-mold properties<br>• Windows: Glass cleaner or vinegar solution<br>• Carpets: Mild carpet shampoo or baking soda</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i><span class="lang-en">What NOT to Do:</span></h4>
-              <p class="text-sm text-red-700">• Don't use bleach or ammonia on vinyl floors<br>• Avoid abrasive scrubbers on countertops<br>• Never pour harsh chemicals down drains<br>• Don't let spills sit for long periods<br>• Don't use wax-based products on vinyl floors<br>• Avoid steam cleaning vinyl floors</p>
-            </div>
-            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
-              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i><span class="lang-en">Maintenance Tips:</span></h4> 
-              <p class="text-sm text-orange-700">• Clean spills immediately to prevent stains<br>• Use furniture pads to protect floors<br>• Ventilate bathrooms after showering<br>• Regularly clean baseboards and corners<br>• Sweep or vacuum floors before mopping<br>• Use doormats to reduce dirt accumulation</p>
-            </div>
+        <p class="mb-2"><span class="lang-en">Proper care for stone countertops (granite, quartz, marble) and usage recommendations.</span></p>
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+          <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i><span class="lang-en">Recommended Products:</span></h4>
+          <p class="text-sm text-green-700"><span class="lang-en">
+            • pH-neutral cleaner specific for stone<br>
+            • Warm water and a soft cloth<br>
+            • Stone sealer (apply as recommended by the manufacturer)<br>
+            • Do not use vinegar or acidic products
+          </span></p>
+        </div>
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+          <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i><span class="lang-en">What NOT to do:</span></h4>
+          <p class="text-sm text-red-700"><span class="lang-en">
+            • Do not place very heavy objects in a single spot; distribute weight evenly<br>
+            • Do not cut directly on the stone, always use a cutting board<br>
+            • Do not place hot pots or pans directly on the surface<br>
+            • Do not use abrasive, acidic, or bleach cleaners<br>
+            • Do not place appliances like air fryers or toasters against the walls, as heat can damage both the countertop and the wall<br>
+            • Do not leave spills for a long time, especially wine, coffee, or citrus juices
+          </span></p>
+        </div>
+        <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+          <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i><span class="lang-en">Maintenance Tips:</span></h4> 
+          <p class="text-sm text-orange-700"><span class="lang-en">
+            • Clean spills immediately to avoid stains<br>
+            • Use pads or protectors for appliances and hot utensils<br>
+            • Keep appliances (like air fryers) away from walls and countertop edges<br>
+            • Apply sealer to the stone as directed by the manufacturer to protect the surface<br>
+            • Avoid sitting or standing on the countertop<br>
+            • Periodically check for cracks or chips
+          </span></p>
+        </div>
           </div>
         </div>
       </details>
-    <!-- Kitchen Area -->
       <details class="rule-card" data-category="kitchen">
-        <summary class="rule-summary">Cabinets</summary>
+        <summary class="rule-summary"><span class="lang-en">Cabinets</span></summary>
         <div class="rule-content">
           <div class="mb-6">
-            <p class="mb-2">Proper care for kitchen cabinets and storage.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Recommended Products:</h4>
-              <p class="text-sm text-green-700">• Wood cabinets: Mild soap and water<br>• Painted cabinets: Non-abrasive cleaner<br>• Hardware: Mild detergent and soft cloth</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
-              <p class="text-sm text-red-700">• Don't use abrasive cleaners or scouring pads<br>• Avoid excessive water on wood surfaces<br>• Never hang wet towels on cabinet doors<br>• Don't overload shelves</p>
-            </div>
-            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
-              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance Tips:</h4> 
-              <p class="text-sm text-orange-700">• Wipe spills immediately<br>• Clean handles regularly<br>• Adjust hinges if doors sag<br>• Organize contents for easy access</p>
-            </div>
+        <p class="mb-2"><span class="lang-en">Proper care for kitchen cabinets and storage.</span></p>
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+          <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i><span class="lang-en">Recommended Products:</span></h4>
+          <p class="text-sm text-green-700"><span class="lang-en">• Wood cabinets: Mild soap and water<br>• Painted cabinets: Non-abrasive cleaner<br>• Hardware: Mild detergent and soft cloth</span></p>
+        </div>
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+          <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i><span class="lang-en">What NOT to do:</span></h4>
+          <p class="text-sm text-red-700"><span class="lang-en">• Do not use abrasive cleaners or steel wool<br>• Avoid excess water on wood surfaces<br>• Never hang wet towels on doors<br>• Do not overload shelves</span></p>
+        </div>
+        <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+          <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i><span class="lang-en">Maintenance Tips:</span></h4> 
+          <p class="text-sm text-orange-700"><span class="lang-en">• Clean spills immediately<br>• Clean handles regularly<br>• Adjust hinges if doors sag<br>• Organize contents for easy access</span></p>
+        </div>
           </div>
         </div>
       </details>
-    <!-- Kitchen Area -->
-      <summary class="rule-summary" data-category="kitchen"><i class="fa-solid fa-plug"></i> Appliances</summary>
+      <summary class="rule-summary" data-category="kitchen"><i class="fa-solid fa-plug"></i><span class="lang-en"> Appliances</span></summary>
       <details class="rule-card" data-category="kitchen">
-        <summary class="rule-summary">Refrigerator</summary>
+        <summary class="rule-summary"><span class="lang-en">Refrigerator</span></summary>
         <div class="rule-content">
           <div class="mb-6">
-            <p class="mb-2">Set temperature to 37°F (3°C) for refrigerator and 0°F (-18°C) for freezer.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
-              <p class="text-sm text-green-700">• Keep food properly covered<br>• Allow hot food to cool before storing<br>• Organize items for proper air circulation<br>• Clean spills immediately</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
-              <p class="text-sm text-red-700">• Don't overload shelves<br>• Avoid placing liquids without lids<br>• Never use sharp objects to remove ice<br>• Don't store hot food directly inside</p>
-            </div>
-            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
-              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance:</h4> 
-              <p class="text-sm text-orange-700">• Clean interior monthly with baking soda solution<br>• Check and clean door gaskets<br>• Vacuum condenser coils every 6 months<br>• Defrost freezer when ice buildup exceeds 1/4 inch</p>
-            </div>
-              <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-3">
-              <h4 class="font-semibold text-blue-800 mb-1"><i class="fas fa-wrench mr-1"></i>Troubleshooting:</h4> 
-              <p class="text-sm text-blue-700">• Loose hinge: tighten screws with a screwdriver</p>
-            </div>
+        <p class="mb-2"><span class="lang-en">Set the temperature to 37°F (3°C) for the refrigerator and 0°F (-18°C) for the freezer.</span></p>
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+          <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i><span class="lang-en">How to Use:</span></h4>
+          <p class="text-sm text-green-700"><span class="lang-en">
+        • Keep food covered<br>
+        • Let hot food cool before storing<br>
+        • Organize items to allow air circulation<br>
+        • Clean spills immediately
+          </span></p>
+        </div>
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+          <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i><span class="lang-en">What NOT to do:</span></h4>
+          <p class="text-sm text-red-700"><span class="lang-en">
+        • Do not overload shelves<br>
+        • Do not place uncovered liquids<br>
+        • Never use sharp objects to remove ice<br>
+        • Do not store hot food directly
+          </span></p>
+        </div>
+        <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+          <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i><span class="lang-en">Maintenance:</span></h4> 
+          <p class="text-sm text-orange-700"><span class="lang-en">
+        • Clean the interior monthly with a baking soda solution<br>
+        • Check and clean door seals<br>
+        • Vacuum condenser coils every 6 months<br>
+        • Defrost the freezer if ice buildup exceeds 1/4 inch<br>
+        • Change the water filter every 4 months if applicable
+          </span></p>
+        </div>
           </div>
         </div>
       </details>
-    <!-- Kitchen Area -->
       <details class="rule-card" data-category="kitchen">
-        <summary class="rule-summary"><i></i>Dishwasher</summary>
+        <summary class="rule-summary"><span class="lang-en">Dishwasher</span></summary>
         <div class="rule-content">
           <div class="mb-6">
-            <div class="mb-6">
-            <p class="mb-2">Load dishes facing center, use detergent pods for best results.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
-              <p class="text-sm text-green-700">• Scrape food scraps before loading<br>• Use recommended detergent amount<br>• Run hot water in sink before starting cycle</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
-              <p class="text-sm text-red-700">• Don't overload or stack dishes<br>• Avoid placing wood, cast iron, or delicate items<br>• Never use regular dish soap</p>
-            </div>
-            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
-              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance:</h4> 
-              <p class="text-sm text-orange-700">• Clean filter monthly<br>• Run cleaning cycle with dishwasher cleaner<br>• Wipe door seals regularly</p>
-            </div>
-          </div>
-      </details>
-      <!-- Kitchen Area -->
-        <details class="rule-card" data-category="kitchen">
-        <summary class="rule-summary"><i></i>Electric Stove</summary>
-        <div class="rule-content">
-          <div class="mb-6">
-            <p class="mb-2">Use medium heat for most cooking, clean spills immediately.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
-              <p class="text-sm text-green-700">• Use flat-bottomed cookware<br>• Turn off burner when not in use<br>• Clean surface after it cools down</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
-              <p class="text-sm text-red-700">• Don't place aluminum foil directly on burners<br>• Avoid dragging pots across surface<br>• Never pour water on hot spills</p>
-            </div>
-            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
-              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance:</h4> 
-              <p class="text-sm text-orange-700">• Clean cooktop daily after use<br>• Remove and clean drip pans weekly</p>
-            </div>
+        <p class="mb-2">Recommendations for proper dishwasher use:</p>
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+          <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
+          <p class="text-sm text-green-700">
+            • Place dishes facing the center and do not stack them<br>
+            • Remove large food scraps before loading<br>
+            • Use pods or dishwasher-specific detergent<br>
+            • Ensure spray arms can rotate freely<br>
+            • Start the cycle with hot water for best results<br>
+          </p>
+        </div>
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+          <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to do:</h4>
+          <p class="text-sm text-red-700">
+            • Do not overload or stack dishes<br>
+            • Do not place wooden, cast iron, or delicate items<br>
+            • Do not use regular liquid soap (only dishwasher detergent)<br>
+            • Do not open the door during the cycle<br>
+            • Do not use abrasive products to clean the interior<br>
+            • Do not press all buttons while the wash cycle is running<br>
+          </p>
+        </div>
+        <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+          <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance:</h4>
+          <p class="text-sm text-orange-700">
+            • Clean the filter at least once a month<br>
+            • Run a cleaning cycle with a dishwasher cleaner regularly<br>
+            • Clean the door gaskets to prevent residue buildup<br>
+            • Check that spray arm holes are not blocked<br>
+            • If the cycle does not start, turn the breaker OFF in the electrical panel, wait 1 minute, then turn it ON again<br>
+          </p>
+        </div>
           </div>
         </div>
       </details>
-    <!-- Kitchen Area -->
+      <details class="rule-card" data-category="kitchen">
+        <summary class="rule-summary"><span class="lang-en">Electric Stove</span></summary>
+        <div class="rule-content">
+          <div class="mb-6">
+        <p class="mb-2">Recommendations for safe and efficient use of the electric stove:</p>
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+          <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
+          <p class="text-sm text-green-700">
+        • Cook at medium temperature for most foods.<br>
+        • Watch food while cooking to avoid spills.<br>
+        • Turn off the burner immediately after use.<br>
+        • Clean spills as soon as the surface is cool.<br>
+        • If the stove has an indicator light, wait for it to turn off before cleaning.<br>
+          </p>
+        </div>
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+          <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to do:</h4>
+          <p class="text-sm text-red-700">
+        • Do not place aluminum foil directly on burners.<br>
+        • Do not use the stove as a support or storage surface.<br>
+        • Do not drag pots or pans across the surface to avoid scratches.<br>
+        • Do not pour cold water on a hot stove, it can damage the surface.<br>
+        • Do not leave plastic or flammable objects near burners.<br>
+        • Do not use abrasive products or steel wool to clean.<br>
+          </p>
+        </div>
+        <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+          <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance:</h4> 
+          <p class="text-sm text-orange-700">
+        • Clean the stove surface daily with a damp cloth and mild detergent.<br>
+        • Remove and clean drip trays (if applicable) once a week.<br>
+        • Check that controls turn smoothly and are not loose.<br>
+        • If a burner does not heat, check that it is properly placed and connected.<br>
+        • Do not allow grease or residue to build up around burners.<br>
+        • If you smell burning or see sparks, turn off the stove and report it to maintenance.<br>
+        • Do not use the stove if the power cord is damaged.<br>
+        • Keep the area around the stove free of objects and clean.<br>
+          </p>
+        </div>
+          </div>
+        </div>
+      </details>
       <details class="rule-card" data-category="kitchen" >
-        <summary class="rule-summary"><i></i>Microwave</summary>
+        <summary class="rule-summary"><span class="lang-en">Microwave</span></summary>
         <div class="rule-content">
           <div class="mb-6">
-            <p class="mb-2">Use microwave-safe containers and cover food to prevent splatters.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
-              <p class="text-sm text-green-700">• Use microwave-safe glass or ceramic containers<br>• Stir food halfway through cooking time<br>• Cover food with a microwave-safe lid or paper towel<br>• Clean interior after each use</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
-              <p class="text-sm text-red-700">• Never put metal or aluminum foil inside<br>• Don't operate when empty<br>• Avoid superheating liquids<br>• Don't use containers not labeled microwave-safe</p>
-            </div>
-            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
-              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance:</h4> 
-              <p class="text-sm text-orange-700">• Clean interior regularly with mild soap<br>• Remove and wash turntable frequently</p>
-            </div>
+        <p class="mb-2"><span class="lang-en">Use microwave-safe containers and cover food to prevent splatters.</span></p>
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+          <h4 class="font-semibold text-green-800 mb-1">
+        <i class="fas fa-check-circle mr-1"></i>
+        <span class="lang-en">How to Use:</span>
+          </h4>
+          <p class="text-sm text-green-700">
+        <span class="lang-en">
+          • Use only glass or ceramic containers suitable for microwaves<br>
+          • Clean the interior after each use to prevent residue buildup<br>
+        </span>
+          </p>
+        </div>
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+          <h4 class="font-semibold text-red-800 mb-1">
+        <i class="fas fa-times-circle mr-1"></i>
+        <span class="lang-en">What NOT to do:</span>
+          </h4>
+          <p class="text-sm text-red-700">
+        <span class="lang-en">
+          • Never put metal objects, aluminum foil, or utensils with metal parts inside<br>
+          • Do not heat eggs in the shell or tightly sealed foods (they may explode)<br>
+          • Do not overheat liquids or oils, as they may boil suddenly<br>
+          • Do not force the door open<br>
+        </span>
+          </p>
+        </div>
+        <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+          <h4 class="font-semibold text-orange-800 mb-1">
+        <i class="fas fa-exclamation-circle mr-1"></i>
+        <span class="lang-en">Maintenance:</span>
+          </h4>
+          <p class="text-sm text-orange-700">
+        <span class="lang-en">
+          • Clean the interior regularly with mild soap and a damp cloth<br>
+          • Remove and wash the turntable frequently<br>
+          • Check that the door closes properly and is not damaged<br>
+          • If you notice odors, place a cup with water and lemon slices and heat for 2 minutes, then clean<br>
+          • Do not use abrasive products or steel wool to clean<br>
+          • If the microwave does not turn on, check the breaker in the electrical panel and make sure it is ON; report to maintenance if the problem persists
+        </span>
+          </p>
+        </div>
           </div>
         </div>
       </details>
       <!-- A/C-->
+      <!-- A/C Español-->
       <summary class="rule-summary" data-category="HVAC"><i class="fa-solid fa-temperature-high"></i> A/C Room</summary>
       <details class="rule-card" data-category="HVAC">
         <summary class="rule-summary"><span class="lang-en">Air Conditioner</span></summary>
@@ -410,14 +506,14 @@
             • Clean or check filters monthly<br>
             • Adjust the temperature gradually<br>
             • Use auto mode to save energy<br>
-            • Allow air to circulate freely around vents
+            • Allow air to circulate freely around the vents
           </p>
         </div>
         <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-          <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
+          <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to do:</h4>
           <p class="text-sm text-red-700">
             • Do not set the thermostat to extreme temperatures<br>
-            • Do not cover air vents<br>
+            • Do not cover the air vents<br>
             • Do not turn the A/C on and off repeatedly<br>
             • Do not attempt to repair the unit yourself<br>
             • Do not block airflow with furniture or objects
@@ -426,17 +522,17 @@
         <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
           <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance:</h4>
           <p class="text-sm text-orange-700">
-            • A/C won't turn on: Check that the breaker in the electrical panel is ON<br>
+            • A/C does not turn on: Check that the breaker in the electrical panel is ON<br>
             • Not cooling enough: Check and clean the filter, make sure doors and windows are closed<br>
             • Water leaking from A/C: Check that the drain is not clogged<br>
             • Making noise: Turn off the unit and report to maintenance<br>
-            • Remote not responding: Make sure the thermostat is on and the breaker is ON
+            • Remote does not respond: Make sure the thermostat is on and the breaker is ON
           </p>
         </div>
           </div>
         </div>
       </details>
-      <!-- Thermostat-->
+      <!-- Thermostat English-->
       <details class="rule-card" data-category="HVAC">
         <summary class="rule-summary"><span class="lang-en">Thermostat</span></summary>
         <div class="rule-content">
@@ -445,17 +541,17 @@
         <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
           <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
           <p class="text-sm text-green-700">
-            • Use auto mode to regulate temperature<br>
+            • Use auto mode to regulate the temperature<br>
             • Adjust the temperature gradually, not all at once<br>
             • Keep the area around the thermostat clear<br>
             • If leaving home for several hours, raise the temperature to save energy
           </p>
         </div>
         <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-          <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
+          <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to do:</h4>
           <p class="text-sm text-red-700">
             • Do not set the thermostat below 67°F (19°C)<br>
-            • Do not turn off the thermostat completely<br>
+            • Do not turn the thermostat off completely<br>
             • Do not try to open or repair the thermostat<br>
             • Do not cover the thermostat with furniture, curtains, or decorations
           </p>
@@ -463,9 +559,9 @@
         <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
           <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance:</h4>
           <p class="text-sm text-orange-700">
-            • Keep the thermostat clean and dust-free<br>
+            • Keep the thermostat clean and free of dust<br>
             • Check periodically that the display is on<br>
-            • This thermostat does NOT use batteries, it works with electrical power<br>
+            • This thermostat does NOT use batteries, it works with electric power<br>
             • If the thermostat does not turn on, check the breaker in the electrical panel and make sure it is ON<br>
             • If the problem persists, report it to maintenance
           </p>
@@ -732,159 +828,254 @@
       </details>
       </span>
       <!-- General Area-->
-      <span class="lang-en" style="display:none;">
-      <summary class="rule-summary" data-category="general"><i class="fas fa-home"></i>Áreas ddGenerales</summary>
+      <span class="lang-en">
+      <summary class="rule-summary" data-category="general"><i class="fas fa-home"></i> General Areas</summary>
       <details class="rule-card" data-category="general">
-        <summary class="rule-summary"><i class="fas fa-calendar-check"></i>Mantenimiento Preventivo</summary>
+        <summary class="rule-summary">Vinyl Floor Care</summary>
         <div class="rule-content">
           <div class="mb-6">
-            <p class="mb-2">Routine tasks to keep your unit in top condition.</p>
+            <p class="mb-2">Proper care for your vinyl flooring to maintain its appearance and longevity.</p>
             <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Weekly Tasks:</h4>
-              <p class="text-sm text-green-700">• Vacuum floors and carpets<br>• Clean bathroom fixtures and drains<br>• Wipe down kitchen surfaces<br>• Check for leaks under sinks<br>• Dust blinds with soft cloth</p>
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Recommended Products:</h4>
+              <p class="text-sm text-green-700">• Mild pH-neutral cleaner<br>• Vinegar solution (1 cup vinegar to 1 gallon water)<br>• Microfiber mop<br>• Soft-bristle broom</p>
             </div>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Monthly Tasks:</h4>
-              <p class="text-sm text-green-700">• Clean refrigerator coils<br>• Inspect and clean HVAC filters<br>• Check smoke detector batteries<br>• Clean window tracks and sills</p>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
+              <p class="text-sm text-red-700">• Don't use bleach or ammonia<br>• Avoid abrasive scrubbers<br>• Never use wax-based products<br>• Don't steam clean<br>• Avoid excessive water</p>
             </div>
             <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
-              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Seasonal Tasks:</h4> 
-              <p class="text-sm text-orange-700">• Deep clean carpets (spring/fall)<br>• Check weather stripping (winter)<br>• Clean patio/balcony area (seasonal)<br>• Inspect exterior drainage<br>• Clean blinds with soft cloth or vacuum attachment</p>
+              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance Tips:</h4> 
+              <p class="text-sm text-orange-700">• Clean spills immediately<br>• Use furniture pads<br>• Sweep/vacuum before mopping<br>• Use doormats at entrances<br>• Clean with grain direction</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="rule-card" data-category="general">
+        <summary class="rule-summary">Windows & Glass Care</summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Keeping your windows clean and functional.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Recommended Products:</h4>
+              <p class="text-sm text-green-700">• Glass cleaner<br>• Vinegar solution<br>• Microfiber cloth<br>• Soft squeegee</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
+              <p class="text-sm text-red-700">• Don't use abrasive materials<br>• Avoid ammonia-based cleaners<br>• Never force windows open<br>• Don't hang heavy objects<br>• Avoid sharp objects</p>
+            </div>
+            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance Tips:</h4> 
+              <p class="text-sm text-orange-700">• Clean tracks monthly<br>• Check seals regularly<br>• Lubricate moving parts<br>• Report cracks immediately<br>• Clean frames gently</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="rule-card" data-category="general">
+        <summary class="rule-summary">Doors & Entryways</summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Proper care for all doors in your unit.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Recommended Products:</h4>
+              <p class="text-sm text-green-700">• Mild soap and water<br>• Silicone lubricant<br>• Soft cloth<br>• Wood polish (for wood doors)</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
+              <p class="text-sm text-red-700">• Don't slam doors<br>• Avoid hanging heavy items<br>• Never force stuck doors<br>• Don't use abrasive cleaners<br>• Avoid excessive moisture</p>
+            </div>
+            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance Tips:</h4> 
+              <p class="text-sm text-orange-700">• Check hinges quarterly<br>• Clean door handles weekly<br>• Lubricate locks annually<br>• Report sticking doors<br>• Keep tracks clean</p>
             </div>
           </div>
         </div>
       </details>
       </span>
     </div> 
-    <!-- Spanish Content -->
-    <div class="lang lang-es space-y-5" style="display: none;">
-    <!-- Kitchen Espanol-->
-      <summary class="rule-summary" data-category="kitchen"><span class="lang-es" style="display:none;">Área de Cocina</span></summary>
+      <!-- Spanish Content -->
+      <div class="lang lang-es space-y-5" style="display: none;">
+      <!-- Kitchen Espanol-->
+        <summary class="rule-summary" data-category="kitchen"><i class="fa-solid fa-kitchen-set"></i><span class="lang-es"> Areas de la cocina</span></summary>
       <details class="rule-card" data-category="kitchen">
-        <summary class="rule-summary"><span class="lang-es" style="display:none;">Limpieza y Cuidado</span></summary>
+        <summary class="rule-summary"><span class="lang-es">Encimeras de Piedra</span></summary>
         <div class="rule-content">
           <div class="mb-6">
-            <p class="mb-2"><span class="lang-es" style="display:none;">Métodos adecuados de limpieza para diferentes superficies en tu unidad.</span></p>
+            <p class="mb-2"><span class="lang-es">Cuidado adecuado para encimeras de piedra (granito, cuarzo, mármol) y recomendaciones de uso.</span></p>
             <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><span class="lang-es" style="display:none;">Productos Recomendados:</span></h4>
-              <p class="text-sm text-green-700">• Vinyl floors: Mild pH-neutral cleaner or vinegar solution (1 cup vinegar to 1 gallon water)<br>• Countertops: Manufacturer-recommended cleaner or mild soap and water<br>• Bathroom surfaces: Non-abrasive cleaners with anti-mold properties<br>• Windows: Glass cleaner or vinegar solution<br>• Carpets: Mild carpet shampoo or baking soda</p>
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i><span class="lang-es">Productos Recomendados:</span></h4>
+              <p class="text-sm text-green-700"><span class="lang-es">
+                • Limpiador pH neutro específico para piedra<br>
+                • Agua tibia y un paño suave<br>
+                • Sellador para piedra (aplicar según recomendación del fabricante)<br>
+                • No usar vinagre ni productos ácidos
+              </span></p>
             </div>
             <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i><span class="lang-es" style="display:none;">Qué NO hacer:</span></h4>
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i><span class="lang-es">Qué NO hacer:</span></h4>
+              <p class="text-sm text-red-700"><span class="lang-es">
+                • No colocar objetos muy pesados en un solo punto de la encimera, distribuya el peso de manera uniforme<br>
+                • No cortar directamente sobre la piedra, use siempre una tabla de cortar<br>
+                • No colocar ollas o sartenes calientes directamente sobre la superficie<br>
+                • No usar limpiadores abrasivos, ácidos o blanqueadores<br>
+                • No pegar electrodomésticos como freidoras de aire o tostadoras a las paredes, ya que el calor puede dañar tanto la encimera como la pared<br>
+                • No dejar líquidos derramados por mucho tiempo, especialmente vino, café o jugos cítricos
+              </span></p>
+            </div>
+            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i><span class="lang-es">Consejos de Mantenimiento:</span></h4> 
+              <p class="text-sm text-orange-700"><span class="lang-es">
+                • Limpie los derrames inmediatamente para evitar manchas<br>
+                • Use bases o protectores para electrodomésticos y utensilios calientes<br>
+                • Mantenga los electrodomésticos (como freidoras de aire) separados de las paredes y de los bordes de la encimera<br>
+                • Aplique sellador a la piedra según indicaciones del fabricante para proteger la superficie<br>
+                • Evite sentarse o pararse sobre la encimera<br>
+                • Revise periódicamente que no haya grietas o desprendimientos
+              </span></p>
+            </div>
+          </div>
+        </div>
+      </details>
+      <!-- Kitchen Espanol-->
+      <details class="rule-card" data-category="kitchen">
+        <summary class="rule-summary"><span class="lang-es">Gabinetes</span></summary>
+        <div class="rule-content">
+          <div class="mb-6">
+        <p class="mb-2"><span class="lang-es">Cuidado adecuado para gabinetes y almacenamiento de cocina.</span></p>
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+          <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i><span class="lang-es">Productos Recomendados:</span></h4>
+          <p class="text-sm text-green-700"><span class="lang-es">• Gabinetes de madera: Jabón suave y agua<br>• Gabinetes pintados: Limpiador no abrasivo<br>• Herrajes: Detergente suave y paño suave</span></p>
+        </div>
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+          <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i><span class="lang-es">Qué NO hacer:</span></h4>
+          <p class="text-sm text-red-700"><span class="lang-es">• No uses limpiadores abrasivos ni esponjas metálicas<br>• Evita el exceso de agua en superficies de madera<br>• Nunca cuelgues toallas mojadas en las puertas<br>• No sobrecargues los estantes</span></p>
+        </div>
+        <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+          <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i><span class="lang-es">Consejos de Mantenimiento:</span></h4> 
+          <p class="text-sm text-orange-700"><span class="lang-es">• Limpia derrames de inmediato<br>• Limpia los tiradores regularmente<br>• Ajusta las bisagras si las puertas se caen<br>• Organiza el contenido para fácil acceso</span></p>
+        </div>
+          </div>
+        </div>
+      </details>
+      <!-- Kitchen Espanol-->
+      <summary class="rule-summary" data-category="kitchen"><i class="fa-solid fa-plug"></i><span class="lang-es"> Electrodomésticos</span></summary>
+      <details class="rule-card" data-category="kitchen">
+        <summary class="rule-summary"><span class="lang-es">Refrigerador</span></summary>
+        <div class="rule-content">
+          <div class="mb-6">
+        <p class="mb-2"><span class="lang-es">Ajuste la temperatura a 3°C (37°F) para el refrigerador y -18°C (0°F) para el congelador.</span></p>
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+          <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i><span class="lang-es">Cómo Usar:</span></h4>
+          <p class="text-sm text-green-700"><span class="lang-es">
+            • Mantenga los alimentos cubiertos<br>
+            • Deje que los alimentos calientes se enfríen antes de guardarlos<br>
+            • Organice los artículos para permitir la circulación de aire<br>
+            • Limpie los derrames de inmediato
+          </span></p>
+        </div>
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+          <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i><span class="lang-es">Qué NO hacer:</span></h4>
+          <p class="text-sm text-red-700"><span class="lang-es">
+            • No sobrecargue los estantes<br>
+            • No coloque líquidos sin tapa<br>
+            • Nunca use objetos filosos para quitar hielo<br>
+            • No guarde alimentos calientes directamente
+          </span></p>
+        </div>
+        <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+          <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i><span class="lang-es">Mantenimiento:</span></h4> 
+          <p class="text-sm text-orange-700"><span class="lang-es">
+            • Limpie el interior mensualmente con una solución de bicarbonato<br>
+            • Revise y limpie los empaques de las puertas<br>
+            • Aspire las bobinas del condensador cada 6 meses<br>
+            • Descongele el congelador si la acumulación de hielo supera 1/4 de pulgada<br>
+            • Cambie el filtro de agua cada 4 meses si aplica
+          </span></p>
+        </div>
+          </div>
+        </div>
+      </details>
+      <!-- Kitchen Espanol-->
+      <details class="rule-card" data-category="kitchen">
+        <summary class="rule-summary"><span class="lang-es">Lavavajillas</span></summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Recomendaciones para el uso correcto del lavavajillas:</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Cómo Usar:</h4>
+              <p class="text-sm text-green-700">
+                • Coloque los platos mirando hacia el centro y sin amontonarlos<br>
+                • Retire restos grandes de comida antes de colocar los platos<br>
+                • Use cápsulas o detergente especial para lavavajillas<br>
+                • Asegúrese de que los brazos rociadores puedan girar libremente<br>
+                • Inicie el ciclo con agua caliente para mejores resultados<br>
+              </p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>Qué NO hacer:</h4>
               <p class="text-sm text-red-700">
-              <span class="lang-es" style="display:none;">• No uses cloro o amoníaco en pisos de vinilo<br>• Evita estropajos abrasivos en encimeras<br>• Nunca viertas químicos fuertes por los desagües<br>• No dejes derrames por mucho tiempo<br>• No uses productos a base de cera en pisos de vinilo<br>• Evita limpiar pisos de vinilo con vapor</span></p>
+                • No sobrecargue ni apile los platos<br>
+                • No coloque utensilios de madera, hierro fundido o artículos delicados<br>
+                • No utilice jabón líquido común (solo detergente para lavavajillas)<br>
+                • No abra la puerta durante el ciclo<br>
+                • No use productos abrasivos para limpiar el interior<br>
+                • No presione todas las teclas mientras esta en el ciclo de lavado<br>
+              </p>
             </div>
             <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
-              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i><span class="lang-es" style="display:none;">Consejos de Mantenimiento:</span></h4> 
+              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Mantenimiento:</h4>
               <p class="text-sm text-orange-700">
-              <span class="lang-es" style="display:none;">• Limpia derrames inmediatamente para evitar manchas<br>• Usa protectores en muebles para proteger los pisos<br>• Ventila los baños después de ducharte<br>• Limpia regularmente los zócalos y esquinas<br>• Barre o aspira los pisos antes de trapear<br>• Usa felpudos para reducir acumulación de tierra</span></p>
-            </div>
-          </div>
-        </div>
-      </details>
-      <!-- Kitchen Espanol-->
-            <details class="rule-card" data-category="kitchen">
-        <summary class="rule-summary"><span class="lang-es" style="display:none;">Encimeras</span></summary>
-        <div class="rule-content">
-          <div class="mb-6">
-            <p class="mb-2">Proper cleaning methods for different surfaces in your unit.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Recommended Products:</h4>
-              <p class="text-sm text-green-700">• Vinyl floors: Mild pH-neutral cleaner or vinegar solution (1 cup vinegar to 1 gallon water)<br>• Countertops: Manufacturer-recommended cleaner or mild soap and water<br>• Bathroom surfaces: Non-abrasive cleaners with anti-mold properties<br>• Windows: Glass cleaner or vinegar solution<br>• Carpets: Mild carpet shampoo or baking soda</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
-              <p class="text-sm text-red-700">• Don't use bleach or ammonia on vinyl floors<br>• Avoid abrasive scrubbers on countertops<br>• Never pour harsh chemicals down drains<br>• Don't let spills sit for long periods<br>• Don't use wax-based products on vinyl floors<br>• Avoid steam cleaning vinyl floors</p>
-            </div>
-            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
-              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance Tips:</h4> 
-              <p class="text-sm text-orange-700">• Clean spills immediately to prevent stains<br>• Use furniture pads to protect floors<br>• Ventilate bathrooms after showering<br>• Regularly clean baseboards and corners<br>• Sweep or vacuum floors before mopping<br>• Use doormats to reduce dirt accumulation</p>
+                • Limpie el filtro al menos una vez al mes<br>
+                • Realice un ciclo de limpieza con producto especial para lavavajillas regularmente<br>
+                • Limpie las gomas de la puerta para evitar acumulación de residuos<br>
+                • Revise que los orificios de los brazos rociadores no estén obstruidos<br>
+                • En caso de no hacer el ciclo de labado , debe de ir al panel electrico y poner en OFF el braker y esperar 1 minuto y ponerlo en ON nuevamente <br>
+              </p>
             </div>
           </div>
         </div>
       </details>
       <!-- Kitchen Espanol-->
       <details class="rule-card" data-category="kitchen">
-        <summary class="rule-summary"><span class="lang-es" style="display:none;">Gabinetes</span></summary>
+        <summary class="rule-summary"><span class="lang-es">Estufa Eléctrica</span></summary>
         <div class="rule-content">
           <div class="mb-6">
-            <p class="mb-2">Proper cleaning methods for different surfaces in your unit.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Recommended Products:</h4>
-              <p class="text-sm text-green-700">• Vinyl floors: Mild pH-neutral cleaner or vinegar solution (1 cup vinegar to 1 gallon water)<br>• Countertops: Manufacturer-recommended cleaner or mild soap and water<br>• Bathroom surfaces: Non-abrasive cleaners with anti-mold properties<br>• Windows: Glass cleaner or vinegar solution<br>• Carpets: Mild carpet shampoo or baking soda</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
-              <p class="text-sm text-red-700">• Don't use bleach or ammonia on vinyl floors<br>• Avoid abrasive scrubbers on countertops<br>• Never pour harsh chemicals down drains<br>• Don't let spills sit for long periods<br>• Don't use wax-based products on vinyl floors<br>• Avoid steam cleaning vinyl floors</p>
-            </div>
-            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
-              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance Tips:</h4> 
-              <p class="text-sm text-orange-700">• Clean spills immediately to prevent stains<br>• Use furniture pads to protect floors<br>• Ventilate bathrooms after showering<br>• Regularly clean baseboards and corners<br>• Sweep or vacuum floors before mopping<br>• Use doormats to reduce dirt accumulation</p>
-            </div>
-          </div>
+        <p class="mb-2">Recomendaciones para el uso seguro y eficiente de la estufa eléctrica:</p>
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+          <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Cómo Usar:</h4>
+          <p class="text-sm text-green-700">
+            • Cocine a temperatura media para la mayoría de los alimentos.<br>
+            • Vigile los alimentos mientras cocina para evitar derrames.<br>
+            • Apague el quemador inmediatamente después de usarlo.<br>
+            • Limpie los derrames tan pronto como la superficie esté fría.<br>
+            • Si la estufa tiene luz indicadora, espere a que se apague antes de limpiar.<br>
+          </p>
         </div>
-      </details>
-      <!-- Kitchen Espanol-->
-      <summary class="rule-summary" data-category="kitchen"><i class="fa-solid fa-plug"></i><span class="lang-es" style="display:none;"> Electrodomésticos</span></summary>
-      <details class="rule-card" data-category="kitchen">
-        <summary class="rule-summary"><span class="lang-en">Refrigerator</span><span class="lang-es" style="display:none;">Refrigerador</span></summary>
-        <div class="rule-content">
-            <div class="mb-6">
-            <p class="mb-2"><span class="lang-en">Set temperature to 120°F (49°C) for optimal performance and safety.</span><span class="lang-es" style="display:none;">Ajuste la temperatura a 49°C (120°F) para un rendimiento y seguridad óptimos.</span></p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i><span class="lang-en">How to Use:</span><span class="lang-es" style="display:none;">Cómo Usar:</span></h4>
-              <p class="text-sm text-green-700"><span class="lang-en">• Adjust temperature using control panel<br>• Drain tank annually to remove sediment<br>• Check pressure relief valve monthly</span><span class="lang-es" style="display:none;">• Ajuste la temperatura usando el panel de control<br>• Vacíe el tanque anualmente para remover sedimentos<br>• Revise la válvula de alivio de presión mensualmente</span></p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i><span class="lang-en">What NOT to Do:</span><span class="lang-es" style="display:none;">Qué NO hacer:</span></h4>
-              <p class="text-sm text-red-700"><span class="lang-en">• Don't set temperature above 140°F (60°C)<br>• Never bypass safety valves<br>• Don't ignore leaks or unusual noises<br>• Avoid using without proper ventilation</span><span class="lang-es" style="display:none;">• No ajuste la temperatura sobre 60°C (140°F)<br>• Nunca omita las válvulas de seguridad<br>• No ignore fugas o ruidos inusuales<br>• Evite usar sin ventilación adecuada</span></p>
-            </div>
-            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
-              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i><span class="lang-en">Maintenance:</span><span class="lang-es" style="display:none;">Mantenimiento:</span></h4> 
-              <p class="text-sm text-orange-700"><span class="lang-en">• Inspect anode rod every 3 years<br>• Flush tank every 6 months<br>• Check for corrosion annually</span><span class="lang-es" style="display:none;">• Inspeccione el ánodo cada 3 años<br>• Limpie el tanque cada 6 meses<br>• Revise corrosión anualmente</span></p>
-            </div>
-          </div>
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+          <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>Qué NO hacer:</h4>
+          <p class="text-sm text-red-700">
+            • No coloque papel aluminio directamente sobre los quemadores.<br>
+            • No utilice la estufa como superficie de apoyo o almacenamiento.<br>
+            • No arrastre ollas o sartenes sobre la superficie para evitar rayones.<br>
+            • No vierta agua fría sobre la estufa caliente, puede dañar la superficie.<br>
+            • No deje objetos plásticos o inflamables cerca de los quemadores.<br>
+            • No utilice productos abrasivos ni esponjas metálicas para limpiar.<br>
+          </p>
         </div>
-      </details>
-      <!-- Kitchen Espanol-->
-      <details class="rule-card" data-category="kitchen">
-        <summary class="rule-summary"><span class="lang-es" style="display:none;">Lavavajillas</span></summary>
-        <div class="rule-content">
-          <div class="mb-6">
-            <div class="mb-6">
-            <p class="mb-2">Load dishes facing center, use detergent pods for best results.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
-              <p class="text-sm text-green-700">• Scrape food scraps before loading<br>• Use recommended detergent amount<br>• Run hot water in sink before starting cycle</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
-              <p class="text-sm text-red-700">• Don't overload or stack dishes<br>• Avoid placing wood, cast iron, or delicate items<br>• Never use regular dish soap</p>
-            </div>
-            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
-              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance:</h4> 
-              <p class="text-sm text-orange-700">• Clean filter monthly<br>• Run cleaning cycle with dishwasher cleaner<br>• Wipe door seals regularly</p>
-            </div>
-          </div>
-      </details>
-      <!-- Kitchen Espanol-->
-        <details class="rule-card" data-category="kitchen">
-        <summary class="rule-summary"><span class="lang-en">Electric Stove</span><span class="lang-es" style="display:none;">Estufa Eléctrica</span></summary>
-        <div class="rule-content">
-          <div class="mb-6">
-            <p class="mb-2">Use medium heat for most cooking, clean spills immediately.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
-              <p class="text-sm text-green-700">• Use flat-bottomed cookware<br>• Turn off burner when not in use<br>• Clean surface after it cools down</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
-              <p class="text-sm text-red-700">• Don't place aluminum foil directly on burners<br>• Avoid dragging pots across surface<br>• Never pour water on hot spills</p>
-            </div>
-            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
-              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance:</h4> 
-              <p class="text-sm text-orange-700">• Clean cooktop daily after use<br>• Remove and clean drip pans weekly</p>
-            </div>
+        <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+          <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Mantenimiento:</h4> 
+          <p class="text-sm text-orange-700">
+            • Limpie la superficie de la estufa diariamente con un paño húmedo y detergente suave.<br>
+            • Retire y limpie las bandejas recoge-grasa (si aplica) una vez por semana.<br>
+            • Revise que los controles giren suavemente y no estén flojos.<br>
+            • Si nota que un quemador no calienta, verifique que esté bien colocado y conectado.<br>
+            • No permita acumulación de grasa o residuos alrededor de los quemadores.<br>
+            • Si percibe olor a quemado o chisporroteos, apague la estufa y repórtelo a mantenimiento.<br>
+            • No utilice la estufa si el cable de alimentación está dañado.<br>
+            • Mantenga la zona alrededor de la estufa libre de objetos y limpia.<br>
+          </p>
+        </div>
           </div>
         </div>
       </details>
@@ -893,19 +1084,49 @@
         <summary class="rule-summary"><span class="lang-es" style="display:none;">Microondas</span></summary>
         <div class="rule-content">
           <div class="mb-6">
-            <p class="mb-2">Use microwave-safe containers and cover food to prevent splatters.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
-              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>How to Use:</h4>
-              <p class="text-sm text-green-700">• Use microwave-safe glass or ceramic containers<br>• Stir food halfway through cooking time<br>• Cover food with a microwave-safe lid or paper towel<br>• Clean interior after each use</p>
-            </div>
-            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
-              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>What NOT to Do:</h4>
-              <p class="text-sm text-red-700">• Never put metal or aluminum foil inside<br>• Don't operate when empty<br>• Avoid superheating liquids<br>• Don't use containers not labeled microwave-safe</p>
-            </div>
-            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
-              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Maintenance:</h4> 
-              <p class="text-sm text-orange-700">• Clean interior regularly with mild soap<br>• Remove and wash turntable frequently</p>
-            </div>
+        <p class="mb-2"><span class="lang-en">Use microwave-safe containers and cover food to prevent splatters.</span><span class="lang-es">Utilice recipientes aptos para microondas y cubra los alimentos para evitar salpicaduras.</span></p>
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+          <h4 class="font-semibold text-green-800 mb-1">
+            <i class="fas fa-check-circle mr-1"></i>
+            <span class="lang-es" style="display:none;">Cómo Usar:</span>
+          </h4>
+          <p class="text-sm text-green-700">
+            <span class="lang-es" style="display:none;">
+          • Use solo recipientes de vidrio o cerámica aptos para microondas<br>
+          • Limpie el interior después de cada uso para evitar acumulación de residuos<br>
+            </span>
+          </p>
+        </div>
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+          <h4 class="font-semibold text-red-800 mb-1">
+            <i class="fas fa-times-circle mr-1"></i>
+            <span class="lang-es" style="display:none;">Qué NO hacer:</span>
+          </h4>
+          <p class="text-sm text-red-700">
+            <span class="lang-es" style="display:none;">
+          • Nunca introduzca objetos metálicos, papel aluminio o utensilios con partes metálicas<br>
+          • No caliente huevos con cáscara ni alimentos cerrados herméticamente (pueden explotar)<br>
+          • No sobrecaliente líquidos o aceites, pueden hervir de forma repentina<br>
+          • No forzar al abrir la puerta<br>
+            </span>
+          </p>
+        </div>
+        <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+          <h4 class="font-semibold text-orange-800 mb-1">
+            <i class="fas fa-exclamation-circle mr-1"></i>
+            <span class="lang-es" style="display:none;">Mantenimiento:</span>
+          </h4>
+          <p class="text-sm text-orange-700">
+            <span class="lang-es" style="display:none;">
+          • Limpie el interior regularmente con jabón suave y un paño húmedo<br>
+          • Retire y lave el plato giratorio con frecuencia<br>
+          • Revise que la puerta cierre correctamente y no esté dañada<br>
+          • Si percibe olores, coloque una taza con agua y rodajas de limón y caliente por 2 minutos, luego limpie<br>
+          • No utilice productos abrasivos ni esponjas metálicas para limpiar<br>
+          • Si el microondas no enciende verifique el breaker en el panel eléctrico y asegúrese que esté en ON ,reporte a mantenimiento si el problema persiste
+            </span>
+          </p>
+        </div>
           </div>
         </div>
       </details>
@@ -1249,181 +1470,204 @@
       </div>
       <!-- General Area Espanol-->
       <span class="lang-es" style="display:none;">
-        <summary class="rule-summary" data-category="general">Áreas Generales</summary>
-
-        <details class="rule-card" data-category="general">
-          <summary class="rule-summary">Cuidado del Piso de Vinilo</summary>
-          <div class="rule-content">
-            <div class="mb-6">
-              <p class="mb-2">Para mantener el piso de vinilo limpio y en buen estado:</p>
-              <ul>
-                <li>Barra o aspire regularmente</li>
-                <li>Limpie con trapeador húmedo y detergente neutro</li>
-                <li>Seque cualquier derrame de inmediato</li>
-                <li>Use protectores en las patas de los muebles</li>
-                <li>Coloque tapetes en las entradas</li>
-              </ul>
-              <p class="mt-2"><strong>Evite:</strong> usar líquidos corrosivos, cloro, amoníaco, limpiadores abrasivos o vapor. No deje agua estancada ni arrastre muebles pesados sin protección.</p>
+      <summary class="rule-summary" data-category="general"><i class="fas fa-home"></i> Áreas Generales</summary>
+      <details class="rule-card" data-category="general">
+        <summary class="rule-summary">Cuidado de Pisos de Vinilo</summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Cuidado adecuado para mantener sus pisos de vinilo.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Productos Recomendados:</h4>
+              <p class="text-sm text-green-700">• Limpiador pH neutro<br>• Solución de vinagre (1 taza por galón de agua)<br>• Trapeador de microfibra<br>• Escoba de cerdas suaves</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>Qué NO hacer:</h4>
+              <p class="text-sm text-red-700">• No usar cloro o amoníaco<br>• Evitar estropajos abrasivos<br>• Nunca usar productos con cera<br>• No limpiar con vapor<br>• Evitar exceso de agua</p>
+            </div>
+            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Consejos de Mantenimiento:</h4> 
+              <p class="text-sm text-orange-700">• Limpiar derrames inmediatamente<br>• Usar protectores en muebles<br>• Barrer/aspirar antes de trapear<br>• Usar felpudos en entradas<br>• Limpiar en dirección del grano</p>
             </div>
           </div>
-        </details>
+        </div>
+      </details>
 
-        <details class="rule-card" data-category="general">
-          <summary class="rule-summary">Cuidado y Limpieza de Ventanas de Cristal</summary>
-          <div class="rule-content">
-            <div class="mb-6">
-              <p class="mb-2">Para mantener las ventanas limpias y funcionales:</p>
-              <ul>
-                <li>Limpie el vidrio con limpiavidrios o mezcla de vinagre y agua</li>
-                <li>Use paño suave o papel sin pelusa</li>
-                <li>Limpie marcos y rieles mensualmente</li>
-                <li>Revise que los seguros funcionen bien</li>
-              </ul>
-              <p class="mt-2"><strong>Evite:</strong> objetos filosos, esponjas abrasivas, líquidos corrosivos o forzar las ventanas.</p>
+      <details class="rule-card" data-category="general">
+        <summary class="rule-summary">Ventanas y Cristales</summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Mantener sus ventanas limpias y funcionales.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Productos Recomendados:</h4>
+              <p class="text-sm text-green-700">• Limpiavidrios<br>• Solución de vinagre<br>• Paño de microfibra<br>• Rasquetilla suave</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>Qué NO hacer:</h4>
+              <p class="text-sm text-red-700">• No usar materiales abrasivos<br>• Evitar limpiadores con amoníaco<br>• Nunca forzar ventanas<br>• No colgar objetos pesados<br>• Evitar objetos filosos</p>
+            </div>
+            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Consejos de Mantenimiento:</h4> 
+              <p class="text-sm text-orange-700">• Limpiar rieles mensualmente<br>• Revisar sellos regularmente<br>• Lubricar partes móviles<br>• Reportar grietas inmediatamente<br>• Limpiar marcos con cuidado</p>
             </div>
           </div>
-        </details>
+        </div>
+      </details>
 
-        <details class="rule-card" data-category="general">
-          <summary class="rule-summary">Cuidado de Puertas (Entrada y Habitaciones)</summary>
-          <div class="rule-content">
-            <div class="mb-6">
-              <p class="mb-2">Para conservar las puertas limpias y en buen funcionamiento:</p>
-              <ul>
-                <li>Limpie con paño húmedo y jabón suave</li>
-                <li>Revise bisagras y manijas periódicamente</li>
-                <li>Lubrique bisagras si hacen ruido</li>
-                <li>Mantenga libres de obstáculos las áreas cercanas</li>
-              </ul>
-              <p class="mt-2"><strong>Evite:</strong> líquidos corrosivos, limpiadores abrasivos, colgar objetos pesados o cerrar las puertas con fuerza.</p>
+      <details class="rule-card" data-category="general">
+        <summary class="rule-summary">Puertas y Accesos</summary>
+        <div class="rule-content">
+          <div class="mb-6">
+            <p class="mb-2">Cuidado adecuado para todas las puertas.</p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-3">
+              <h4 class="font-semibold text-green-800 mb-1"><i class="fas fa-check-circle mr-1"></i>Productos Recomendados:</h4>
+              <p class="text-sm text-green-700">• Jabón suave y agua<br>• Lubricante de silicona<br>• Paño suave<br>• Pulidor para madera (puertas de madera)</p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+              <h4 class="font-semibold text-red-800 mb-1"><i class="fas fa-times-circle mr-1"></i>Qué NO hacer:</h4>
+              <p class="text-sm text-red-700">• No golpear puertas<br>• Evitar colgar objetos pesados<br>• Nunca forzar puertas atascadas<br>• No usar limpiadores abrasivos<br>• Evitar exceso de humedad</p>
+            </div>
+            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-3">
+              <h4 class="font-semibold text-orange-800 mb-1"><i class="fas fa-exclamation-circle mr-1"></i>Consejos de Mantenimiento:</h4> 
+              <p class="text-sm text-orange-700">• Revisar bisagras trimestralmente<br>• Limpiar manijas semanalmente<br>• Lubricar cerraduras anualmente<br>• Reportar puertas que se atascan<br>• Mantener rieles limpios</p>
             </div>
           </div>
-        </details>
-
-        <details class="rule-card" data-category="general">
-          <summary class="rule-summary">Guía General de Buenas Prácticas</summary>
-          <div class="rule-content">
-            <div class="mb-6">
-              <ul>
-                <li>No vierta líquidos corrosivos, solventes, ácidos o químicos fuertes en ninguna superficie, drenaje, electrodoméstico o accesorio</li>
-                <li>Reporte cualquier daño, fuga o mal funcionamiento</li>
-                <li>Mantenga todas las áreas limpias y libres de basura</li>
-                <li>No pinte, perfore ni modifique paredes, puertas o ventanas sin autorización</li>
-                <li>Siga siempre las recomendaciones del fabricante para limpieza y mantenimiento</li>
-              </ul>
-            </div>
-          </div>
-        </details>
+        </div>
+      </details>
       </span>
-    <!-- Back Button (Single, outside language divs) - Added from General Building Rules -->
-    <div class="mt-8 text-center footer-links">
+
+        </div>             
+            <!-- Disclaimer -->
+            <div class="bg-red-50 border-l-4 p-1 mb-1" style="font-size: x-small;">
+              <p>
+                <span class="lang-en">
+                  The recommendations provided here are for informational purposes only. Each resident should use their own judgment for cleaning and maintenance, as long as it does not cause damage to the structure, electrical installations, or other elements of the property. The administration is not responsible for the use of these recommendations.
+                </span>
+                <span class="lang-es" style="display:none;">
+                  Las recomendaciones aquí proporcionadas son únicamente de carácter informativo. Cada inquilino debe aplicar su propio criterio de limpieza y mantenimiento, siempre y cuando no cause ningún daño a la estructura, instalaciones eléctricas u otros elementos de la propiedad. La administración no se hace responsable del uso que se le dé a estas recomendaciones.
+                </span>
+              </p>
+            </div>
+      <!-- Back Button -->
+      <div class="mt-8 text-center footer-links">
         <a href="index.html" id="back-to-home-link">
             <i class="fas fa-arrow-left mr-2"></i><span id="back-to-home-text">Back to Home</span>
         </a>
     </div>
   </div>
 
-  <!-- Footer - Adapted to General Building Rules structure -->
-  <footer class="portal-footer">
-    <div class="footer-text">
-        <i class="fas fa-mobile-alt"></i> (305) 822-9469 &nbsp;
-    </div>
-    <div class="footer-text email">
-        <i class="fas fa-envelope"></i> info@liveatemeraldbay.com
-    </div>
-    <div class="footer-text">
-        © <span id="currentYear"></span> Emerald Bay. All Rights Reserved.
-    </div>
-    <div class="footer-links mt-2">
-        <a href="#top">Back to Top</a>
-    </div>
-  </footer>
+    <!-- Footer -->
+    <footer class="portal-footer">
+      <div class="max-w-3xl mx-auto px-4">
+        <div class="footer-text">
+          <i class="fas fa-mobile-alt"></i> (305) 822-9469 &nbsp;
+        </div>
+        <div class="footer-text email">
+          <i class="fas fa-envelope"></i> info@liveatemeraldbay.com
+        </div>
+        <div class="footer-text">
+          © <span id="currentYear"></span> Emerald Bay. All Rights Reserved.
+        </div>
+        <div class="footer-links mt-2">
+          <a href="#top" class="hover:text-teal-700">Back to Top</a>
+        </div>
+      </div>
+    </footer>
 
-  <!-- JavaScript -->
-  <script>
-    // Update language displays
-    function updateLanguageDisplays(lang) {
-      document.querySelectorAll('.lang-en').forEach(el => {
-        el.style.display = lang === 'en' ? 'inline' : 'none';
-      });
-      document.querySelectorAll('.lang-es').forEach(el => {
-        el.style.display = lang === 'es' ? 'inline' : 'none';
-      });
-    }
-
-    // Category filtering function
-    function filterByCategory(category) {
-      // Hide all content first
-      document.querySelectorAll('.rule-card, .rule-summary[data-category]').forEach(el => {
-        el.style.display = 'none';
-      });
-
-      // Show selected category
-      if (category === 'all') {
-        document.querySelectorAll('.rule-card, .rule-summary[data-category]').forEach(el => {
-          el.style.display = 'block';
+    <!-- JavaScript -->
+    <script>
+      // Update language displays
+      function updateLanguageDisplays(lang) {
+        document.querySelectorAll('.lang-en').forEach(el => {
+          el.style.display = lang === 'en' ? 'inline' : 'none';
         });
-      } else {
-        // Show category headers
-        document.querySelectorAll(`.rule-summary[data-category*="${category}"]`).forEach(el => {
-          el.style.display = 'block';
-        });
-        // Show matching cards
-        document.querySelectorAll(`.rule-card[data-category*="${category}"]`).forEach(el => {
-          el.style.display = 'block';
+        document.querySelectorAll('.lang-es').forEach(el => {
+          el.style.display = lang === 'es' ? 'inline' : 'none';
         });
       }
 
-      // Update active category button
+      // Category filtering function
+      function filterByCategory(category) {
+        // Hide all content first
+        document.querySelectorAll('.rule-card, .rule-summary[data-category]').forEach(el => {
+          el.style.display = 'none';
+        });
+
+        // Show selected category
+        if (category === 'all') {
+          document.querySelectorAll('.rule-card, .rule-summary[data-category]').forEach(el => {
+            el.style.display = 'block';
+          });
+        } else {
+          // Show category headers
+          document.querySelectorAll(`.rule-summary[data-category*="${category}"]`).forEach(el => {
+            el.style.display = 'block';
+          });
+          // Show matching cards
+          document.querySelectorAll(`.rule-card[data-category*="${category}"]`).forEach(el => {
+            el.style.display = 'block';
+          });
+        }
+
+        // Update active category button
+        document.querySelectorAll('.category-btn').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        document.querySelector(`.category-btn[data-category="${category}"]`).classList.add('active');
+      }
+
+      // Initialize by showing kitchen content by default
+      document.addEventListener('DOMContentLoaded', function() {
+        filterByCategory('kitchen');
+        
+        // Set preferred language
+        const preferredLang = localStorage.getItem('preferredLanguage') || 'en';
+        setActiveLanguage(preferredLang);
+        
+        // Show the correct language section on load
+        document.querySelector(`.lang-${preferredLang}`).style.display = 'block';
+        
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+      });
+
+      function setActiveLanguage(lang) {
+        // Hide all language sections first
+        document.querySelectorAll('.lang').forEach(el => {
+          el.style.display = 'none';
+        });
+        
+        // Show the selected language section
+        document.querySelector(`.lang-${lang}`).style.display = 'block';
+        
+        // Update all inline language displays
+        updateLanguageDisplays(lang);
+        
+        // Update active button
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        document.getElementById(`${lang}-btn`).classList.add('active');
+        
+        // Update back to home text
+        const backText = document.getElementById('back-to-home-text');
+        backText.textContent = lang === 'es' ? 'Volver al inicio' : 'Back to Home';
+        
+        // Save preference
+        localStorage.setItem('preferredLanguage', lang);
+        document.documentElement.lang = lang;
+      }
+
+      // Language button event listeners
+      document.getElementById('en-btn').addEventListener('click', () => setActiveLanguage('en'));
+      document.getElementById('es-btn').addEventListener('click', () => setActiveLanguage('es'));
+
+      // Category button event listeners
       document.querySelectorAll('.category-btn').forEach(btn => {
-        btn.classList.remove('active');
+        btn.addEventListener('click', function() {
+          filterByCategory(this.dataset.category);
+        });
       });
-      document.querySelector(`.category-btn[data-category="${category}"]`).classList.add('active');
-    }
-
-    // Initialize by showing kitchen content by default
-    document.addEventListener('DOMContentLoaded', function() {
-      filterByCategory('kitchen');
-      
-      // Set preferred language
-      const preferredLang = localStorage.getItem('preferredLanguage') || 'en';
-      setActiveLanguage(preferredLang);
-      
-      // Show the correct language section on load
-      document.querySelector(`.lang-${preferredLang}`).style.display = 'block';
-    });
-
-    function setActiveLanguage(lang) {
-      // Hide all language sections first
-      document.querySelectorAll('.lang').forEach(el => {
-        el.style.display = 'none';
-      });
-      
-      // Show the selected language section
-      document.querySelector(`.lang-${lang}`).style.display = 'block';
-      
-      // Update all inline language displays
-      updateLanguageDisplays(lang);
-      
-      // Update active button
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      document.getElementById(`${lang}-btn`).classList.add('active');
-      
-      // Update back to home text
-      const backText = document.getElementById('back-to-home-text');
-      backText.textContent = lang === 'es' ? 'Volver al inicio' : 'Back to Home';
-      
-      // Save preference
-      localStorage.setItem('preferredLanguage', lang);
-      document.documentElement.lang = lang;
-    }
-
-    // Language button event listeners
-    document.getElementById('en-btn').addEventListener('click', () => setActiveLanguage('en'));
-    document.getElementById('es-btn').addEventListener('click', () => setActiveLanguage('es'));
-  </script>
+    </script>
   <script>
     // Update language displays
     function updateLanguageDisplays(lang) {
@@ -1556,3 +1800,4 @@
   </script>
 </body>
 </html>
+
